@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="Historical Timeline Challenge — расставь исторические события на временной шкале" />
+  <title>Historical Timeline Challenge</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⏳</text></svg>" />
+</head>
+<body>
+  <div id="app">
+    <!-- Start Screen -->
+    <section id="start-screen" class="screen active">
+      <div class="start-content">
+        <h1 class="logo">⏳ Historical Timeline</h1>
+        <p class="subtitle">Расставь события мировой истории на шкале времени</p>
+        
+        <div class="difficulty-select">
+          <h2>Выбери сложность</h2>
+          <div class="diff-buttons">
+            <button class="diff-btn" data-count="15" data-label="Лёгкий">
+              <span class="diff-name">Лёгкий</span>
+              <span class="diff-count">15 событий</span>
+            </button>
+            <button class="diff-btn" data-count="30" data-label="Средний">
+              <span class="diff-name">Средний</span>
+              <span class="diff-count">30 событий</span>
+            </button>
+            <button class="diff-btn" data-count="60" data-label="Сложный">
+              <span class="diff-name">Сложный</span>
+              <span class="diff-count">60 событий</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="settings-panel">
+          <h3>Настройки</h3>
+          <label class="setting-item">
+            <input type="checkbox" id="setting-show-years" checked />
+            <span>Показывать годы после правильного размещения</span>
+          </label>
+          <label class="setting-item">
+            <input type="checkbox" id="setting-allow-same-year" checked />
+            <span>Разрешать события одного года</span>
+          </label>
+        </div>
+
+        <button id="btn-rules" class="btn-secondary">📜 Правила</button>
+      </div>
+    </section>
+
+    <!-- Rules Modal -->
+    <div id="rules-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>Правила игры</h2>
+        <ol>
+          <li>На шкале изначально стоит только <strong>0</strong> — рождение Христа (1 н.э.).</li>
+          <li>Тебе дают события по одному. Размести каждое <strong>между</strong> уже существующими метками (или за крайними).</li>
+          <li>Если год события действительно находится между соседями — оно закрепляется. Иначе — сгорает.</li>
+          <li>Чем больше правильных событий, тем уже промежутки и сложнее попадать.</li>
+          <li>В конце — статистика, очки и анализ сильных/слабых сторон.</li>
+        </ol>
+        <p class="tip">Совет: используй drag-and-drop или кликай по промежуткам на шкале.</p>
+        <button id="btn-close-rules" class="btn-primary">Понятно</button>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <section id="game-screen" class="screen">
+      <header class="game-header">
+        <div class="progress-info">
+          <span id="progress-text">0 / 15</span>
+          <div class="progress-bar"><div id="progress-fill"></div></div>
+        </div>
+        <div class="stats-mini">
+          <span id="correct-count" title="Правильно">✅ 0</span>
+          <span id="streak-count" title="Серия">🔥 0</span>
+          <span id="score-count" title="Очки">⭐ 0</span>
+        </div>
+      </header>
+
+      <div class="timeline-wrapper">
+        <div id="timeline" class="timeline">
+          <!-- Markers will be inserted here -->
+        </div>
+      </div>
+
+      <div class="event-area">
+        <div id="current-event" class="event-card">
+          <div class="event-category" id="event-category"></div>
+          <h2 id="event-title"></h2>
+          <p id="event-desc"></p>
+        </div>
+        <div class="event-actions">
+          <button id="btn-skip" class="btn-secondary">Пропустить (сгорит)</button>
+        </div>
+        <p class="hint">Перетащи карточку на шкалу или кликни по промежутку между метками</p>
+      </div>
+    </section>
+
+    <!-- Result Screen -->
+    <section id="result-screen" class="screen">
+      <div class="result-content">
+        <div id="victory-banner" class="victory-banner">
+          <div class="banner-glow"></div>
+          <h1 id="result-title">Отличная игра!</h1>
+          <div class="big-score">
+            <span id="final-score">0</span>
+            <span class="score-label">очков</span>
+          </div>
+          <div class="accuracy-circle">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" class="bg"></circle>
+              <circle cx="50" cy="50" r="45" class="fg" id="accuracy-ring"></circle>
+            </svg>
+            <div class="accuracy-text">
+              <span id="accuracy-percent">0%</span>
+              <small>точность</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="result-stats">
+          <div class="stat-box">
+            <span class="stat-value" id="stat-correct">0</span>
+            <span class="stat-label">правильно</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value" id="stat-wrong">0</span>
+            <span class="stat-label">ошибок</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-value" id="stat-streak">0</span>
+            <span class="stat-label">макс. серия</span>
+          </div>
+        </div>
+
+        <div id="analysis-block" class="analysis-block hidden">
+          <h3>📊 Твои сильные и слабые стороны</h3>
+          <div id="analysis-content"></div>
+        </div>
+
+        <div class="result-timeline-section">
+          <h3>Твоя шкала</h3>
+          <div id="result-timeline" class="timeline result-mode"></div>
+        </div>
+
+        <div class="result-actions">
+          <button id="btn-home" class="btn-secondary">🏠 На главную</button>
+          <button id="btn-rematch" class="btn-primary">🔄 Реванш</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
