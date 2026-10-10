@@ -1,5 +1,3 @@
-const EMBEDDED_EVENTS = [{"id": "pyramids", "title": "Строительство Великих пирамид Гизы", "year": -2560, "description": "Возведение пирамид Хеопса, Хефрена и Микерина в Древнем Египте", "era": "ancient", "category": "culture"}, {"id": "hammurabi", "title": "Кодекс Хаммурапи", "year": -1754, "description": "Один из древнейших сводов законов Месопотамии", "era": "ancient", "category": "politics"}, {"id": "olympics", "title": "Первые Олимпийские игры", "year": -776, "description": "Начало античных Олимпийских игр в Греции", "era": "ancient", "category": "culture"}, {"id": "rome-founded", "title": "Основание Рима", "year": -753, "description": "Традиционная дата основания Вечного города", "era": "ancient", "category": "politics"}, {"id": "buddha", "title": "Рождение Будды (приблизительно)", "year": -563, "description": "Сидарта Гаутама — основатель буддизма", "era": "ancient", "category": "religion"}, {"id": "marathon", "title": "Битва при Марафоне", "year": -490, "description": "Победа греков над персами", "era": "ancient", "category": "war"}, {"id": "alexander", "title": "Начало походов Александра Македонского", "year": -334, "description": "Создание огромной империи от Греции до Индии", "era": "ancient", "category": "war"}, {"id": "caesar-death", "title": "Убийство Юлия Цезаря", "year": -44, "description": "Иды марта — заговор против диктатора Рима", "era": "ancient", "category": "politics"}, {"id": "pompeii", "title": "Извержение Везувия, гибель Помпеев", "year": 79, "description": "Город погребён под пеплом", "era": "ancient", "category": "disaster"}, {"id": "rome-fall", "title": "Падение Западной Римской империи", "year": 476, "description": "Конец античности", "era": "ancient", "category": "politics"}, {"id": "mecca", "title": "Хиджра — начало исламского летоисчисления", "year": 622, "description": "Переселение Мухаммеда из Мекки в Медину", "era": "medieval", "category": "religion"}, {"id": "charlemagne", "title": "Коронация Карла Великого", "year": 800, "description": "Император Священной Римской империи", "era": "medieval", "category": "politics"}, {"id": "hastings", "title": "Битва при Гастингсе", "year": 1066, "description": "Нормандское завоевание Англии", "era": "medieval", "category": "war"}, {"id": "crusades", "title": "Начало Первого крестового похода", "year": 1096, "description": "Христианские походы на Восток", "era": "medieval", "category": "war"}, {"id": "magna-carta", "title": "Великая хартия вольностей", "year": 1215, "description": "Ограничение власти английского короля", "era": "medieval", "category": "politics"}, {"id": "black-death", "title": "Чёрная смерть в Европе", "year": 1347, "description": "Пандемия чумы, унёсшая миллионы жизней", "era": "medieval", "category": "disaster"}, {"id": "printing", "title": "Изобретение печатного станка Гутенбергом", "year": 1440, "description": "Революция в распространении знаний", "era": "medieval", "category": "technology"}, {"id": "constantinople", "title": "Падение Константинополя", "year": 1453, "description": "Конец Византийской империи", "era": "medieval", "category": "war"}, {"id": "columbus", "title": "Открытие Америки Колумбом", "year": 1492, "description": "Первое путешествие Христофора Колумба", "era": "early_modern", "category": "discovery"}, {"id": "reformation", "title": "95 тезисов Мартина Лютера", "year": 1517, "description": "Начало Реформации", "era": "early_modern", "category": "religion"}, {"id": "magellan", "title": "Первое кругосветное плавание", "year": 1519, "description": "Экспедиция Магеллана доказывает шарообразность Земли", "era": "early_modern", "category": "discovery"}, {"id": "copernicus", "title": "«О вращении небесных сфер» Коперника", "year": 1543, "description": "Гелиоцентрическая система мира", "era": "early_modern", "category": "science"}, {"id": "galileo", "title": "Галилей направляет телескоп на небо", "year": 1609, "description": "Открытие спутников Юпитера и фаз Венеры", "era": "early_modern", "category": "science"}, {"id": "newton", "title": "«Математические начала» Ньютона", "year": 1687, "description": "Законы движения и всемирного тяготения", "era": "early_modern", "category": "science"}, {"id": "usa-independence", "title": "Декларация независимости США", "year": 1776, "description": "Рождение Соединённых Штатов Америки", "era": "early_modern", "category": "politics"}, {"id": "french-revolution", "title": "Взятие Бастилии", "year": 1789, "description": "Начало Французской революции", "era": "early_modern", "category": "politics"}, {"id": "napoleon-moscow", "title": "Наполеон входит в Москву", "year": 1812, "description": "Кульминация Отечественной войны, французы входят в опустевшую Москву", "era": "modern", "category": "war"}, {"id": "darwin", "title": "«Происхождение видов» Дарвина", "year": 1859, "description": "Теория эволюции путём естественного отбора", "era": "modern", "category": "science"}, {"id": "telephone", "title": "Изобретение телефона Беллом", "year": 1876, "description": "Первый успешный телефонный звонок", "era": "modern", "category": "technology"}, {"id": "eiffel", "title": "Строительство Эйфелевой башни", "year": 1889, "description": "Символ Парижа к Всемирной выставке", "era": "modern", "category": "culture"}, {"id": "wright", "title": "Первый полёт братьев Райт", "year": 1903, "description": "Рождение авиации", "era": "modern", "category": "technology"}, {"id": "einstein", "title": "Специальная теория относительности", "year": 1905, "description": "Эйнштейн публикует революционную работу", "era": "modern", "category": "science"}, {"id": "ww1-start", "title": "Начало Первой мировой войны", "year": 1914, "description": "Убийство в Сараево и начало мировой войны", "era": "modern", "category": "war"}, {"id": "october", "title": "Октябрьская революция в России", "year": 1917, "description": "Большевики берут власть в Петрограде", "era": "modern", "category": "politics"}, {"id": "ww1-end", "title": "Окончание Первой мировой войны", "year": 1918, "description": "Компьенское перемирие", "era": "modern", "category": "war"}, {"id": "penicillin", "title": "Открытие пенициллина", "year": 1928, "description": "Александр Флеминг открывает антибиотик", "era": "modern", "category": "science"}, {"id": "ww2-start", "title": "Начало Второй мировой войны", "year": 1939, "description": "Вторжение Германии в Польшу", "era": "modern", "category": "war"}, {"id": "pearl-harbor", "title": "Нападение на Перл-Харбор", "year": 1941, "description": "США вступают во Вторую мировую войну", "era": "modern", "category": "war"}, {"id": "hiroshima", "title": "Атомная бомбардировка Хиросимы", "year": 1945, "description": "Первое боевое применение ядерного оружия", "era": "modern", "category": "war"}, {"id": "ww2-end", "title": "Окончание Второй мировой войны", "year": 1945, "description": "Капитуляция Японии", "era": "modern", "category": "war"}, {"id": "un", "title": "Создание ООН", "year": 1945, "description": "Организация Объединённых Наций", "era": "contemporary", "category": "politics"}, {"id": "sputnik", "title": "Запуск первого спутника", "year": 1957, "description": "СССР открывает космическую эру", "era": "contemporary", "category": "science"}, {"id": "gagarin", "title": "Полёт Юрия Гагарина", "year": 1961, "description": "Первый человек в космосе", "era": "contemporary", "category": "science"}, {"id": "berlin-wall", "title": "Возведение Берлинской стены", "year": 1961, "description": "Символ холодной войны", "era": "contemporary", "category": "politics"}, {"id": "moon", "title": "Высадка на Луну", "year": 1969, "description": "Нил Армстронг — первый человек на Луне", "era": "contemporary", "category": "science"}, {"id": "internet", "title": "Рождение ARPANET (предшественник Интернета)", "year": 1969, "description": "Первая сеть передачи пакетов", "era": "contemporary", "category": "technology"}, {"id": "chernobyl", "title": "Чернобыльская катастрофа", "year": 1986, "description": "Крупнейшая авария на АЭС", "era": "contemporary", "category": "disaster"}, {"id": "berlin-wall-fall", "title": "Падение Берлинской стены", "year": 1989, "description": "Символический конец холодной войны", "era": "contemporary", "category": "politics"}, {"id": "www", "title": "Изобретение Всемирной паутины", "year": 1989, "description": "Тим Бернерс-Ли создаёт WWW", "era": "contemporary", "category": "technology"}, {"id": "ussr-collapse", "title": "Распад СССР", "year": 1991, "description": "Конец Советского Союза", "era": "contemporary", "category": "politics"}, {"id": "google", "title": "Основание Google", "year": 1998, "description": "Начало эры поисковых систем нового поколения", "era": "contemporary", "category": "technology"}, {"id": "911", "title": "Теракты 11 сентября", "year": 2001, "description": "Атаки на Всемирный торговый центр и Пентагон", "era": "contemporary", "category": "disaster"}, {"id": "iphone", "title": "Презентация первого iPhone", "year": 2007, "description": "Революция смартфонов", "era": "contemporary", "category": "technology"}, {"id": "covid", "title": "Начало пандемии COVID-19", "year": 2019, "description": "Глобальная пандемия коронавируса", "era": "contemporary", "category": "disaster"}, {"id": "chatgpt", "title": "Публичный запуск ChatGPT", "year": 2022, "description": "Массовый доступ к большим языковым моделям", "era": "contemporary", "category": "technology"}];
-
 const ERA_LABELS = {
   ancient: 'Древний мир',
   medieval: 'Средневековье',
@@ -39,8 +37,11 @@ function showScreen(name) {
 }
 
 function loadEvents() {
-  allEvents = EMBEDDED_EVENTS.filter(e => e.id !== 'christ');
-  return Promise.resolve();
+  return fetch('events.json')
+    .then(r => r.json())
+    .then(data => {
+      allEvents = data.filter(e => e.id !== 'christ');
+    });
 }
 
 function readSettings() {
@@ -370,6 +371,7 @@ function endGame() {
 
   renderAnalysis();
   renderResultTimeline();
+  restoreResultActions();
 }
 
 function renderAnalysis() {
@@ -440,6 +442,36 @@ function renderResultTimeline() {
   });
 }
 
+function showDifficultyPicker() {
+  const actions = document.querySelector('.result-actions');
+  if (!actions) return;
+  actions.innerHTML = `
+    <p style="width:100%;text-align:center;color:var(--text-muted);margin-bottom:8px;font-size:0.9rem;">Выбери сложность</p>
+    <button class="btn-primary diff-rematch" data-count="15">Лёгкий · 15</button>
+    <button class="btn-primary diff-rematch" data-count="30">Средний · 30</button>
+    <button class="btn-primary diff-rematch" data-count="60">Сложный · 60</button>
+    <button id="btn-picker-back" class="btn-secondary">← Назад</button>
+  `;
+  actions.querySelectorAll('.diff-rematch').forEach(btn => {
+    btn.addEventListener('click', () => startGame(parseInt(btn.dataset.count)));
+  });
+  const back = actions.querySelector('#btn-picker-back');
+  if (back) back.addEventListener('click', restoreResultActions);
+}
+
+function restoreResultActions() {
+  const actions = document.querySelector('.result-actions');
+  if (!actions) return;
+  actions.innerHTML = `
+    <button id="btn-home" class="btn-secondary">🏠 На главную</button>
+    <button id="btn-rematch" class="btn-primary">🔄 Реванш</button>
+    <button id="btn-other-diff" class="btn-secondary">📶 Другая сложность</button>
+  `;
+  $('#btn-home').addEventListener('click', () => { hideTutorial(); showScreen('start'); });
+  $('#btn-rematch').addEventListener('click', () => startGame(lastDifficulty));
+  $('#btn-other-diff').addEventListener('click', showDifficultyPicker);
+}
+
 document.querySelectorAll('.diff-btn').forEach(btn => {
   btn.addEventListener('click', () => startGame(parseInt(btn.dataset.count)));
 });
@@ -448,11 +480,16 @@ $('#btn-close-rules').addEventListener('click', () => $('#rules-modal').classLis
 $('#btn-skip').addEventListener('click', () => {
   if (!tutorialMode && currentIndex < gameEvents.length) onWrong(gameEvents[currentIndex]);
 });
-$('#btn-home').addEventListener('click', () => {
-  hideTutorial();
-  showScreen('start');
-});
-$('#btn-rematch').addEventListener('click', () => startGame(lastDifficulty));
+
+function bindResultButtons() {
+  const home = $('#btn-home');
+  const rematch = $('#btn-rematch');
+  const other = $('#btn-other-diff');
+  if (home) home.addEventListener('click', () => { hideTutorial(); showScreen('start'); });
+  if (rematch) rematch.addEventListener('click', () => startGame(lastDifficulty));
+  if (other) other.addEventListener('click', showDifficultyPicker);
+}
+bindResultButtons();
 
 loadEvents().then(() => console.log('Loaded', allEvents.length, 'events'))
   .catch(err => { console.error(err); alert('Ошибка загрузки событий'); });
