@@ -41,7 +41,12 @@ function loadEvents() {
     fetch('events1.json').then(r => r.json()),
     fetch('events2.json').then(r => r.json())
   ]).then(([a, b]) => {
-    allEvents = [...a, ...b].filter(e => e.id !== 'christ');
+    const seen = new Set();
+    allEvents = [...a, ...b].filter(e => {
+      if (e.id === 'christ' || seen.has(e.id)) return false;
+      seen.add(e.id);
+      return true;
+    });
   });
 }
 
