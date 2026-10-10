@@ -4,128 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Historical Timeline Challenge</title>
-  <style>
-:root {
-  --bg: #0f0f1a;
-  --bg-card: #1a1a2e;
-  --bg-elevated: #23233a;
-  --accent: #e94560;
-  --accent-glow: #ff6b81;
-  --success: #00d68f;
-  --warning: #ffaa00;
-  --text: #eaeaea;
-  --text-muted: #a0a0b8;
-  --timeline-line: #3a3a5c;
-  --marker: #4ecdc4;
-  --zero: #e94560;
-  --radius: 12px;
-  --shadow: 0 8px 32px rgba(0,0,0,0.4);
-  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; font-family: var(--font); background: var(--bg); color: var(--text); -webkit-tap-highlight-color: transparent; }
-#app { height: 100%; display: flex; flex-direction: column; }
-.screen { display: none; flex-direction: column; height: 100%; animation: fadeIn 0.35s ease; }
-.screen.active { display: flex; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-#start-screen { justify-content: center; align-items: center; padding: 24px; background: radial-gradient(ellipse at top, #1a1a3a 0%, var(--bg) 70%); }
-.start-content { max-width: 480px; width: 100%; text-align: center; }
-.logo { font-size: clamp(1.8rem, 6vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 8px; background: linear-gradient(135deg, #fff 30%, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.subtitle { color: var(--text-muted); margin-bottom: 36px; font-size: 1.05rem; }
-.difficulty-select h2 { font-size: 1rem; font-weight: 600; color: var(--text-muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.08em; }
-.diff-buttons { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
-.diff-btn { background: var(--bg-card); border: 2px solid transparent; border-radius: var(--radius); padding: 18px 24px; color: var(--text); cursor: pointer; transition: all 0.2s; display: flex; justify-content: space-between; align-items: center; font-size: 1.1rem; }
-.diff-btn:hover, .diff-btn:focus { border-color: var(--accent); background: var(--bg-elevated); transform: translateY(-2px); box-shadow: var(--shadow); }
-.diff-btn .diff-name { font-weight: 700; }
-.diff-btn .diff-count { color: var(--text-muted); font-size: 0.9rem; }
-.settings-panel { background: var(--bg-card); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 20px; text-align: left; }
-.settings-panel h3 { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.06em; }
-.setting-item { display: flex; align-items: center; gap: 12px; padding: 8px 0; cursor: pointer; font-size: 0.95rem; }
-.setting-item input { width: 18px; height: 18px; accent-color: var(--accent); }
-.btn-primary, .btn-secondary { border: none; border-radius: 50px; padding: 14px 28px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: all 0.2s; }
-.btn-primary { background: linear-gradient(135deg, var(--accent), var(--accent-glow)); color: white; box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4); }
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(233, 69, 96, 0.55); }
-.btn-secondary { background: var(--bg-elevated); color: var(--text); border: 1px solid #3a3a5c; }
-.btn-secondary:hover { background: #2a2a45; }
-#btn-rules { margin-top: 8px; }
-.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
-.modal.hidden { display: none; }
-.modal-content { background: var(--bg-card); border-radius: 16px; padding: 28px; max-width: 420px; width: 100%; box-shadow: var(--shadow); }
-.modal-content h2 { margin-bottom: 16px; }
-.modal-content ol { padding-left: 20px; margin-bottom: 16px; line-height: 1.6; color: var(--text-muted); }
-.modal-content li { margin-bottom: 8px; }
-.tip { font-size: 0.9rem; color: var(--marker); margin-bottom: 20px; }
-#game-screen { background: var(--bg); }
-.game-header { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--bg-card); border-bottom: 1px solid #2a2a45; flex-shrink: 0; }
-.progress-info { flex: 1; max-width: 200px; }
-#progress-text { font-size: 0.85rem; color: var(--text-muted); display: block; margin-bottom: 4px; }
-.progress-bar { height: 6px; background: #2a2a45; border-radius: 3px; overflow: hidden; }
-#progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--marker)); width: 0%; transition: width 0.3s ease; border-radius: 3px; }
-.stats-mini { display: flex; gap: 14px; font-size: 0.95rem; font-weight: 600; }
-.timeline-wrapper { flex: 1; overflow-x: auto; overflow-y: hidden; padding: 40px 0 20px; position: relative; -webkit-overflow-scrolling: touch; scroll-behavior: smooth; }
-.timeline { display: flex; align-items: flex-end; height: 100%; min-width: 100%; padding: 0 80px 60px; position: relative; gap: 0; }
-.timeline::before { content: ''; position: absolute; left: 40px; right: 40px; bottom: 80px; height: 4px; background: var(--timeline-line); border-radius: 2px; z-index: 0; }
-.marker { position: relative; display: flex; flex-direction: column; align-items: center; min-width: 90px; z-index: 1; cursor: default; transition: transform 0.2s; }
-.marker:hover { transform: translateY(-4px); }
-.marker-dot { width: 18px; height: 18px; border-radius: 50%; background: var(--marker); border: 3px solid var(--bg); box-shadow: 0 0 0 3px var(--marker); margin-bottom: 8px; transition: all 0.3s; }
-.marker.zero .marker-dot { background: var(--zero); box-shadow: 0 0 0 3px var(--zero), 0 0 16px var(--zero); width: 22px; height: 22px; }
-.marker-year { font-size: 0.75rem; font-weight: 700; color: var(--marker); margin-bottom: 4px; white-space: nowrap; }
-.marker.zero .marker-year { color: var(--zero); font-size: 0.9rem; }
-.marker-title { font-size: 0.7rem; color: var(--text-muted); text-align: center; max-width: 100px; line-height: 1.25; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.gap { flex: 1; min-width: 48px; height: 100px; position: relative; cursor: pointer; z-index: 2; margin-bottom: 60px; }
-.gap::after { content: ''; position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); width: 28px; height: 28px; border-radius: 50%; border: 2px dashed transparent; transition: all 0.2s; }
-.gap:hover::after, .gap.drag-over::after { border-color: var(--accent); background: rgba(233, 69, 96, 0.15); box-shadow: 0 0 20px rgba(233, 69, 96, 0.3); }
-.gap.correct-flash::after { border-color: var(--success); background: rgba(0, 214, 143, 0.25); animation: pulse 0.4s; }
-@keyframes pulse { 0%, 100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.3); } }
-.event-area { flex-shrink: 0; padding: 16px; background: var(--bg-card); border-top: 1px solid #2a2a45; display: flex; flex-direction: column; align-items: center; gap: 12px; }
-.event-card { background: var(--bg-elevated); border-radius: var(--radius); padding: 20px 24px; max-width: 480px; width: 100%; box-shadow: var(--shadow); border: 1px solid #3a3a5c; cursor: grab; transition: transform 0.15s, box-shadow 0.15s; user-select: none; touch-action: none; }
-.event-card:active, .event-card.dragging { cursor: grabbing; transform: scale(1.03); box-shadow: 0 12px 40px rgba(0,0,0,0.5); border-color: var(--accent); }
-.event-card.burn { animation: burn 1.1s forwards; pointer-events: none; position: relative; overflow: visible; }
-.event-card.burn::before { content: ''; position: absolute; inset: -20px; background: radial-gradient(circle at 30% 80%, #ff4500 0%, transparent 50%), radial-gradient(circle at 70% 70%, #ff8c00 0%, transparent 45%), radial-gradient(circle at 50% 90%, #ffd700 0%, transparent 40%); opacity: 0; animation: flame 1.1s forwards; z-index: 10; pointer-events: none; border-radius: 20px; filter: blur(8px); }
-.event-card.burn::after { content: '🔥'; position: absolute; font-size: 3.5rem; left: 50%; top: 40%; transform: translate(-50%, -50%); opacity: 0; animation: fireEmoji 1.1s forwards; z-index: 11; pointer-events: none; filter: drop-shadow(0 0 12px #ff4500); }
-@keyframes burn { 0% { opacity: 1; transform: scale(1) rotate(0deg); filter: none; box-shadow: 0 8px 32px rgba(0,0,0,0.4); } 15% { transform: scale(1.04) rotate(-1deg); filter: brightness(1.3) sepia(0.4) hue-rotate(-15deg); box-shadow: 0 0 30px rgba(255, 100, 0, 0.6); } 40% { opacity: 0.9; transform: scale(1.08) rotate(2deg); filter: brightness(1.8) sepia(0.8) hue-rotate(-25deg) saturate(1.5); box-shadow: 0 0 50px rgba(255, 60, 0, 0.9), 0 0 20px #ff4500; } 70% { opacity: 0.5; transform: scale(0.95) rotate(-3deg) translateY(-15px); filter: brightness(2.2) sepia(1) hue-rotate(-30deg) contrast(1.3); box-shadow: 0 0 60px #ff2200; } 100% { opacity: 0; transform: scale(0.4) rotate(5deg) translateY(-80px); filter: brightness(3) sepia(1) contrast(1.5); box-shadow: 0 0 80px transparent; } }
-@keyframes flame { 0% { opacity: 0; transform: scale(0.6); } 20% { opacity: 0.9; transform: scale(1.1); } 50% { opacity: 1; transform: scale(1.3); } 100% { opacity: 0; transform: scale(1.6) translateY(-40px); } }
-@keyframes fireEmoji { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.3); } 25% { opacity: 1; transform: translate(-50%, -50%) scale(1.4); } 60% { opacity: 1; transform: translate(-50%, -80%) scale(1.6); } 100% { opacity: 0; transform: translate(-50%, -140%) scale(0.8); } }
-.event-category { display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 20px; background: rgba(78, 205, 196, 0.15); color: var(--marker); margin-bottom: 10px; }
-.event-card h2 { font-size: 1.15rem; margin-bottom: 8px; line-height: 1.3; }
-.event-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
-.event-actions { display: flex; gap: 12px; }
-.hint { font-size: 0.8rem; color: var(--text-muted); opacity: 0.7; }
-#result-screen { overflow-y: auto; padding: 24px 16px 40px; background: radial-gradient(ellipse at top, #1a1a3a 0%, var(--bg) 60%); }
-.result-content { max-width: 560px; margin: 0 auto; text-align: center; }
-.victory-banner { position: relative; padding: 32px 20px; margin-bottom: 28px; }
-.banner-glow { position: absolute; inset: -20px; background: radial-gradient(circle, rgba(233,69,96,0.25) 0%, transparent 70%); animation: glowPulse 2s ease-in-out infinite; pointer-events: none; }
-@keyframes glowPulse { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
-#result-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 16px; position: relative; }
-.big-score { font-size: 3.5rem; font-weight: 900; line-height: 1; background: linear-gradient(135deg, #fff, var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; position: relative; }
-.score-label { display: block; font-size: 1rem; font-weight: 500; color: var(--text-muted); -webkit-text-fill-color: var(--text-muted); margin-top: 4px; }
-.accuracy-circle { position: relative; width: 110px; height: 110px; margin: 24px auto 0; }
-.accuracy-circle svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-.accuracy-circle .bg { fill: none; stroke: #2a2a45; stroke-width: 8; }
-.accuracy-circle .fg { fill: none; stroke: var(--success); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 283; stroke-dashoffset: 283; transition: stroke-dashoffset 1.2s ease; }
-.accuracy-text { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.accuracy-text span { font-size: 1.4rem; font-weight: 800; }
-.accuracy-text small { font-size: 0.7rem; color: var(--text-muted); }
-.result-stats { display: flex; justify-content: center; gap: 16px; margin-bottom: 28px; }
-.stat-box { background: var(--bg-card); border-radius: var(--radius); padding: 16px 20px; min-width: 90px; }
-.stat-value { display: block; font-size: 1.6rem; font-weight: 800; }
-.stat-label { font-size: 0.75rem; color: var(--text-muted); }
-.analysis-block { background: var(--bg-card); border-radius: var(--radius); padding: 20px; margin-bottom: 28px; text-align: left; }
-.analysis-block h3 { margin-bottom: 12px; font-size: 1rem; }
-.analysis-block.hidden { display: none; }
-.analysis-item { padding: 8px 0; font-size: 0.95rem; line-height: 1.4; }
-.analysis-item.strong { color: var(--success); }
-.analysis-item.weak { color: var(--warning); }
-.result-timeline-section { margin-bottom: 28px; }
-.result-timeline-section h3 { margin-bottom: 12px; font-size: 1rem; color: var(--text-muted); }
-.result-mode { overflow-x: auto; padding: 20px 40px 50px; background: var(--bg-card); border-radius: var(--radius); min-height: 140px; }
-.result-mode::before { bottom: 50px; }
-.result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-@media (max-width: 480px) { .logo { font-size: 1.7rem; } .diff-btn { padding: 14px 18px; } .event-card { padding: 16px; } .event-card h2 { font-size: 1.05rem; } .big-score { font-size: 2.8rem; } .marker { min-width: 72px; } .marker-title { max-width: 80px; font-size: 0.65rem; } }
-.victory-banner.celebrate::before { content: '🎉'; position: absolute; font-size: 2rem; animation: confetti 1.5s ease-out forwards; left: 20%; top: 0; }
-.victory-banner.celebrate::after { content: '✨'; position: absolute; font-size: 1.8rem; animation: confetti 1.8s ease-out 0.2s forwards; right: 20%; top: 10%; }
-@keyframes confetti { 0% { opacity: 1; transform: translateY(0) rotate(0); } 100% { opacity: 0; transform: translateY(80px) rotate(40deg); } }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div id="app">
@@ -149,6 +28,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font); backgroun
         <button id="btn-rules" class="btn-secondary">📜 Правила</button>
       </div>
     </section>
+
     <div id="rules-modal" class="modal hidden">
       <div class="modal-content">
         <h2>Правила игры</h2>
@@ -163,31 +43,57 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font); backgroun
         <button id="btn-close-rules" class="btn-primary">Понятно</button>
       </div>
     </div>
+
     <section id="game-screen" class="screen">
       <header class="game-header">
-        <div class="progress-info"><span id="progress-text">0 / 15</span><div class="progress-bar"><div id="progress-fill"></div></div></div>
-        <div class="stats-mini"><span id="correct-count">✅ 0</span><span id="streak-count">🔥 0</span><span id="score-count">⭐ 0</span></div>
+        <div class="progress-info">
+          <span id="progress-text">0 / 15</span>
+          <div class="progress-bar"><div id="progress-fill"></div></div>
+        </div>
+        <div class="stats-mini">
+          <span id="correct-count">✅ 0</span>
+          <span id="streak-count">🔥 0</span>
+          <span id="score-count">⭐ 0</span>
+        </div>
       </header>
-      <div class="timeline-wrapper"><div id="timeline" class="timeline"></div></div>
+      <div class="timeline-wrapper">
+        <div id="tutorial-overlay" class="tutorial-overlay hidden">
+          <p id="tutorial-text"></p>
+          <p class="tut-hint" id="tutorial-hint"></p>
+        </div>
+        <div id="timeline" class="timeline"></div>
+      </div>
       <div class="event-area">
         <div id="current-event" class="event-card">
           <div class="event-category" id="event-category"></div>
           <h2 id="event-title"></h2>
           <p id="event-desc"></p>
         </div>
-        <div class="event-actions"><button id="btn-skip" class="btn-secondary">Пропустить (сгорит)</button></div>
+        <div class="event-actions">
+          <button id="btn-skip" class="btn-secondary">Пропустить (сгорит)</button>
+        </div>
         <p class="hint">Перетащи карточку на шкалу или кликни по промежутку между метками</p>
       </div>
     </section>
+
     <section id="result-screen" class="screen">
       <div class="result-content">
         <div id="victory-banner" class="victory-banner">
           <div class="banner-glow"></div>
           <h1 id="result-title">Отличная игра!</h1>
-          <div class="big-score"><span id="final-score">0</span><span class="score-label">очков</span></div>
+          <div class="big-score">
+            <span id="final-score">0</span>
+            <span class="score-label">очков</span>
+          </div>
           <div class="accuracy-circle">
-            <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" class="bg"></circle><circle cx="50" cy="50" r="45" class="fg" id="accuracy-ring"></circle></svg>
-            <div class="accuracy-text"><span id="accuracy-percent">0%</span><small>точность</small></div>
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="45" class="bg"></circle>
+              <circle cx="50" cy="50" r="45" class="fg" id="accuracy-ring"></circle>
+            </svg>
+            <div class="accuracy-text">
+              <span id="accuracy-percent">0%</span>
+              <small>точность</small>
+            </div>
           </div>
         </div>
         <div class="result-stats">
@@ -195,8 +101,14 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font); backgroun
           <div class="stat-box"><span class="stat-value" id="stat-wrong">0</span><span class="stat-label">ошибок</span></div>
           <div class="stat-box"><span class="stat-value" id="stat-streak">0</span><span class="stat-label">макс. серия</span></div>
         </div>
-        <div id="analysis-block" class="analysis-block hidden"><h3>📊 Твои сильные и слабые стороны</h3><div id="analysis-content"></div></div>
-        <div class="result-timeline-section"><h3>Твоя шкала</h3><div id="result-timeline" class="timeline result-mode"></div></div>
+        <div id="analysis-block" class="analysis-block hidden">
+          <h3>📊 Твои сильные и слабые стороны</h3>
+          <div id="analysis-content"></div>
+        </div>
+        <div class="result-timeline-section">
+          <h3>Твоя шкала</h3>
+          <div id="result-timeline" class="timeline result-mode"></div>
+        </div>
         <div class="result-actions">
           <button id="btn-home" class="btn-secondary">🏠 На главную</button>
           <button id="btn-rematch" class="btn-primary">🔄 Реванш</button>
@@ -204,29 +116,6 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font); backgroun
       </div>
     </section>
   </div>
-  <script>
-const EMBEDDED_EVENTS = [{"id":"pyramids","title":"Строительство Великих пирамид Гизы","year":-2560,"description":"Возведение пирамид Хеопса, Хефрена и Микерина в Древнем Египте","era":"ancient","category":"culture"},{"id":"hammurabi","title":"Кодекс Хаммурапи","year":-1754,"description":"Один из древнейших сводов законов Месопотамии","era":"ancient","category":"politics"},{"id":"olympics","title":"Первые Олимпийские игры","year":-776,"description":"Начало античных Олимпийских игр в Греции","era":"ancient","category":"culture"},{"id":"rome-founded","title":"Основание Рима","year":-753,"description":"Традиционная дата основания Вечного города","era":"ancient","category":"politics"},{"id":"buddha","title":"Рождение Будды (приблизительно)","year":-563,"description":"Сидарта Гаутама — основатель буддизма","era":"ancient","category":"religion"},{"id":"marathon","title":"Битва при Марафоне","year":-490,"description":"Победа греков над персами","era":"ancient","category":"war"},{"id":"alexander","title":"Начало походов Александра Македонского","year":-334,"description":"Создание огромной империи от Греции до Индии","era":"ancient","category":"war"},{"id":"caesar-death","title":"Убийство Юлия Цезаря","year":-44,"description":"Иды марта — заговор против диктатора Рима","era":"ancient","category":"politics"},{"id":"pompeii","title":"Извержение Везувия, гибель Помпеев","year":79,"description":"Город погребён под пеплом","era":"ancient","category":"disaster"},{"id":"rome-fall","title":"Падение Западной Римской империи","year":476,"description":"Конец античности","era":"ancient","category":"politics"},{"id":"mecca","title":"Хиджра — начало исламского летоисчисления","year":622,"description":"Переселение Мухаммеда из Мекки в Медину","era":"medieval","category":"religion"},{"id":"charlemagne","title":"Коронация Карла Великого","year":800,"description":"Император Священной Римской империи","era":"medieval","category":"politics"},{"id":"hastings","title":"Битва при Гастингсе","year":1066,"description":"Нормандское завоевание Англии","era":"medieval","category":"war"},{"id":"crusades","title":"Начало Первого крестового похода","year":1096,"description":"Христианские походы на Восток","era":"medieval","category":"war"},{"id":"magna-carta","title":"Великая хартия вольностей","year":1215,"description":"Ограничение власти английского короля","era":"medieval","category":"politics"},{"id":"black-death","title":"Чёрная смерть в Европе","year":1347,"description":"Пандемия чумы, унёсшая миллионы жизней","era":"medieval","category":"disaster"},{"id":"printing","title":"Изобретение печатного станка Гутенбергом","year":1440,"description":"Революция в распространении знаний","era":"medieval","category":"technology"},{"id":"constantinople","title":"Падение Константинополя","year":1453,"description":"Конец Византийской империи","era":"medieval","category":"war"},{"id":"columbus","title":"Открытие Америки Колумбом","year":1492,"description":"Первое путешествие Христофора Колумба","era":"early_modern","category":"discovery"},{"id":"reformation","title":"95 тезисов Мартина Лютера","year":1517,"description":"Начало Реформации","era":"early_modern","category":"religion"},{"id":"magellan","title":"Первое кругосветное плавание","year":1519,"description":"Экспедиция Магеллана доказывает шарообразность Земли","era":"early_modern","category":"discovery"},{"id":"copernicus","title":"«О вращении небесных сфер» Коперника","year":1543,"description":"Гелиоцентрическая система мира","era":"early_modern","category":"science"},{"id":"galileo","title":"Галилей направляет телескоп на небо","year":1609,"description":"Открытие спутников Юпитера и фаз Венеры","era":"early_modern","category":"science"},{"id":"newton","title":"«Математические начала» Ньютона","year":1687,"description":"Законы движения и всемирного тяготения","era":"early_modern","category":"science"},{"id":"usa-independence","title":"Декларация независимости США","year":1776,"description":"Рождение Соединённых Штатов Америки","era":"early_modern","category":"politics"},{"id":"french-revolution","title":"Взятие Бастилии","year":1789,"description":"Начало Французской революции","era":"early_modern","category":"politics"},{"id":"napoleon-moscow","title":"Наполеон входит в Москву","year":1812,"description":"Кульминация Отечественной войны, французы входят в опустевшую Москву","era":"modern","category":"war"},{"id":"darwin","title":"«Происхождение видов» Дарвина","year":1859,"description":"Теория эволюции путём естественного отбора","era":"modern","category":"science"},{"id":"telephone","title":"Изобретение телефона Беллом","year":1876,"description":"Первый успешный телефонный звонок","era":"modern","category":"technology"},{"id":"eiffel","title":"Строительство Эйфелевой башни","year":1889,"description":"Символ Парижа к Всемирной выставке","era":"modern","category":"culture"},{"id":"wright","title":"Первый полёт братьев Райт","year":1903,"description":"Рождение авиации","era":"modern","category":"technology"},{"id":"einstein","title":"Специальная теория относительности","year":1905,"description":"Эйнштейн публикует революционную работу","era":"modern","category":"science"},{"id":"ww1-start","title":"Начало Первой мировой войны","year":1914,"description":"Убийство в Сараево и начало мировой войны","era":"modern","category":"war"},{"id":"october","title":"Октябрьская революция в России","year":1917,"description":"Большевики берут власть в Петрограде","era":"modern","category":"politics"},{"id":"ww1-end","title":"Окончание Первой мировой войны","year":1918,"description":"Компьенское перемирие","era":"modern","category":"war"},{"id":"penicillin","title":"Открытие пенициллина","year":1928,"description":"Александр Флеминг открывает антибиотик","era":"modern","category":"science"},{"id":"ww2-start","title":"Начало Второй мировой войны","year":1939,"description":"Вторжение Германии в Польшу","era":"modern","category":"war"},{"id":"pearl-harbor","title":"Нападение на Перл-Харбор","year":1941,"description":"США вступают во Вторую мировую войну","era":"modern","category":"war"},{"id":"hiroshima","title":"Атомная бомбардировка Хиросимы","year":1945,"description":"Первое боевое применение ядерного оружия","era":"modern","category":"war"},{"id":"ww2-end","title":"Окончание Второй мировой войны","year":1945,"description":"Капитуляция Японии","era":"modern","category":"war"},{"id":"un","title":"Создание ООН","year":1945,"description":"Организация Объединённых Наций","era":"contemporary","category":"politics"},{"id":"sputnik","title":"Запуск первого спутника","year":1957,"description":"СССР открывает космическую эру","era":"contemporary","category":"science"},{"id":"gagarin","title":"Полёт Юрия Гагарина","year":1961,"description":"Первый человек в космосе","era":"contemporary","category":"science"},{"id":"berlin-wall","title":"Возведение Берлинской стены","year":1961,"description":"Символ холодной войны","era":"contemporary","category":"politics"},{"id":"moon","title":"Высадка на Луну","year":1969,"description":"Нил Армстронг — первый человек на Луне","era":"contemporary","category":"science"},{"id":"internet","title":"Рождение ARPANET (предшественник Интернета)","year":1969,"description":"Первая сеть передачи пакетов","era":"contemporary","category":"technology"},{"id":"chernobyl","title":"Чернобыльская катастрофа","year":1986,"description":"Крупнейшая авария на АЭС","era":"contemporary","category":"disaster"},{"id":"berlin-wall-fall","title":"Падение Берлинской стены","year":1989,"description":"Символический конец холодной войны","era":"contemporary","category":"politics"},{"id":"www","title":"Изобретение Всемирной паутины","year":1989,"description":"Тим Бернерс-Ли создаёт WWW","era":"contemporary","category":"technology"},{"id":"ussr-collapse","title":"Распад СССР","year":1991,"description":"Конец Советского Союза","era":"contemporary","category":"politics"},{"id":"google","title":"Основание Google","year":1998,"description":"Начало эры поисковых систем нового поколения","era":"contemporary","category":"technology"},{"id":"911","title":"Теракты 11 сентября","year":2001,"description":"Атаки на Всемирный торговый центр и Пентагон","era":"contemporary","category":"disaster"},{"id":"iphone","title":"Презентация первого iPhone","year":2007,"description":"Революция смартфонов","era":"contemporary","category":"technology"},{"id":"covid","title":"Начало пандемии COVID-19","year":2019,"description":"Глобальная пандемия коронавируса","era":"contemporary","category":"disaster"},{"id":"chatgpt","title":"Публичный запуск ChatGPT","year":2022,"description":"Массовый доступ к большим языковым моделям","era":"contemporary","category":"technology"}];
-const ERA_LABELS={ancient:'Древний мир',medieval:'Средневековье',early_modern:'Новое время',modern:'XIX — первая пол. XX в.',contemporary:'Современность'};
-const CATEGORY_LABELS={politics:'Политика',war:'Войны',science:'Наука',culture:'Культура',discovery:'Открытия',technology:'Технологии',disaster:'Катастрофы',religion:'Религия'};
-let allEvents=[],gameEvents=[],placed=[],currentIndex=0,correctCount=0,wrongCount=0,streak=0,maxStreak=0,score=0,difficulty=15,settings={showYears:true,allowSameYear:true},lastDifficulty=15;
-const $=s=>document.querySelector(s);
-const screens={start:$('#start-screen'),game:$('#game-screen'),result:$('#result-screen')};
-function showScreen(n){Object.values(screens).forEach(s=>s.classList.remove('active'));screens[n].classList.add('active')}
-function loadEvents(){allEvents=EMBEDDED_EVENTS.filter(e=>e.id!=='christ');return Promise.resolve()}
-function readSettings(){settings.showYears=$('#setting-show-years').checked;settings.allowSameYear=$('#setting-allow-same-year').checked}
-function startGame(count){readSettings();difficulty=count;lastDifficulty=count;let pool=[...allEvents];if(!settings.allowSameYear){const seen=new Set();pool=pool.filter(e=>{if(seen.has(e.year))return false;seen.add(e.year);return true})}for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}gameEvents=pool.slice(0,Math.min(count,pool.length));placed=[{id:'zero',title:'Рождение Христа',year:0,description:'Точка отсчёта нашей эры',era:'ancient',category:'religion',isZero:true}];currentIndex=0;correctCount=0;wrongCount=0;streak=0;maxStreak=0;score=0;updateHUD();renderTimeline();showCurrentEvent();showScreen('game')}
-function renderTimeline(){const tl=$('#timeline');tl.innerHTML='';placed.sort((a,b)=>a.year-b.year);const leftGap=document.createElement('div');leftGap.className='gap';leftGap.dataset.gapIndex=-1;attachGapHandlers(leftGap,-1);tl.appendChild(leftGap);placed.forEach((ev,i)=>{const marker=document.createElement('div');marker.className='marker'+(ev.isZero?' zero':'');marker.innerHTML=`<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;if(!settings.showYears&&!ev.isZero)marker.querySelector('.marker-year').style.visibility='hidden';tl.appendChild(marker);const gap=document.createElement('div');gap.className='gap';gap.dataset.gapIndex=i;attachGapHandlers(gap,i);tl.appendChild(gap)})}
-function formatYear(y){if(y===0)return'0';if(y<0)return`${Math.abs(y)} до н.э.`;return`${y}`}
-function attachGapHandlers(el,gapIndex){el.addEventListener('click',()=>tryPlace(gapIndex));el.addEventListener('dragover',e=>{e.preventDefault();el.classList.add('drag-over')});el.addEventListener('dragleave',()=>el.classList.remove('drag-over'));el.addEventListener('drop',e=>{e.preventDefault();el.classList.remove('drag-over');tryPlace(gapIndex)})}
-function showCurrentEvent(){if(currentIndex>=gameEvents.length){endGame();return}const ev=gameEvents[currentIndex];$('#event-title').textContent=ev.title;$('#event-desc').textContent=ev.description;$('#event-category').textContent=CATEGORY_LABELS[ev.category]||ev.category;const card=$('#current-event');card.classList.remove('burn');card.draggable=true;card.ondragstart=e=>{card.classList.add('dragging');e.dataTransfer.setData('text/plain','event')};card.ondragend=()=>card.classList.remove('dragging')}
-function tryPlace(gapIndex){if(currentIndex>=gameEvents.length)return;const ev=gameEvents[currentIndex];const sorted=[...placed].sort((a,b)=>a.year-b.year);let leftYear=-Infinity,rightYear=Infinity;if(gapIndex===-1)rightYear=sorted[0].year;else if(gapIndex>=sorted.length-1)leftYear=sorted[sorted.length-1].year;else{leftYear=sorted[gapIndex].year;rightYear=sorted[gapIndex+1].year}const year=ev.year;let correct=false;if(settings.allowSameYear){if(leftYear===-Infinity)correct=year<=rightYear;else if(rightYear===Infinity)correct=year>=leftYear;else correct=year>=leftYear&&year<=rightYear}else{if(leftYear===-Infinity)correct=year<rightYear;else if(rightYear===Infinity)correct=year>leftYear;else correct=year>leftYear&&year<rightYear}if(correct)onCorrect(ev,gapIndex);else onWrong(ev)}
-function onCorrect(ev,gapIndex){placed.push({...ev});correctCount++;streak++;maxStreak=Math.max(maxStreak,streak);score+=100+Math.min(streak*10,100);const gaps=document.querySelectorAll('.gap');const targetGap=[...gaps].find(g=>parseInt(g.dataset.gapIndex)===gapIndex);if(targetGap){targetGap.classList.add('correct-flash');setTimeout(()=>targetGap.classList.remove('correct-flash'),400)}currentIndex++;updateHUD();renderTimeline();showCurrentEvent()}
-function onWrong(ev){wrongCount++;streak=0;const card=$('#current-event');card.classList.add('burn');card.draggable=false;setTimeout(()=>{currentIndex++;updateHUD();showCurrentEvent()},1150)}
-function updateHUD(){const total=gameEvents.length;$('#progress-text').textContent=`${currentIndex} / ${total}`;$('#progress-fill').style.width=`${(currentIndex/total)*100}%`;$('#correct-count').textContent=`✅ ${correctCount}`;$('#streak-count').textContent=`🔥 ${streak}`;$('#score-count').textContent=`⭐ ${score}`}
-function endGame(){showScreen('result');const total=gameEvents.length;const accuracy=total>0?Math.round((correctCount/total)*100):0;let title='Игра окончена';if(accuracy>=90)title='Легенда истории! 🏆';else if(accuracy>=70)title='Отличный результат! 🎉';else if(accuracy>=50)title='Неплохо! 👍';else if(accuracy>=30)title='Есть куда расти';else title='Попробуй ещё раз';$('#result-title').textContent=title;$('#final-score').textContent=score;$('#accuracy-percent').textContent=`${accuracy}%`;$('#stat-correct').textContent=correctCount;$('#stat-wrong').textContent=wrongCount;$('#stat-streak').textContent=maxStreak;const ring=$('#accuracy-ring');const circumference=2*Math.PI*45;const offset=circumference-(accuracy/100)*circumference;setTimeout(()=>{ring.style.strokeDashoffset=offset},100);const banner=$('#victory-banner');banner.classList.add('celebrate');setTimeout(()=>banner.classList.remove('celebrate'),2000);renderAnalysis();renderResultTimeline()}
-function renderAnalysis(){const block=$('#analysis-block');const content=$('#analysis-content');content.innerHTML='';const correctByEra={},totalByEra={},correctByCat={},totalByCat={};gameEvents.forEach(ev=>{const wasCorrect=placed.some(p=>p.id===ev.id);const era=ev.era||'unknown';const cat=ev.category||'unknown';totalByEra[era]=(totalByEra[era]||0)+1;totalByCat[cat]=(totalByCat[cat]||0)+1;if(wasCorrect){correctByEra[era]=(correctByEra[era]||0)+1;correctByCat[cat]=(correctByCat[cat]||0)+1}});const strengths=[],weaknesses=[];Object.keys(totalByEra).forEach(era=>{if(totalByEra[era]<2)return;const rate=(correctByEra[era]||0)/totalByEra[era];const label=ERA_LABELS[era]||era;if(rate>=0.75)strengths.push(`Отличное знание эпохи «${label}»`);else if(rate<=0.35)weaknesses.push(`Слабо ориентируетесь в эпохе «${label}»`)});Object.keys(totalByCat).forEach(cat=>{if(totalByCat[cat]<2)return;const rate=(correctByCat[cat]||0)/totalByCat[cat];const label=CATEGORY_LABELS[cat]||cat;if(rate>=0.8)strengths.push(`Сильны в теме «${label}»`);else if(rate<=0.3)weaknesses.push(`Трудно с темой «${label}»`)});if(strengths.length===0&&weaknesses.length===0){block.classList.add('hidden');return}block.classList.remove('hidden');strengths.forEach(s=>{const div=document.createElement('div');div.className='analysis-item strong';div.textContent='💪 '+s;content.appendChild(div)});weaknesses.forEach(w=>{const div=document.createElement('div');div.className='analysis-item weak';div.textContent='📉 '+w;content.appendChild(div)})}
-function renderResultTimeline(){const tl=$('#result-timeline');tl.innerHTML='';[...placed].sort((a,b)=>a.year-b.year).forEach(ev=>{const marker=document.createElement('div');marker.className='marker'+(ev.isZero?' zero':'');marker.innerHTML=`<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;tl.appendChild(marker)})}
-document.querySelectorAll('.diff-btn').forEach(btn=>btn.addEventListener('click',()=>startGame(parseInt(btn.dataset.count))));$('#btn-rules').addEventListener('click',()=>$('#rules-modal').classList.remove('hidden'));$('#btn-close-rules').addEventListener('click',()=>$('#rules-modal').classList.add('hidden'));$('#btn-skip').addEventListener('click',()=>{if(currentIndex<gameEvents.length)onWrong(gameEvents[currentIndex])});$('#btn-home').addEventListener('click',()=>showScreen('start'));$('#btn-rematch').addEventListener('click',()=>startGame(lastDifficulty));loadEvents().then(()=>console.log('Loaded',allEvents.length,'events')).catch(err=>{console.error(err);alert('Ошибка загрузки событий')});
-  </script>
+  <script src="game.js"></script>
 </body>
 </html>
