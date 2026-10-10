@@ -37,11 +37,12 @@ function showScreen(name) {
 }
 
 function loadEvents() {
-  return fetch('events.json')
-    .then(r => r.json())
-    .then(data => {
-      allEvents = data.filter(e => e.id !== 'christ');
-    });
+  return Promise.all([
+    fetch('events1.json').then(r => r.json()),
+    fetch('events2.json').then(r => r.json())
+  ]).then(([a, b]) => {
+    allEvents = [...a, ...b].filter(e => e.id !== 'christ');
+  });
 }
 
 function readSettings() {
