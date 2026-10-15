@@ -77,6 +77,24 @@ function hideTutorial() {
 const tipCache = {};
 let tipRequestId = 0;
 
+// Thematic fallback images from Wikimedia Commons (shown if no specific match)
+const FALLBACK_IMAGES = {
+  war: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Battle_of_Waterloo_1815.jpg',
+  politics: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/United_Nations_General_Assembly_hall.jpg',
+  science: 'https://upload.wikimedia.org/wikipedia/commons/8/80/NobelPrize.jpg',
+  culture: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg',
+  discovery: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Columbus_Taking_Possession.jpg',
+  technology: 'https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg',
+  disaster: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Mount_St._Helens_erupting_on_May_18%2C_1980.jpg',
+  religion: 'https://upload.wikimedia.org/wikipedia/commons/8/80/Notre-Dame_de_Paris_2013-07-24.jpg',
+  ancient: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg',
+  medieval: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Chateau_de_Pierrefonds.jpg',
+  early_modern: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Declaration_of_Independence_%28painting%29.jpg',
+  modern: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Industrial_Revolution.jpg',
+  contemporary: 'https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg',
+  default: 'https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_blank_without_borders.svg'
+};
+
 function buildLocalTip(ev) {
   const y = formatYear(ev.year);
   const era = ERA_LABELS[ev.era] ? ` Эпоха: ${ERA_LABELS[ev.era]}.` : '';
@@ -99,9 +117,67 @@ function wikiCandidates(title) {
   return candidates;
 }
 
-async function fetchWikiSummary(title) {
-  if (tipCache[title]) return tipCache[title];
+function truncateExtract(extract) {
+  let short = (extract || '').trim();
+  if (!short) return '';
+  const parts = short.split(/(?<=[.!?…])\s+/);
+  if (parts.length > 2) short = parts.slice(0, 2).join(' ');
+  if (short.length > 320) short = short.slice(0, 300).replace(/\s+\S*$/, '') + '…';
+  return short;
+}
+
+function fallbackThumb(ev) {
+  if (!ev) return FALLBACK_IMAGES.default;
+  return FALLBACK_IMAGES[ev.category] || FALLBACK_IMAGES[ev.era] || FALLBACK_IMAGES.default;
+}
+
+async function fetchWikiSearch(lang, query) {
+  const url = `https://${lang}.wikipedia.org/w/api.php?action=query&format=json&origin=*` +
+    `&generator=search&gsrsearch=${encodeURIComponent(query)}&gsrlimit=4` +
+    `&prop=pageimages|extracts&piprop=thumbnail&pithumbsize=400&exintro=1&explaintext=1&exchars=400`;
+  const r = await fetch(url);
+  if (!r.ok) return null;
+  const data = await r.json();
+  const pages = data.query && data.query.pages ? Object.values(data.query.pages) : [];
+  if (!pages.length) return null;
+  pages.sort((a, b) => (b.thumbnail ? 1 : 0) - (a.thumbnail ? 1 : 0));
+  for (const p of pages) {
+    if (p.missing) continue;
+    const extract = truncateExtract(p.extract || '');
+    const thumb = p.thumbnail && p.thumbnail.source ? p.thumbnail.source : null;
+    if (extract || thumb) return { extract, thumb, lang };
+  }
+  return null;
+}
+
+async function fetchCommonsThumb(query) {
+  const url = `https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*` +
+    `&generator=search&gsrnamespace=6&gsrsearch=${encodeURIComponent(query)}&gsrlimit=8` +
+    `&prop=imageinfo&iiprop=url|mime|size&iiurlwidth=400`;
+  const r = await fetch(url);
+  if (!r.ok) return null;
+  const data = await r.json();
+  const pages = data.query && data.query.pages ? Object.values(data.query.pages) : [];
+  for (const p of pages) {
+    const info = p.imageinfo && p.imageinfo[0];
+    if (!info) continue;
+    const mime = (info.mime || '').toLowerCase();
+    if (!mime.startsWith('image/')) continue;
+    if (mime.includes('svg')) continue;
+    const src = info.thumburl || info.url;
+    if (src) return src;
+  }
+  return null;
+}
+
+async function fetchWikiSummary(title, ev) {
+  const cacheKey = title || (ev && ev.id) || '';
+  if (tipCache[cacheKey]) return tipCache[cacheKey];
+
   const candidates = wikiCandidates(title);
+  let best = { extract: '', thumb: null, lang: null };
+
+  // 1) Exact REST summary
   for (const lang of ['ru', 'en']) {
     for (const q of candidates) {
       try {
@@ -110,21 +186,50 @@ async function fetchWikiSummary(title) {
         if (!r.ok) continue;
         const data = await r.json();
         if (data.type === 'disambiguation' || data.type === 'no-extract') continue;
-        const extract = (data.extract || '').trim();
+        const extract = truncateExtract(data.extract || '');
         const thumb = data.thumbnail && data.thumbnail.source ? data.thumbnail.source : null;
         if (!extract && !thumb) continue;
-        let short = extract;
-        const parts = extract.split(/(?<=[.!?…])\s+/);
-        if (parts.length > 2) short = parts.slice(0, 2).join(' ');
-        if (short.length > 320) short = short.slice(0, 300).replace(/\s+\S*$/, '') + '…';
-        const result = { extract: short, thumb, lang };
-        tipCache[title] = result;
-        return result;
+        if (thumb) {
+          best = { extract, thumb, lang };
+          tipCache[cacheKey] = best;
+          return best;
+        }
+        if (!best.extract && extract) best = { extract, thumb, lang };
       } catch (_) {}
     }
   }
-  tipCache[title] = { extract: '', thumb: null };
-  return tipCache[title];
+
+  // 2) Wikipedia search (higher match rate)
+  for (const lang of ['ru', 'en']) {
+    for (const q of candidates) {
+      try {
+        const found = await fetchWikiSearch(lang, q);
+        if (!found) continue;
+        if (found.thumb) {
+          best = { extract: found.extract || best.extract, thumb: found.thumb, lang: found.lang };
+          tipCache[cacheKey] = best;
+          return best;
+        }
+        if (!best.extract && found.extract) best.extract = found.extract;
+      } catch (_) {}
+    }
+  }
+
+  // 3) Wikimedia Commons image search
+  if (!best.thumb) {
+    for (const q of candidates) {
+      try {
+        const commons = await fetchCommonsThumb(q);
+        if (commons) { best.thumb = commons; break; }
+      } catch (_) {}
+    }
+  }
+
+  // 4) Always have an image via category/era fallback
+  if (!best.thumb) best.thumb = fallbackThumb(ev);
+
+  tipCache[cacheKey] = best;
+  return best;
 }
 
 function dismissTipHandler(e) {
@@ -160,15 +265,29 @@ function showTip(ev) {
     document.addEventListener('pointerdown', dismissTipHandler, true);
   }, 450);
 
+  // Immediate category/era image, then upgrade if a better match is found
+  if (img) {
+    const fb = fallbackThumb(ev);
+    img.onload = () => img.classList.remove('hidden');
+    img.onerror = () => img.classList.add('hidden');
+    img.src = fb;
+    img.alt = ev.title || '';
+  }
+
   const reqId = ++tipRequestId;
-  fetchWikiSummary(ev.title).then(info => {
+  fetchWikiSummary(ev.title, ev).then(info => {
     if (reqId !== tipRequestId) return;
     if (!info) return;
     if (info.extract) textEl.textContent = `Год: ${formatYear(ev.year)}. ${info.extract}`;
-    if (info.thumb && img) {
-      img.onload = () => { if (reqId !== tipRequestId) return; img.classList.remove('hidden'); };
-      img.onerror = () => img.classList.add('hidden');
-      img.src = info.thumb;
+    if (info.thumb && img && info.thumb !== img.src) {
+      const next = new Image();
+      next.onload = () => {
+        if (reqId !== tipRequestId) return;
+        img.src = info.thumb;
+        img.classList.remove('hidden');
+      };
+      next.onerror = () => {};
+      next.src = info.thumb;
       img.alt = ev.title || '';
     }
   });
