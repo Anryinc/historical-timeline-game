@@ -83,21 +83,14 @@ function buildLocalTip(ev) {
   const desc = (ev.description || '').trim();
   const title = ev.title || '';
   let text = `Событие относится к ${y}.${era}`;
-  if (desc) {
-    text += ` ${desc}${/[.!?…]$/.test(desc) ? '' : '.'}`;
-  } else {
-    text += ` ${title}.`;
-  }
+  if (desc) text += ` ${desc}${/[.!?…]$/.test(desc) ? '' : '.'}`;
+  else text += ` ${title}.`;
   return text;
 }
 
 function wikiCandidates(title) {
   const t = (title || '').trim();
-  const clean = t
-    .replace(/\s*\([^)]*\)\s*/g, ' ')
-    .replace(/«|»|"/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+  const clean = t.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/«|»|"/g, '').replace(/\s+/g, ' ').trim();
   const candidates = [clean];
   const stripped = clean.replace(/^(Начало|Конец|Открытие|Создание|Появление|Первый|Первая|Первое|Выход|Запуск|Смерть|Гибель|Убийство|Падение|Взятие|Строительство|Провозглашение|Изобретение)\s+/i, '').trim();
   if (stripped && stripped !== clean) candidates.push(stripped);
@@ -149,24 +142,17 @@ function showTip(ev) {
   if (!settings.showTips || !ev) return;
   const toast = $('#tip-toast');
   if (!toast) return;
-
   const img = $('#tip-image');
   const titleEl = $('#tip-title');
   const yearEl = $('#tip-year');
   const textEl = $('#tip-text');
-
   yearEl.textContent = formatYear(ev.year);
   if (titleEl) titleEl.textContent = ev.title || '';
   textEl.textContent = buildLocalTip(ev);
-  if (img) {
-    img.classList.add('hidden');
-    img.removeAttribute('src');
-  }
-
+  if (img) { img.classList.add('hidden'); img.removeAttribute('src'); }
   toast.classList.remove('hidden', 'show-out');
   void toast.offsetWidth;
   scheduleTipHide(4200);
-
   const reqId = ++tipRequestId;
   fetchWikiSummary(ev.title).then(info => {
     if (reqId !== tipRequestId) return;
@@ -176,10 +162,7 @@ function showTip(ev) {
       scheduleTipHide(5200);
     }
     if (info.thumb && img) {
-      img.onload = () => {
-        if (reqId !== tipRequestId) return;
-        img.classList.remove('hidden');
-      };
+      img.onload = () => { if (reqId !== tipRequestId) return; img.classList.remove('hidden'); };
       img.onerror = () => img.classList.add('hidden');
       img.src = info.thumb;
       img.alt = ev.title || '';
@@ -196,16 +179,10 @@ function hideTip() {
   clearTimeout(showTip._t1);
   clearTimeout(showTip._t2);
   const img = $('#tip-image');
-  if (img) {
-    img.classList.add('hidden');
-    img.removeAttribute('src');
-  }
+  if (img) { img.classList.add('hidden'); img.removeAttribute('src'); }
 }
 
-let dragState = {
-  active: false, ghost: null, startX: 0, startY: 0,
-  longPressTimer: null, moved: false, card: null
-};
+let dragState = { active: false, ghost: null, startX: 0, startY: 0, longPressTimer: null, moved: false, card: null };
 
 function teardownCardDrag(card) {
   if (!card) return;
@@ -247,7 +224,6 @@ function bindCardDrag(card) {
     e.dataTransfer.effectAllowed = 'move';
   };
   card.ondragend = () => card.classList.remove('dragging');
-
   const onPointerDown = (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     if (e.pointerType === 'mouse') return;
@@ -271,16 +247,12 @@ function bindCardDrag(card) {
       ghost.style.top = (e.clientY - 40) + 'px';
     }, 380);
   };
-
   const onPointerMove = (e) => {
     if (!dragState.card) return;
     const dx = e.clientX - dragState.startX;
     const dy = e.clientY - dragState.startY;
     if (!dragState.active) {
-      if (Math.hypot(dx, dy) > 12) {
-        clearTimeout(dragState.longPressTimer);
-        dragState.longPressTimer = null;
-      }
+      if (Math.hypot(dx, dy) > 12) { clearTimeout(dragState.longPressTimer); dragState.longPressTimer = null; }
       return;
     }
     e.preventDefault();
@@ -295,34 +267,27 @@ function bindCardDrag(card) {
     const gap = findGapAtPoint(e.clientX, e.clientY);
     if (gap) gap.classList.add('drag-over');
   };
-
   const onPointerUp = (e) => {
     clearTimeout(dragState.longPressTimer);
     dragState.longPressTimer = null;
     document.querySelectorAll('.gap').forEach(g => g.classList.remove('drag-over'));
     if (dragState.active && dragState.moved) {
       const gap = findGapAtPoint(e.clientX, e.clientY);
-      if (gap && gap.dataset.gapIndex !== undefined) {
-        tryPlace(parseInt(gap.dataset.gapIndex, 10));
-      }
+      if (gap && gap.dataset.gapIndex !== undefined) tryPlace(parseInt(gap.dataset.gapIndex, 10));
     }
     teardownCardDrag(card);
     dragState.card = null;
   };
-
   const onPointerCancel = () => {
     clearTimeout(dragState.longPressTimer);
     teardownCardDrag(card);
     dragState.card = null;
   };
-
   card.addEventListener('pointerdown', onPointerDown);
   card.addEventListener('pointermove', onPointerMove);
   card.addEventListener('pointerup', onPointerUp);
   card.addEventListener('pointercancel', onPointerCancel);
-  card.addEventListener('pointerdown', (e) => {
-    try { card.setPointerCapture(e.pointerId); } catch (_) {}
-  });
+  card.addEventListener('pointerdown', (e) => { try { card.setPointerCapture(e.pointerId); } catch (_) {} });
 }
 
 function startGame(count) {
@@ -409,9 +374,7 @@ function renderTimeline() {
     const marker = document.createElement('div');
     marker.className = 'marker' + (ev.isZero ? ' zero' : '');
     marker.innerHTML = `<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;
-    if (!settings.showYears && !ev.isZero) {
-      marker.querySelector('.marker-year').style.visibility = 'hidden';
-    }
+    if (!settings.showYears && !ev.isZero) marker.querySelector('.marker-year').style.visibility = 'hidden';
     tl.appendChild(marker);
     const gap = document.createElement('div');
     gap.className = 'gap';
@@ -519,12 +482,7 @@ function onWrong(ev) {
   teardownCardDrag(card);
   if (settings.showTips) setTimeout(() => showTip(ev), 700);
   const delay = settings.showTips ? 5000 : 1200;
-  setTimeout(() => {
-    hideTip();
-    currentIndex++;
-    updateHUD();
-    showCurrentEvent();
-  }, delay);
+  setTimeout(() => { hideTip(); currentIndex++; updateHUD(); showCurrentEvent(); }, delay);
 }
 
 function updateHUD() {
@@ -650,6 +608,15 @@ function restoreResultActions() {
   $('#btn-rematch').addEventListener('click', () => startGame(lastDifficulty));
   $('#btn-other-diff').addEventListener('click', showDifficultyPicker);
 }
+
+function quitToHome() {
+  hideTutorial();
+  hideTip();
+  tutorialMode = false;
+  showScreen('start');
+}
+const quitBtn = $('#btn-quit');
+if (quitBtn) quitBtn.addEventListener('click', quitToHome);
 
 const tutOk = $('#btn-tutorial-ok');
 if (tutOk) {
