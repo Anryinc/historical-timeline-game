@@ -1,1 +1,648 @@
-SEE_FILE2
+const ERA_LABELS = {
+  ancient: 'Древний мир',
+  medieval: 'Средневековье',
+  early_modern: 'Новое время',
+  modern: 'XIX — первая пол. XX в.',
+  contemporary: 'Современность'
+};
+const CATEGORY_LABELS = {
+  politics: 'Политика', war: 'Войны', science: 'Наука', culture: 'Культура',
+  discovery: 'Открытия', technology: 'Технологии', disaster: 'Катастрофы', religion: 'Религия'
+};
+
+const FALLBACK_IMAGES = {
+  war: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Battle_of_Waterloo_1815.jpg',
+  politics: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/United_Nations_General_Assembly_hall.jpg',
+  science: 'https://upload.wikimedia.org/wikipedia/commons/8/80/NobelPrize.jpg',
+  culture: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg',
+  discovery: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Columbus_Taking_Possession.jpg',
+  technology: 'https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg',
+  disaster: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Mount_St._Helens_erupting_on_May_18%2C_1980.jpg',
+  religion: 'https://upload.wikimedia.org/wikipedia/commons/8/80/Notre-Dame_de_Paris_2013-07-24.jpg',
+  ancient: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg',
+  medieval: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Chateau_de_Pierrefonds.jpg',
+  early_modern: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Declaration_of_Independence_%28painting%29.jpg',
+  modern: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Industrial_Revolution.jpg',
+  contemporary: 'https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg'
+};
+
+let allEvents = [];
+let gameEvents = [];
+let placed = [];
+let currentIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
+let streak = 0;
+let maxStreak = 0;
+let score = 0;
+let difficulty = 15;
+let settings = { showYears: true, allowSameYear: false, showTips: true };
+let lastDifficulty = 15;
+let tutorialMode = false;
+
+const $ = (s) => document.querySelector(s);
+const screens = {
+  start: $('#start-screen'),
+  game: $('#game-screen'),
+  result: $('#result-screen')
+};
+
+function showScreen(name) {
+  Object.values(screens).forEach(s => s.classList.remove('active'));
+  screens[name].classList.add('active');
+}
+
+function loadEvents() {
+  const parts = ['ev1.json','ev2.json','ev3.json','ev4.json','ev5.json','ev6.json'];
+  return Promise.all(parts.map(p => fetch(p).then(r => r.json()))).then(arrays => {
+    const seen = new Set();
+    allEvents = arrays.flat().filter(e => {
+      if (e.id === 'christ' || seen.has(e.id)) return false;
+      seen.add(e.id);
+      return true;
+    });
+  });
+}
+
+function readSettings() {
+  settings.showYears = $('#setting-show-years').checked;
+  settings.allowSameYear = $('#setting-allow-same-year').checked;
+  const tipsEl = $('#setting-show-tips');
+  settings.showTips = tipsEl ? tipsEl.checked : true;
+}
+
+function showTutorial(text, hint, isSuccess) {
+  const modal = $('#tutorial-modal');
+  $('#tutorial-text').textContent = text;
+  $('#tutorial-hint').textContent = hint || '';
+  const title = $('#tutorial-title');
+  if (title) title.textContent = isSuccess ? 'Отлично!' : 'Как играть';
+  modal.classList.toggle('success', !!isSuccess);
+  const btn = $('#btn-tutorial-ok');
+  if (btn) btn.textContent = isSuccess ? 'Начать игру' : 'Понятно';
+  modal.classList.remove('hidden');
+}
+
+function hideTutorial() {
+  const modal = $('#tutorial-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function buildLocalTip(ev) {
+  if (ev.tip) return ev.tip;
+  const y = formatYear(ev.year);
+  const era = ERA_LABELS[ev.era] ? ` (${ERA_LABELS[ev.era]})` : '';
+  const desc = (ev.description || '').trim();
+  const title = ev.title || '';
+  let text = `Событие произошло в ${y}${era}.`;
+  if (desc) text += ` ${desc}${/[.!?…]$/.test(desc) ? '' : '.'}`;
+  else text += ` ${title}.`;
+  return text;
+}
+
+function dismissTipHandler(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const cb = showTip._onDismissed;
+  showTip._onDismissed = null;
+  hideTip();
+  if (cb) cb();
+}
+
+function showTip(ev) {
+  if (!settings.showTips || !ev) return;
+  const toast = $('#tip-toast');
+  if (!toast) return;
+  const img = $('#tip-image');
+  const titleEl = $('#tip-title');
+  const yearEl = $('#tip-year');
+  const textEl = $('#tip-text');
+
+  yearEl.textContent = formatYear(ev.year);
+  if (titleEl) titleEl.textContent = ev.title || '';
+  textEl.textContent = buildLocalTip(ev);
+
+  if (img) {
+    const src = ev.image || FALLBACK_IMAGES[ev.category] || FALLBACK_IMAGES[ev.era] || FALLBACK_IMAGES.contemporary || '';
+    if (src) {
+      img.onload = () => img.classList.remove('hidden');
+      img.onerror = () => img.classList.add('hidden');
+      img.src = src;
+      img.alt = ev.title || '';
+    } else {
+      img.classList.add('hidden');
+      img.removeAttribute('src');
+    }
+  }
+
+  toast.classList.remove('hidden', 'show-out');
+  void toast.offsetWidth;
+
+  clearTimeout(showTip._attachT);
+  if (showTip._dismissHandler) {
+    document.removeEventListener('pointerdown', showTip._dismissHandler, true);
+    showTip._dismissHandler = null;
+  }
+  showTip._attachT = setTimeout(() => {
+    showTip._dismissHandler = dismissTipHandler;
+    document.addEventListener('pointerdown', dismissTipHandler, true);
+  }, 450);
+}
+
+function hideTip() {
+  clearTimeout(showTip._attachT);
+  if (showTip._dismissHandler) {
+    document.removeEventListener('pointerdown', showTip._dismissHandler, true);
+    showTip._dismissHandler = null;
+  }
+  const toast = $('#tip-toast');
+  if (!toast) return;
+  if (!toast.classList.contains('hidden')) {
+    toast.classList.add('show-out');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('show-out');
+    }, 280);
+  } else {
+    toast.classList.add('hidden');
+    toast.classList.remove('show-out');
+  }
+  const img = $('#tip-image');
+  if (img) { img.classList.add('hidden'); img.removeAttribute('src'); }
+}
+
+let dragState = { active: false, ghost: null, startX: 0, startY: 0, longPressTimer: null, moved: false, card: null };
+
+function teardownCardDrag(card) {
+  if (!card) return;
+  clearTimeout(dragState.longPressTimer);
+  dragState.longPressTimer = null;
+  if (dragState.ghost) { dragState.ghost.remove(); dragState.ghost = null; }
+  dragState.active = false;
+  dragState.moved = false;
+  card.classList.remove('ready-to-drag', 'long-press-active', 'dragging');
+}
+
+function findGapAtPoint(x, y) {
+  const gaps = document.querySelectorAll('.gap');
+  for (const g of gaps) {
+    const r = g.getBoundingClientRect();
+    if (x >= r.left && x <= r.right && y >= r.top - 20 && y <= r.bottom + 20) return g;
+  }
+  const tl = $('#timeline');
+  if (!tl) return null;
+  const tr = tl.getBoundingClientRect();
+  if (y < tr.top - 40 || y > tr.bottom + 40) return null;
+  let best = null, bestDist = Infinity;
+  gaps.forEach(g => {
+    const r = g.getBoundingClientRect();
+    const cx = (r.left + r.right) / 2;
+    const d = Math.abs(cx - x);
+    if (d < bestDist) { bestDist = d; best = g; }
+  });
+  return best;
+}
+
+function bindCardDrag(card) {
+  teardownCardDrag(card);
+  card.draggable = true;
+  card.ondragstart = (e) => {
+    if (dragState.active) { e.preventDefault(); return; }
+    card.classList.add('dragging');
+    e.dataTransfer.setData('text/plain', 'event');
+    e.dataTransfer.effectAllowed = 'move';
+  };
+  card.ondragend = () => card.classList.remove('dragging');
+  const onPointerDown = (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.pointerType === 'mouse') return;
+    dragState.card = card;
+    dragState.startX = e.clientX;
+    dragState.startY = e.clientY;
+    dragState.moved = false;
+    dragState.active = false;
+    clearTimeout(dragState.longPressTimer);
+    dragState.longPressTimer = setTimeout(() => {
+      dragState.active = true;
+      card.classList.add('ready-to-drag', 'long-press-active');
+      if (navigator.vibrate) try { navigator.vibrate(25); } catch (_) {}
+      const ghost = document.createElement('div');
+      ghost.className = 'drag-ghost event-card';
+      ghost.innerHTML = card.innerHTML;
+      document.body.appendChild(ghost);
+      dragState.ghost = ghost;
+      const w = ghost.offsetWidth || 200;
+      ghost.style.left = (e.clientX - w / 2) + 'px';
+      ghost.style.top = (e.clientY - 40) + 'px';
+    }, 380);
+  };
+  const onPointerMove = (e) => {
+    if (!dragState.card) return;
+    const dx = e.clientX - dragState.startX;
+    const dy = e.clientY - dragState.startY;
+    if (!dragState.active) {
+      if (Math.hypot(dx, dy) > 12) { clearTimeout(dragState.longPressTimer); dragState.longPressTimer = null; }
+      return;
+    }
+    e.preventDefault();
+    dragState.moved = true;
+    const ghost = dragState.ghost;
+    if (ghost) {
+      const w = ghost.offsetWidth || 200;
+      ghost.style.left = (e.clientX - w / 2) + 'px';
+      ghost.style.top = (e.clientY - 40) + 'px';
+    }
+    document.querySelectorAll('.gap').forEach(g => g.classList.remove('drag-over'));
+    const gap = findGapAtPoint(e.clientX, e.clientY);
+    if (gap) gap.classList.add('drag-over');
+  };
+  const onPointerUp = (e) => {
+    clearTimeout(dragState.longPressTimer);
+    dragState.longPressTimer = null;
+    document.querySelectorAll('.gap').forEach(g => g.classList.remove('drag-over'));
+    if (dragState.active && dragState.moved) {
+      const gap = findGapAtPoint(e.clientX, e.clientY);
+      if (gap && gap.dataset.gapIndex !== undefined) tryPlace(parseInt(gap.dataset.gapIndex, 10));
+    }
+    teardownCardDrag(card);
+    dragState.card = null;
+  };
+  const onPointerCancel = () => {
+    clearTimeout(dragState.longPressTimer);
+    teardownCardDrag(card);
+    dragState.card = null;
+  };
+  card.addEventListener('pointerdown', onPointerDown);
+  card.addEventListener('pointermove', onPointerMove);
+  card.addEventListener('pointerup', onPointerUp);
+  card.addEventListener('pointercancel', onPointerCancel);
+  card.addEventListener('pointerdown', (e) => { try { card.setPointerCapture(e.pointerId); } catch (_) {} });
+}
+
+function startGame(count) {
+  readSettings();
+  difficulty = count;
+  lastDifficulty = count;
+  let pool = [...allEvents];
+  if (!settings.allowSameYear) {
+    const seen = new Set();
+    pool = pool.filter(e => {
+      if (seen.has(e.year)) return false;
+      seen.add(e.year);
+      return true;
+    });
+  }
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  gameEvents = pool.slice(0, Math.min(count, pool.length));
+  placed = [];
+  currentIndex = 0;
+  correctCount = 0;
+  wrongCount = 0;
+  streak = 0;
+  maxStreak = 0;
+  score = 0;
+  tutorialMode = true;
+  updateHUD();
+  renderTimeline();
+  showScreen('game');
+  showTutorial(
+    'События нужно размещать на шкале относительно уже стоящих меток — левее (раньше) или правее (позже).',
+    'Сначала поставь точку отсчёта: «Рождение Христа» (год 0). Кликни по шкале или перетащи карточку.'
+  );
+  showTutorialEvent();
+}
+
+function showTutorialEvent() {
+  const card = $('#current-event');
+  $('#event-title').textContent = 'Рождение Иисуса Христа';
+  $('#event-desc').textContent = 'Точка отсчёта нашей эры. Размести эту метку на шкале — это тренировка, очки не начисляются.';
+  $('#event-category').textContent = 'Туториал';
+  card.classList.remove('burn');
+  card.querySelectorAll('.flames').forEach(el => el.remove());
+  bindCardDrag(card);
+  $('#btn-skip').style.display = 'none';
+}
+
+function showCurrentEvent() {
+  if (tutorialMode) { showTutorialEvent(); return; }
+  $('#btn-skip').style.display = '';
+  if (currentIndex >= gameEvents.length) { endGame(); return; }
+  const ev = gameEvents[currentIndex];
+  $('#event-title').textContent = ev.title;
+  $('#event-desc').textContent = ev.description;
+  $('#event-category').textContent = CATEGORY_LABELS[ev.category] || ev.category;
+  const card = $('#current-event');
+  card.classList.remove('burn');
+  card.querySelectorAll('.flames').forEach(el => el.remove());
+  bindCardDrag(card);
+}
+
+function renderTimeline() {
+  const tl = $('#timeline');
+  tl.innerHTML = '';
+  placed.sort((a, b) => a.year - b.year);
+  if (placed.length === 0) {
+    const gap = document.createElement('div');
+    gap.className = 'gap';
+    gap.dataset.gapIndex = -1;
+    gap.style.minWidth = '120px';
+    gap.style.flex = '1';
+    attachGapHandlers(gap, -1);
+    tl.appendChild(gap);
+    return;
+  }
+  const leftGap = document.createElement('div');
+  leftGap.className = 'gap';
+  leftGap.dataset.gapIndex = -1;
+  attachGapHandlers(leftGap, -1);
+  tl.appendChild(leftGap);
+  placed.forEach((ev, i) => {
+    const marker = document.createElement('div');
+    marker.className = 'marker' + (ev.isZero ? ' zero' : '');
+    marker.innerHTML = `<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;
+    if (!settings.showYears && !ev.isZero) marker.querySelector('.marker-year').style.visibility = 'hidden';
+    tl.appendChild(marker);
+    const gap = document.createElement('div');
+    gap.className = 'gap';
+    gap.dataset.gapIndex = i;
+    attachGapHandlers(gap, i);
+    tl.appendChild(gap);
+  });
+}
+
+function formatYear(y) {
+  if (y === 0) return '0';
+  if (y < 0) return `${Math.abs(y)} до н.э.`;
+  return `${y}`;
+}
+
+function attachGapHandlers(el, gapIndex) {
+  el.addEventListener('click', () => tryPlace(gapIndex));
+  el.addEventListener('dragover', (e) => { e.preventDefault(); el.classList.add('drag-over'); });
+  el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+  el.addEventListener('drop', (e) => { e.preventDefault(); el.classList.remove('drag-over'); tryPlace(gapIndex); });
+}
+
+function tryPlace(gapIndex) {
+  if (tutorialMode) { onTutorialPlace(); return; }
+  if (currentIndex >= gameEvents.length) return;
+  const ev = gameEvents[currentIndex];
+  const sorted = [...placed].sort((a, b) => a.year - b.year);
+  let leftYear = -Infinity, rightYear = Infinity;
+  if (gapIndex === -1) rightYear = sorted[0].year;
+  else if (gapIndex >= sorted.length - 1) leftYear = sorted[sorted.length - 1].year;
+  else { leftYear = sorted[gapIndex].year; rightYear = sorted[gapIndex + 1].year; }
+  const year = ev.year;
+  let correct = false;
+  if (settings.allowSameYear) {
+    if (leftYear === -Infinity) correct = year <= rightYear;
+    else if (rightYear === Infinity) correct = year >= leftYear;
+    else correct = year >= leftYear && year <= rightYear;
+  } else {
+    if (leftYear === -Infinity) correct = year < rightYear;
+    else if (rightYear === Infinity) correct = year > leftYear;
+    else correct = year > leftYear && year < rightYear;
+  }
+  if (correct) onCorrect(ev, gapIndex);
+  else onWrong(ev);
+}
+
+function onTutorialPlace() {
+  placed = [{ id: 'zero', title: 'Рождение Христа', year: 0, description: 'Точка отсчёта нашей эры', era: 'ancient', category: 'religion', isZero: true }];
+  renderTimeline();
+  showTutorial('Теперь ты знаешь, как размещать события на шкале.', 'Дальше очки уже засчитываются. Удачи!', true);
+}
+
+function finishTutorialAndStart() {
+  hideTutorial();
+  tutorialMode = false;
+  currentIndex = 0;
+  updateHUD();
+  showCurrentEvent();
+}
+
+function spawnFlames(card) {
+  card.querySelectorAll('.flames').forEach(el => el.remove());
+  const container = document.createElement('div');
+  container.className = 'flames';
+  const emojis = ['🔥', '🔥', '✨', '🔥', '🔥', '🧡', '🔥', '✨', '🔥'];
+  const count = 9 + Math.floor(Math.random() * 4);
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('span');
+    p.className = 'flame-particle';
+    p.textContent = emojis[i % emojis.length];
+    p.style.left = (8 + Math.random() * 84) + '%';
+    p.style.fontSize = (0.7 + Math.random() * 0.9) + 'rem';
+    p.style.animationDelay = (Math.random() * 0.25) + 's';
+    p.style.animationDuration = (0.85 + Math.random() * 0.4) + 's';
+    container.appendChild(p);
+  }
+  card.appendChild(container);
+}
+
+function onCorrect(ev, gapIndex) {
+  placed.push({ ...ev });
+  correctCount++;
+  streak++;
+  maxStreak = Math.max(maxStreak, streak);
+  score += 100 + Math.min(streak * 10, 100);
+  const gaps = document.querySelectorAll('.gap');
+  const targetGap = [...gaps].find(g => parseInt(g.dataset.gapIndex) === gapIndex);
+  if (targetGap) {
+    targetGap.classList.add('correct-flash');
+    setTimeout(() => targetGap.classList.remove('correct-flash'), 400);
+  }
+  currentIndex++;
+  updateHUD();
+  renderTimeline();
+  showCurrentEvent();
+}
+
+function onWrong(ev) {
+  wrongCount++;
+  streak = 0;
+  const card = $('#current-event');
+  spawnFlames(card);
+  card.classList.add('burn');
+  card.draggable = false;
+  teardownCardDrag(card);
+  const advance = () => {
+    currentIndex++;
+    updateHUD();
+    showCurrentEvent();
+  };
+  if (settings.showTips) {
+    setTimeout(() => {
+      showTip(ev);
+      showTip._onDismissed = advance;
+    }, 700);
+  } else {
+    setTimeout(advance, 1200);
+  }
+}
+
+function updateHUD() {
+  const total = gameEvents.length;
+  const shown = tutorialMode ? 0 : currentIndex;
+  $('#progress-text').textContent = `${shown} / ${total}`;
+  $('#progress-fill').style.width = `${(shown / total) * 100}%`;
+  $('#correct-count').textContent = `✅ ${correctCount}`;
+  $('#streak-count').textContent = `🔥 ${streak}`;
+  $('#score-count').textContent = `⭐ ${score}`;
+}
+
+function endGame() {
+  hideTutorial();
+  hideTip();
+  showScreen('result');
+  const total = gameEvents.length;
+  const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+  let title = 'Игра окончена';
+  if (accuracy >= 90) title = 'Легенда истории! 🏆';
+  else if (accuracy >= 70) title = 'Отличный результат! 🎉';
+  else if (accuracy >= 50) title = 'Неплохо! 👍';
+  else if (accuracy >= 30) title = 'Есть куда расти';
+  else title = 'Попробуй ещё раз';
+  $('#result-title').textContent = title;
+  $('#final-score').textContent = score;
+  $('#accuracy-percent').textContent = `${accuracy}%`;
+  $('#stat-correct').textContent = correctCount;
+  $('#stat-wrong').textContent = wrongCount;
+  $('#stat-streak').textContent = maxStreak;
+  const ring = $('#accuracy-ring');
+  const circumference = 2 * Math.PI * 45;
+  const offset = circumference - (accuracy / 100) * circumference;
+  setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
+  const banner = $('#victory-banner');
+  banner.classList.add('celebrate');
+  setTimeout(() => banner.classList.remove('celebrate'), 2000);
+  renderAnalysis();
+  renderResultTimeline();
+  restoreResultActions();
+}
+
+function renderAnalysis() {
+  const block = $('#analysis-block');
+  const content = $('#analysis-content');
+  content.innerHTML = '';
+  const correctByEra = {}, totalByEra = {}, correctByCat = {}, totalByCat = {};
+  gameEvents.forEach(ev => {
+    const wasCorrect = placed.some(p => p.id === ev.id);
+    const era = ev.era || 'unknown';
+    const cat = ev.category || 'unknown';
+    totalByEra[era] = (totalByEra[era] || 0) + 1;
+    totalByCat[cat] = (totalByCat[cat] || 0) + 1;
+    if (wasCorrect) {
+      correctByEra[era] = (correctByEra[era] || 0) + 1;
+      correctByCat[cat] = (correctByCat[cat] || 0) + 1;
+    }
+  });
+  const strengths = [], weaknesses = [];
+  Object.keys(totalByEra).forEach(era => {
+    if (totalByEra[era] < 2) return;
+    const rate = (correctByEra[era] || 0) / totalByEra[era];
+    const label = ERA_LABELS[era] || era;
+    if (rate >= 0.75) strengths.push(`Отличное знание эпохи «${label}»`);
+    else if (rate <= 0.35) weaknesses.push(`Слабо ориентируетесь в эпохе «${label}»`);
+  });
+  Object.keys(totalByCat).forEach(cat => {
+    if (totalByCat[cat] < 2) return;
+    const rate = (correctByCat[cat] || 0) / totalByCat[cat];
+    const label = CATEGORY_LABELS[cat] || cat;
+    if (rate >= 0.8) strengths.push(`Сильны в теме «${label}»`);
+    else if (rate <= 0.3) weaknesses.push(`Трудно с темой «${label}»`);
+  });
+  if (strengths.length === 0 && weaknesses.length === 0) { block.classList.add('hidden'); return; }
+  block.classList.remove('hidden');
+  strengths.forEach(s => {
+    const div = document.createElement('div');
+    div.className = 'analysis-item strong';
+    div.textContent = '💪 ' + s;
+    content.appendChild(div);
+  });
+  weaknesses.forEach(w => {
+    const div = document.createElement('div');
+    div.className = 'analysis-item weak';
+    div.textContent = '📉 ' + w;
+    content.appendChild(div);
+  });
+}
+
+function renderResultTimeline() {
+  const tl = $('#result-timeline');
+  tl.innerHTML = '';
+  [...placed].sort((a, b) => a.year - b.year).forEach(ev => {
+    const marker = document.createElement('div');
+    marker.className = 'marker' + (ev.isZero ? ' zero' : '');
+    marker.innerHTML = `<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;
+    tl.appendChild(marker);
+  });
+}
+
+function showDifficultyPicker() {
+  const actions = document.querySelector('.result-actions');
+  if (!actions) return;
+  actions.innerHTML = `<p style="width:100%;text-align:center;color:var(--text-muted);margin-bottom:8px;font-size:0.9rem;">Выбери сложность</p>
+    <button class="btn-primary diff-rematch" data-count="15">Лёгкий · 15</button>
+    <button class="btn-primary diff-rematch" data-count="30">Средний · 30</button>
+    <button class="btn-primary diff-rematch" data-count="60">Сложный · 60</button>
+    <button id="btn-picker-back" class="btn-secondary">← Назад</button>`;
+  actions.querySelectorAll('.diff-rematch').forEach(btn => {
+    btn.addEventListener('click', () => startGame(parseInt(btn.dataset.count)));
+  });
+  const back = actions.querySelector('#btn-picker-back');
+  if (back) back.addEventListener('click', restoreResultActions);
+}
+
+function restoreResultActions() {
+  const actions = document.querySelector('.result-actions');
+  if (!actions) return;
+  actions.innerHTML = `<button id="btn-home" class="btn-secondary">🏠 На главную</button>
+    <button id="btn-rematch" class="btn-primary">🔄 Реванш</button>
+    <button id="btn-other-diff" class="btn-secondary">📶 Другая сложность</button>`;
+  $('#btn-home').addEventListener('click', () => { hideTutorial(); showScreen('start'); });
+  $('#btn-rematch').addEventListener('click', () => startGame(lastDifficulty));
+  $('#btn-other-diff').addEventListener('click', showDifficultyPicker);
+}
+
+function quitToHome() {
+  showTip._onDismissed = null;
+  hideTutorial();
+  hideTip();
+  tutorialMode = false;
+  showScreen('start');
+}
+const quitBtn = $('#btn-quit');
+if (quitBtn) quitBtn.addEventListener('click', quitToHome);
+
+const tutOk = $('#btn-tutorial-ok');
+if (tutOk) {
+  tutOk.addEventListener('click', () => {
+    if (tutorialMode && placed.length > 0) finishTutorialAndStart();
+    else hideTutorial();
+  });
+}
+
+document.querySelectorAll('.diff-btn').forEach(btn => {
+  btn.addEventListener('click', () => startGame(parseInt(btn.dataset.count)));
+});
+$('#btn-rules').addEventListener('click', () => $('#rules-modal').classList.remove('hidden'));
+$('#btn-close-rules').addEventListener('click', () => $('#rules-modal').classList.add('hidden'));
+$('#btn-skip').addEventListener('click', () => {
+  if (!tutorialMode && currentIndex < gameEvents.length) onWrong(gameEvents[currentIndex]);
+});
+
+function bindResultButtons() {
+  const home = $('#btn-home');
+  const rematch = $('#btn-rematch');
+  const other = $('#btn-other-diff');
+  if (home) home.addEventListener('click', () => { hideTutorial(); showScreen('start'); });
+  if (rematch) rematch.addEventListener('click', () => startGame(lastDifficulty));
+  if (other) other.addEventListener('click', showDifficultyPicker);
+}
+bindResultButtons();
+
+loadEvents().then(() => console.log('Loaded', allEvents.length, 'events'))
+  .catch(err => { console.error(err); alert('Ошибка загрузки событий'); });
