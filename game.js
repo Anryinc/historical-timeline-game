@@ -53,10 +53,12 @@ function showScreen(name) {
 }
 
 function loadEvents() {
-  const parts = ['ev1.json','ev2.json','ev3.json','ev4.json','ev5.json','ev6.json'];
-  return Promise.all(parts.map(p => fetch(p).then(r => r.json()))).then(arrays => {
+  return Promise.all([
+    fetch('events1.json').then(r => r.json()),
+    fetch('events2.json').then(r => r.json())
+  ]).then(([a, b]) => {
     const seen = new Set();
-    allEvents = arrays.flat().filter(e => {
+    allEvents = [...a, ...b].filter(e => {
       if (e.id === 'christ' || seen.has(e.id)) return false;
       seen.add(e.id);
       return true;
@@ -361,7 +363,7 @@ function renderTimeline() {
   placed.forEach((ev, i) => {
     const marker = document.createElement('div');
     marker.className = 'marker' + (ev.isZero ? ' zero' : '');
-    marker.innerHTML = `<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;
+    marker.innerHTML = `<div class=\"marker-dot\"></div><div class=\"marker-year\">${formatYear(ev.year)}</div><div class=\"marker-title\">${ev.title}</div>`;
     if (!settings.showYears && !ev.isZero) marker.querySelector('.marker-year').style.visibility = 'hidden';
     tl.appendChild(marker);
     const gap = document.createElement('div');
@@ -576,7 +578,7 @@ function renderResultTimeline() {
   [...placed].sort((a, b) => a.year - b.year).forEach(ev => {
     const marker = document.createElement('div');
     marker.className = 'marker' + (ev.isZero ? ' zero' : '');
-    marker.innerHTML = `<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;
+    marker.innerHTML = `<div class=\"marker-dot\"></div><div class=\"marker-year\">${formatYear(ev.year)}</div><div class=\"marker-title\">${ev.title}</div>`;
     tl.appendChild(marker);
   });
 }
@@ -584,11 +586,11 @@ function renderResultTimeline() {
 function showDifficultyPicker() {
   const actions = document.querySelector('.result-actions');
   if (!actions) return;
-  actions.innerHTML = `<p style="width:100%;text-align:center;color:var(--text-muted);margin-bottom:8px;font-size:0.9rem;">Выбери сложность</p>
-    <button class="btn-primary diff-rematch" data-count="15">Лёгкий · 15</button>
-    <button class="btn-primary diff-rematch" data-count="30">Средний · 30</button>
-    <button class="btn-primary diff-rematch" data-count="60">Сложный · 60</button>
-    <button id="btn-picker-back" class="btn-secondary">← Назад</button>`;
+  actions.innerHTML = `<p style=\"width:100%;text-align:center;color:var(--text-muted);margin-bottom:8px;font-size:0.9rem;\">Выбери сложность</p>
+    <button class=\"btn-primary diff-rematch\" data-count=\"15\">Лёгкий · 15</button>
+    <button class=\"btn-primary diff-rematch\" data-count=\"30\">Средний · 30</button>
+    <button class=\"btn-primary diff-rematch\" data-count=\"60\">Сложный · 60</button>
+    <button id=\"btn-picker-back\" class=\"btn-secondary\">← Назад</button>`;
   actions.querySelectorAll('.diff-rematch').forEach(btn => {
     btn.addEventListener('click', () => startGame(parseInt(btn.dataset.count)));
   });
@@ -599,9 +601,9 @@ function showDifficultyPicker() {
 function restoreResultActions() {
   const actions = document.querySelector('.result-actions');
   if (!actions) return;
-  actions.innerHTML = `<button id="btn-home" class="btn-secondary">🏠 На главную</button>
-    <button id="btn-rematch" class="btn-primary">🔄 Реванш</button>
-    <button id="btn-other-diff" class="btn-secondary">📶 Другая сложность</button>`;
+  actions.innerHTML = `<button id=\"btn-home\" class=\"btn-secondary\">🏠 На главную</button>
+    <button id=\"btn-rematch\" class=\"btn-primary\">🔄 Реванш</button>
+    <button id=\"btn-other-diff\" class=\"btn-secondary\">📶 Другая сложность</button>`;
   $('#btn-home').addEventListener('click', () => { hideTutorial(); showScreen('start'); });
   $('#btn-rematch').addEventListener('click', () => startGame(lastDifficulty));
   $('#btn-other-diff').addEventListener('click', showDifficultyPicker);
