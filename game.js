@@ -127,15 +127,12 @@ async function fetchWikiSummary(title) {
   return tipCache[title];
 }
 
-function scheduleTipHide(ms) {
-  clearTimeout(showTip._t1);
-  clearTimeout(showTip._t2);
-  showTip._t1 = setTimeout(() => {
-    const toast = $('#tip-toast');
-    if (!toast) return;
-    toast.classList.add('show-out');
-    showTip._t2 = setTimeout(() => toast.classList.add('hidden'), 350);
-  }, ms);
+function dismissTipHandler(e) {
+  if (e) { e.preventDefault(); e.stopPropagation(); }
+  const cb = showTip._onDismissed;
+  showTip._onDismissed = null;
+  hideTip();
+  if (cb) cb();
 }
 
 function showTip(ev) {
@@ -152,15 +149,22 @@ function showTip(ev) {
   if (img) { img.classList.add('hidden'); img.removeAttribute('src'); }
   toast.classList.remove('hidden', 'show-out');
   void toast.offsetWidth;
-  scheduleTipHide(4200);
+
+  clearTimeout(showTip._attachT);
+  if (showTip._dismissHandler) {
+    document.removeEventListener('pointerdown', showTip._dismissHandler, true);
+    showTip._dismissHandler = null;
+  }
+  showTip._attachT = setTimeout(() => {
+    showTip._dismissHandler = dismissTipHandler;
+    document.addEventListener('pointerdown', dismissTipHandler, true);
+  }, 450);
+
   const reqId = ++tipRequestId;
   fetchWikiSummary(ev.title).then(info => {
     if (reqId !== tipRequestId) return;
     if (!info) return;
-    if (info.extract) {
-      textEl.textContent = `Год: ${formatYear(ev.year)}. ${info.extract}`;
-      scheduleTipHide(5200);
-    }
+    if (info.extract) textEl.textContent = `Год: ${formatYear(ev.year)}. ${info.extract}`;
     if (info.thumb && img) {
       img.onload = () => { if (reqId !== tipRequestId) return; img.classList.remove('hidden'); };
       img.onerror = () => img.classList.add('hidden');
@@ -172,12 +176,23 @@ function showTip(ev) {
 
 function hideTip() {
   tipRequestId++;
+  clearTimeout(showTip._attachT);
+  if (showTip._dismissHandler) {
+    document.removeEventListener('pointerdown', showTip._dismissHandler, true);
+    showTip._dismissHandler = null;
+  }
   const toast = $('#tip-toast');
   if (!toast) return;
-  toast.classList.add('hidden');
-  toast.classList.remove('show-out');
-  clearTimeout(showTip._t1);
-  clearTimeout(showTip._t2);
+  if (!toast.classList.contains('hidden')) {
+    toast.classList.add('show-out');
+    setTimeout(() => {
+      toast.classList.add('hidden');
+      toast.classList.remove('show-out');
+    }, 280);
+  } else {
+    toast.classList.add('hidden');
+    toast.classList.remove('show-out');
+  }
   const img = $('#tip-image');
   if (img) { img.classList.add('hidden'); img.removeAttribute('src'); }
 }
@@ -480,9 +495,19 @@ function onWrong(ev) {
   card.classList.add('burn');
   card.draggable = false;
   teardownCardDrag(card);
-  if (settings.showTips) setTimeout(() => showTip(ev), 700);
-  const delay = settings.showTips ? 5000 : 1200;
-  setTimeout(() => { hideTip(); currentIndex++; updateHUD(); showCurrentEvent(); }, delay);
+  const advance = () => {
+    currentIndex++;
+    updateHUD();
+    showCurrentEvent();
+  };
+  if (settings.showTips) {
+    setTimeout(() => {
+      showTip(ev);
+      showTip._onDismissed = advance;
+    }, 700);
+  } else {
+    setTimeout(advance, 1200);
+  }
 }
 
 function updateHUD() {
@@ -610,6 +635,7 @@ function restoreResultActions() {
 }
 
 function quitToHome() {
+  showTip._onDismissed = null;
   hideTutorial();
   hideTip();
   tutorialMode = false;
