@@ -24,10 +24,20 @@
           <h3>Настройки</h3>
           <label class="setting-item"><input type="checkbox" id="setting-show-years" checked /><span>Показывать годы после правильного размещения</span></label>
           <label class="setting-item"><input type="checkbox" id="setting-allow-same-year" /><span>Разрешать события одного года</span></label>
+          <label class="setting-item"><input type="checkbox" id="setting-show-tips" checked /><span>Показывать подсказки после ошибок</span></label>
         </div>
         <button id="btn-rules" class="btn-secondary">📜 Правила</button>
       </div>
     </section>
+
+    <div id="tutorial-modal" class="modal tutorial-modal hidden">
+      <div class="modal-content tutorial-modal-content">
+        <h2 id="tutorial-title">Как играть</h2>
+        <p id="tutorial-text">События нужно размещать на шкале относительно уже стоящих меток — левее (раньше) или правее (позже).</p>
+        <p class="tut-hint" id="tutorial-hint">Сначала поставь точку отсчёта: «Рождение Христа» (год 0). Кликни по шкале или перетащи карточку.</p>
+        <button id="btn-tutorial-ok" class="btn-primary">Понятно</button>
+      </div>
+    </div>
 
     <div id="rules-modal" class="modal hidden">
       <div class="modal-content">
@@ -57,11 +67,11 @@
         </div>
       </header>
       <div class="timeline-wrapper">
-        <div id="tutorial-overlay" class="tutorial-overlay hidden">
-          <p id="tutorial-text"></p>
-          <p class="tut-hint" id="tutorial-hint"></p>
-        </div>
         <div id="timeline" class="timeline"></div>
+      </div>
+      <div id="tip-toast" class="tip-toast hidden">
+        <div class="tip-toast-year" id="tip-year"></div>
+        <div class="tip-toast-text" id="tip-text"></div>
       </div>
       <div class="event-area">
         <div id="current-event" class="event-card">
@@ -72,7 +82,7 @@
         <div class="event-actions">
           <button id="btn-skip" class="btn-secondary">Пропустить (сгорит)</button>
         </div>
-        <p class="hint">Перетащи карточку на шкалу или кликни по промежутку между метками</p>
+        <p class="hint" id="place-hint">Кликни по промежутку на шкале · на телефоне удерживай карточку, чтобы перетащить</p>
       </div>
     </section>
 
