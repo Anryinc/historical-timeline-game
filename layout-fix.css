@@ -1,0 +1,19 @@
+/* Fix: center event card panel during gameplay */
+.event-area, .current-event-panel {
+  flex-shrink: 0 !important;
+  width: 100% !important;
+  padding: 16px !important;
+  background: var(--bg-card) !important;
+  border-top: 1px solid #2a2a45 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  text-align: center !important;
+}
+.event-area .event-card, .current-event-panel .event-card {
+  margin-left: auto;
+  margin-right: auto;
+}
+.event-area .hint, .current-event-panel .hint { text-align: center; width: 100%; }
