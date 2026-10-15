@@ -20,7 +20,7 @@ let streak = 0;
 let maxStreak = 0;
 let score = 0;
 let difficulty = 15;
-let settings = { showYears: true, allowSameYear: true };
+let settings = { showYears: true, allowSameYear: false, showTips: true };
 let lastDifficulty = 15;
 let tutorialMode = false;
 
@@ -53,18 +53,192 @@ function loadEvents() {
 function readSettings() {
   settings.showYears = $('#setting-show-years').checked;
   settings.allowSameYear = $('#setting-allow-same-year').checked;
+  const tipsEl = $('#setting-show-tips');
+  settings.showTips = tipsEl ? tipsEl.checked : true;
 }
 
 function showTutorial(text, hint, isSuccess) {
-  const ov = $('#tutorial-overlay');
+  const modal = $('#tutorial-modal');
   $('#tutorial-text').textContent = text;
   $('#tutorial-hint').textContent = hint || '';
-  ov.classList.toggle('success', !!isSuccess);
-  ov.classList.remove('hidden');
+  const title = $('#tutorial-title');
+  if (title) title.textContent = isSuccess ? 'Отлично!' : 'Как играть';
+  modal.classList.toggle('success', !!isSuccess);
+  const btn = $('#btn-tutorial-ok');
+  if (btn) btn.textContent = isSuccess ? 'Начать игру' : 'Понятно';
+  modal.classList.remove('hidden');
 }
 
 function hideTutorial() {
-  $('#tutorial-overlay').classList.add('hidden');
+  const modal = $('#tutorial-modal');
+  if (modal) modal.classList.add('hidden');
+}
+
+function showTip(ev) {
+  if (!settings.showTips || !ev) return;
+  const toast = $('#tip-toast');
+  if (!toast) return;
+  $('#tip-year').textContent = formatYear(ev.year);
+  $('#tip-text').textContent = ev.description || ev.title;
+  toast.classList.remove('hidden', 'show-out');
+  void toast.offsetWidth;
+  clearTimeout(showTip._t1);
+  clearTimeout(showTip._t2);
+  showTip._t1 = setTimeout(() => {
+    toast.classList.add('show-out');
+    showTip._t2 = setTimeout(() => toast.classList.add('hidden'), 350);
+  }, 2800);
+}
+
+function hideTip() {
+  const toast = $('#tip-toast');
+  if (!toast) return;
+  toast.classList.add('hidden');
+  toast.classList.remove('show-out');
+  clearTimeout(showTip._t1);
+  clearTimeout(showTip._t2);
+}
+
+/* ========== Mobile long-press drag ========== */
+let dragState = {
+  active: false,
+  ghost: null,
+  startX: 0,
+  startY: 0,
+  longPressTimer: null,
+  moved: false,
+  card: null
+};
+
+function teardownCardDrag(card) {
+  if (!card) return;
+  clearTimeout(dragState.longPressTimer);
+  dragState.longPressTimer = null;
+  if (dragState.ghost) {
+    dragState.ghost.remove();
+    dragState.ghost = null;
+  }
+  dragState.active = false;
+  dragState.moved = false;
+  card.classList.remove('ready-to-drag', 'long-press-active', 'dragging');
+}
+
+function findGapAtPoint(x, y) {
+  const gaps = document.querySelectorAll('.gap');
+  for (const g of gaps) {
+    const r = g.getBoundingClientRect();
+    if (x >= r.left && x <= r.right && y >= r.top - 20 && y <= r.bottom + 20) {
+      return g;
+    }
+  }
+  const tl = $('#timeline');
+  if (!tl) return null;
+  const tr = tl.getBoundingClientRect();
+  if (y < tr.top - 40 || y > tr.bottom + 40) return null;
+  let best = null, bestDist = Infinity;
+  gaps.forEach(g => {
+    const r = g.getBoundingClientRect();
+    const cx = (r.left + r.right) / 2;
+    const d = Math.abs(cx - x);
+    if (d < bestDist) { bestDist = d; best = g; }
+  });
+  return best;
+}
+
+function bindCardDrag(card) {
+  teardownCardDrag(card);
+  card.draggable = true;
+  card.ondragstart = (e) => {
+    if (dragState.active) { e.preventDefault(); return; }
+    card.classList.add('dragging');
+    e.dataTransfer.setData('text/plain', 'event');
+    e.dataTransfer.effectAllowed = 'move';
+  };
+  card.ondragend = () => card.classList.remove('dragging');
+
+  const onPointerDown = (e) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    if (e.pointerType === 'mouse') return;
+
+    dragState.card = card;
+    dragState.startX = e.clientX;
+    dragState.startY = e.clientY;
+    dragState.moved = false;
+    dragState.active = false;
+    clearTimeout(dragState.longPressTimer);
+
+    dragState.longPressTimer = setTimeout(() => {
+      dragState.active = true;
+      card.classList.add('ready-to-drag', 'long-press-active');
+      if (navigator.vibrate) try { navigator.vibrate(25); } catch (_) {}
+
+      const ghost = document.createElement('div');
+      ghost.className = 'drag-ghost event-card';
+      ghost.innerHTML = card.innerHTML;
+      document.body.appendChild(ghost);
+      dragState.ghost = ghost;
+      const w = ghost.offsetWidth || 200;
+      ghost.style.left = (e.clientX - w / 2) + 'px';
+      ghost.style.top = (e.clientY - 40) + 'px';
+    }, 380);
+  };
+
+  const onPointerMove = (e) => {
+    if (!dragState.card) return;
+    const dx = e.clientX - dragState.startX;
+    const dy = e.clientY - dragState.startY;
+    if (!dragState.active) {
+      if (Math.hypot(dx, dy) > 12) {
+        clearTimeout(dragState.longPressTimer);
+        dragState.longPressTimer = null;
+      }
+      return;
+    }
+    e.preventDefault();
+    dragState.moved = true;
+    const ghost = dragState.ghost;
+    if (ghost) {
+      const w = ghost.offsetWidth || 200;
+      ghost.style.left = (e.clientX - w / 2) + 'px';
+      ghost.style.top = (e.clientY - 40) + 'px';
+    }
+    document.querySelectorAll('.gap').forEach(g => g.classList.remove('drag-over'));
+    const gap = findGapAtPoint(e.clientX, e.clientY);
+    if (gap) gap.classList.add('drag-over');
+  };
+
+  const onPointerUp = (e) => {
+    clearTimeout(dragState.longPressTimer);
+    dragState.longPressTimer = null;
+    document.querySelectorAll('.gap').forEach(g => g.classList.remove('drag-over'));
+
+    if (dragState.active && dragState.moved) {
+      const gap = findGapAtPoint(e.clientX, e.clientY);
+      if (gap && gap.dataset.gapIndex !== undefined) {
+        tryPlace(parseInt(gap.dataset.gapIndex, 10));
+      }
+    }
+    teardownCardDrag(card);
+    dragState.card = null;
+  };
+
+  const onPointerCancel = () => {
+    clearTimeout(dragState.longPressTimer);
+    teardownCardDrag(card);
+    dragState.card = null;
+  };
+
+  card._pd = onPointerDown;
+  card._pm = onPointerMove;
+  card._pu = onPointerUp;
+  card._pc = onPointerCancel;
+  card.addEventListener('pointerdown', onPointerDown);
+  card.addEventListener('pointermove', onPointerMove);
+  card.addEventListener('pointerup', onPointerUp);
+  card.addEventListener('pointercancel', onPointerCancel);
+  card.addEventListener('pointerdown', (e) => {
+    try { card.setPointerCapture(e.pointerId); } catch (_) {}
+  });
 }
 
 function startGame(count) {
@@ -102,7 +276,7 @@ function startGame(count) {
 
   showTutorial(
     'События нужно размещать на шкале относительно уже стоящих меток — левее (раньше) или правее (позже).',
-    'Сначала поставь точку отсчёта: «Рождение Христа» (год 0). Кликни по шкале.'
+    'Сначала поставь точку отсчёта: «Рождение Христа» (год 0). Кликни по шкале или перетащи карточку.'
   );
 
   showTutorialEvent();
@@ -115,12 +289,7 @@ function showTutorialEvent() {
   $('#event-category').textContent = 'Туториал';
   card.classList.remove('burn');
   card.querySelectorAll('.flames').forEach(el => el.remove());
-  card.draggable = true;
-  card.ondragstart = (e) => {
-    card.classList.add('dragging');
-    e.dataTransfer.setData('text/plain', 'event');
-  };
-  card.ondragend = () => card.classList.remove('dragging');
+  bindCardDrag(card);
   $('#btn-skip').style.display = 'none';
 }
 
@@ -142,12 +311,7 @@ function showCurrentEvent() {
   const card = $('#current-event');
   card.classList.remove('burn');
   card.querySelectorAll('.flames').forEach(el => el.remove());
-  card.draggable = true;
-  card.ondragstart = (e) => {
-    card.classList.add('dragging');
-    e.dataTransfer.setData('text/plain', 'event');
-  };
-  card.ondragend = () => card.classList.remove('dragging');
+  bindCardDrag(card);
 }
 
 function renderTimeline() {
@@ -266,18 +430,18 @@ function onTutorialPlace() {
   renderTimeline();
 
   showTutorial(
-    'Отлично! Теперь ты знаешь, как размещать события.',
-    'Начинаем игру — дальше уже засчитывается.',
+    'Теперь ты знаешь, как размещать события на шкале.',
+    'Дальше очки уже засчитываются. Удачи!',
     true
   );
+}
 
-  setTimeout(() => {
-    hideTutorial();
-    tutorialMode = false;
-    currentIndex = 0;
-    updateHUD();
-    showCurrentEvent();
-  }, 2200);
+function finishTutorialAndStart() {
+  hideTutorial();
+  tutorialMode = false;
+  currentIndex = 0;
+  updateHUD();
+  showCurrentEvent();
 }
 
 function spawnFlames(card) {
@@ -327,12 +491,19 @@ function onWrong(ev) {
   spawnFlames(card);
   card.classList.add('burn');
   card.draggable = false;
+  teardownCardDrag(card);
 
+  if (settings.showTips) {
+    setTimeout(() => showTip(ev), 700);
+  }
+
+  const delay = settings.showTips ? 3200 : 1200;
   setTimeout(() => {
+    hideTip();
     currentIndex++;
     updateHUD();
     showCurrentEvent();
-  }, 1200);
+  }, delay);
 }
 
 function updateHUD() {
@@ -347,6 +518,7 @@ function updateHUD() {
 
 function endGame() {
   hideTutorial();
+  hideTip();
   showScreen('result');
 
   const total = gameEvents.length;
@@ -476,6 +648,17 @@ function restoreResultActions() {
   $('#btn-home').addEventListener('click', () => { hideTutorial(); showScreen('start'); });
   $('#btn-rematch').addEventListener('click', () => startGame(lastDifficulty));
   $('#btn-other-diff').addEventListener('click', showDifficultyPicker);
+}
+
+const tutOk = $('#btn-tutorial-ok');
+if (tutOk) {
+  tutOk.addEventListener('click', () => {
+    if (tutorialMode && placed.length > 0) {
+      finishTutorialAndStart();
+    } else {
+      hideTutorial();
+    }
+  });
 }
 
 document.querySelectorAll('.diff-btn').forEach(btn => {
