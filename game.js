@@ -74,50 +74,144 @@ function hideTutorial() {
   if (modal) modal.classList.add('hidden');
 }
 
+const tipCache = {};
+let tipRequestId = 0;
+
+function buildLocalTip(ev) {
+  const y = formatYear(ev.year);
+  const era = ERA_LABELS[ev.era] ? ` Эпоха: ${ERA_LABELS[ev.era]}.` : '';
+  const desc = (ev.description || '').trim();
+  const title = ev.title || '';
+  let text = `Событие относится к ${y}.${era}`;
+  if (desc) {
+    text += ` ${desc}${/[.!?…]$/.test(desc) ? '' : '.'}`;
+  } else {
+    text += ` ${title}.`;
+  }
+  return text;
+}
+
+function wikiCandidates(title) {
+  const t = (title || '').trim();
+  const clean = t
+    .replace(/\s*\([^)]*\)\s*/g, ' ')
+    .replace(/«|»|"/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  const candidates = [clean];
+  const stripped = clean.replace(/^(Начало|Конец|Открытие|Создание|Появление|Первый|Первая|Первое|Выход|Запуск|Смерть|Гибель|Убийство|Падение|Взятие|Строительство|Провозглашение|Изобретение)\s+/i, '').trim();
+  if (stripped && stripped !== clean) candidates.push(stripped);
+  const short = clean.split(/[—–,:]/)[0].trim();
+  if (short && short.length > 4 && !candidates.includes(short)) candidates.push(short);
+  return candidates;
+}
+
+async function fetchWikiSummary(title) {
+  if (tipCache[title]) return tipCache[title];
+  const candidates = wikiCandidates(title);
+  for (const lang of ['ru', 'en']) {
+    for (const q of candidates) {
+      try {
+        const url = `https://${lang}.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(q)}`;
+        const r = await fetch(url, { headers: { Accept: 'application/json' } });
+        if (!r.ok) continue;
+        const data = await r.json();
+        if (data.type === 'disambiguation' || data.type === 'no-extract') continue;
+        const extract = (data.extract || '').trim();
+        const thumb = data.thumbnail && data.thumbnail.source ? data.thumbnail.source : null;
+        if (!extract && !thumb) continue;
+        let short = extract;
+        const parts = extract.split(/(?<=[.!?…])\s+/);
+        if (parts.length > 2) short = parts.slice(0, 2).join(' ');
+        if (short.length > 320) short = short.slice(0, 300).replace(/\s+\S*$/, '') + '…';
+        const result = { extract: short, thumb, lang };
+        tipCache[title] = result;
+        return result;
+      } catch (_) {}
+    }
+  }
+  tipCache[title] = { extract: '', thumb: null };
+  return tipCache[title];
+}
+
+function scheduleTipHide(ms) {
+  clearTimeout(showTip._t1);
+  clearTimeout(showTip._t2);
+  showTip._t1 = setTimeout(() => {
+    const toast = $('#tip-toast');
+    if (!toast) return;
+    toast.classList.add('show-out');
+    showTip._t2 = setTimeout(() => toast.classList.add('hidden'), 350);
+  }, ms);
+}
+
 function showTip(ev) {
   if (!settings.showTips || !ev) return;
   const toast = $('#tip-toast');
   if (!toast) return;
-  $('#tip-year').textContent = formatYear(ev.year);
-  $('#tip-text').textContent = ev.description || ev.title;
+
+  const img = $('#tip-image');
+  const titleEl = $('#tip-title');
+  const yearEl = $('#tip-year');
+  const textEl = $('#tip-text');
+
+  yearEl.textContent = formatYear(ev.year);
+  if (titleEl) titleEl.textContent = ev.title || '';
+  textEl.textContent = buildLocalTip(ev);
+  if (img) {
+    img.classList.add('hidden');
+    img.removeAttribute('src');
+  }
+
   toast.classList.remove('hidden', 'show-out');
   void toast.offsetWidth;
-  clearTimeout(showTip._t1);
-  clearTimeout(showTip._t2);
-  showTip._t1 = setTimeout(() => {
-    toast.classList.add('show-out');
-    showTip._t2 = setTimeout(() => toast.classList.add('hidden'), 350);
-  }, 2800);
+  scheduleTipHide(4200);
+
+  const reqId = ++tipRequestId;
+  fetchWikiSummary(ev.title).then(info => {
+    if (reqId !== tipRequestId) return;
+    if (!info) return;
+    if (info.extract) {
+      textEl.textContent = `Год: ${formatYear(ev.year)}. ${info.extract}`;
+      scheduleTipHide(5200);
+    }
+    if (info.thumb && img) {
+      img.onload = () => {
+        if (reqId !== tipRequestId) return;
+        img.classList.remove('hidden');
+      };
+      img.onerror = () => img.classList.add('hidden');
+      img.src = info.thumb;
+      img.alt = ev.title || '';
+    }
+  });
 }
 
 function hideTip() {
+  tipRequestId++;
   const toast = $('#tip-toast');
   if (!toast) return;
   toast.classList.add('hidden');
   toast.classList.remove('show-out');
   clearTimeout(showTip._t1);
   clearTimeout(showTip._t2);
+  const img = $('#tip-image');
+  if (img) {
+    img.classList.add('hidden');
+    img.removeAttribute('src');
+  }
 }
 
-/* ========== Mobile long-press drag ========== */
 let dragState = {
-  active: false,
-  ghost: null,
-  startX: 0,
-  startY: 0,
-  longPressTimer: null,
-  moved: false,
-  card: null
+  active: false, ghost: null, startX: 0, startY: 0,
+  longPressTimer: null, moved: false, card: null
 };
 
 function teardownCardDrag(card) {
   if (!card) return;
   clearTimeout(dragState.longPressTimer);
   dragState.longPressTimer = null;
-  if (dragState.ghost) {
-    dragState.ghost.remove();
-    dragState.ghost = null;
-  }
+  if (dragState.ghost) { dragState.ghost.remove(); dragState.ghost = null; }
   dragState.active = false;
   dragState.moved = false;
   card.classList.remove('ready-to-drag', 'long-press-active', 'dragging');
@@ -127,9 +221,7 @@ function findGapAtPoint(x, y) {
   const gaps = document.querySelectorAll('.gap');
   for (const g of gaps) {
     const r = g.getBoundingClientRect();
-    if (x >= r.left && x <= r.right && y >= r.top - 20 && y <= r.bottom + 20) {
-      return g;
-    }
+    if (x >= r.left && x <= r.right && y >= r.top - 20 && y <= r.bottom + 20) return g;
   }
   const tl = $('#timeline');
   if (!tl) return null;
@@ -159,19 +251,16 @@ function bindCardDrag(card) {
   const onPointerDown = (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     if (e.pointerType === 'mouse') return;
-
     dragState.card = card;
     dragState.startX = e.clientX;
     dragState.startY = e.clientY;
     dragState.moved = false;
     dragState.active = false;
     clearTimeout(dragState.longPressTimer);
-
     dragState.longPressTimer = setTimeout(() => {
       dragState.active = true;
       card.classList.add('ready-to-drag', 'long-press-active');
       if (navigator.vibrate) try { navigator.vibrate(25); } catch (_) {}
-
       const ghost = document.createElement('div');
       ghost.className = 'drag-ghost event-card';
       ghost.innerHTML = card.innerHTML;
@@ -211,7 +300,6 @@ function bindCardDrag(card) {
     clearTimeout(dragState.longPressTimer);
     dragState.longPressTimer = null;
     document.querySelectorAll('.gap').forEach(g => g.classList.remove('drag-over'));
-
     if (dragState.active && dragState.moved) {
       const gap = findGapAtPoint(e.clientX, e.clientY);
       if (gap && gap.dataset.gapIndex !== undefined) {
@@ -228,10 +316,6 @@ function bindCardDrag(card) {
     dragState.card = null;
   };
 
-  card._pd = onPointerDown;
-  card._pm = onPointerMove;
-  card._pu = onPointerUp;
-  card._pc = onPointerCancel;
   card.addEventListener('pointerdown', onPointerDown);
   card.addEventListener('pointermove', onPointerMove);
   card.addEventListener('pointerup', onPointerUp);
@@ -245,7 +329,6 @@ function startGame(count) {
   readSettings();
   difficulty = count;
   lastDifficulty = count;
-
   let pool = [...allEvents];
   if (!settings.allowSameYear) {
     const seen = new Set();
@@ -260,7 +343,6 @@ function startGame(count) {
     [pool[i], pool[j]] = [pool[j], pool[i]];
   }
   gameEvents = pool.slice(0, Math.min(count, pool.length));
-
   placed = [];
   currentIndex = 0;
   correctCount = 0;
@@ -269,16 +351,13 @@ function startGame(count) {
   maxStreak = 0;
   score = 0;
   tutorialMode = true;
-
   updateHUD();
   renderTimeline();
   showScreen('game');
-
   showTutorial(
     'События нужно размещать на шкале относительно уже стоящих меток — левее (раньше) или правее (позже).',
     'Сначала поставь точку отсчёта: «Рождение Христа» (год 0). Кликни по шкале или перетащи карточку.'
   );
-
   showTutorialEvent();
 }
 
@@ -294,20 +373,13 @@ function showTutorialEvent() {
 }
 
 function showCurrentEvent() {
-  if (tutorialMode) {
-    showTutorialEvent();
-    return;
-  }
+  if (tutorialMode) { showTutorialEvent(); return; }
   $('#btn-skip').style.display = '';
-  if (currentIndex >= gameEvents.length) {
-    endGame();
-    return;
-  }
+  if (currentIndex >= gameEvents.length) { endGame(); return; }
   const ev = gameEvents[currentIndex];
   $('#event-title').textContent = ev.title;
   $('#event-desc').textContent = ev.description;
   $('#event-category').textContent = CATEGORY_LABELS[ev.category] || ev.category;
-
   const card = $('#current-event');
   card.classList.remove('burn');
   card.querySelectorAll('.flames').forEach(el => el.remove());
@@ -318,7 +390,6 @@ function renderTimeline() {
   const tl = $('#timeline');
   tl.innerHTML = '';
   placed.sort((a, b) => a.year - b.year);
-
   if (placed.length === 0) {
     const gap = document.createElement('div');
     gap.className = 'gap';
@@ -329,26 +400,19 @@ function renderTimeline() {
     tl.appendChild(gap);
     return;
   }
-
   const leftGap = document.createElement('div');
   leftGap.className = 'gap';
   leftGap.dataset.gapIndex = -1;
   attachGapHandlers(leftGap, -1);
   tl.appendChild(leftGap);
-
   placed.forEach((ev, i) => {
     const marker = document.createElement('div');
     marker.className = 'marker' + (ev.isZero ? ' zero' : '');
-    marker.innerHTML = `
-      <div class="marker-dot"></div>
-      <div class="marker-year">${formatYear(ev.year)}</div>
-      <div class="marker-title">${ev.title}</div>
-    `;
+    marker.innerHTML = `<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;
     if (!settings.showYears && !ev.isZero) {
       marker.querySelector('.marker-year').style.visibility = 'hidden';
     }
     tl.appendChild(marker);
-
     const gap = document.createElement('div');
     gap.className = 'gap';
     gap.dataset.gapIndex = i;
@@ -365,44 +429,22 @@ function formatYear(y) {
 
 function attachGapHandlers(el, gapIndex) {
   el.addEventListener('click', () => tryPlace(gapIndex));
-  el.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    el.classList.add('drag-over');
-  });
+  el.addEventListener('dragover', (e) => { e.preventDefault(); el.classList.add('drag-over'); });
   el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
-  el.addEventListener('drop', (e) => {
-    e.preventDefault();
-    el.classList.remove('drag-over');
-    tryPlace(gapIndex);
-  });
+  el.addEventListener('drop', (e) => { e.preventDefault(); el.classList.remove('drag-over'); tryPlace(gapIndex); });
 }
 
 function tryPlace(gapIndex) {
-  if (tutorialMode) {
-    onTutorialPlace();
-    return;
-  }
-
+  if (tutorialMode) { onTutorialPlace(); return; }
   if (currentIndex >= gameEvents.length) return;
-
   const ev = gameEvents[currentIndex];
   const sorted = [...placed].sort((a, b) => a.year - b.year);
-
-  let leftYear = -Infinity;
-  let rightYear = Infinity;
-
-  if (gapIndex === -1) {
-    rightYear = sorted[0].year;
-  } else if (gapIndex >= sorted.length - 1) {
-    leftYear = sorted[sorted.length - 1].year;
-  } else {
-    leftYear = sorted[gapIndex].year;
-    rightYear = sorted[gapIndex + 1].year;
-  }
-
+  let leftYear = -Infinity, rightYear = Infinity;
+  if (gapIndex === -1) rightYear = sorted[0].year;
+  else if (gapIndex >= sorted.length - 1) leftYear = sorted[sorted.length - 1].year;
+  else { leftYear = sorted[gapIndex].year; rightYear = sorted[gapIndex + 1].year; }
   const year = ev.year;
   let correct = false;
-
   if (settings.allowSameYear) {
     if (leftYear === -Infinity) correct = year <= rightYear;
     else if (rightYear === Infinity) correct = year >= leftYear;
@@ -412,28 +454,14 @@ function tryPlace(gapIndex) {
     else if (rightYear === Infinity) correct = year > leftYear;
     else correct = year > leftYear && year < rightYear;
   }
-
   if (correct) onCorrect(ev, gapIndex);
   else onWrong(ev);
 }
 
 function onTutorialPlace() {
-  placed = [{
-    id: 'zero',
-    title: 'Рождение Христа',
-    year: 0,
-    description: 'Точка отсчёта нашей эры',
-    era: 'ancient',
-    category: 'religion',
-    isZero: true
-  }];
+  placed = [{ id: 'zero', title: 'Рождение Христа', year: 0, description: 'Точка отсчёта нашей эры', era: 'ancient', category: 'religion', isZero: true }];
   renderTimeline();
-
-  showTutorial(
-    'Теперь ты знаешь, как размещать события на шкале.',
-    'Дальше очки уже засчитываются. Удачи!',
-    true
-  );
+  showTutorial('Теперь ты знаешь, как размещать события на шкале.', 'Дальше очки уже засчитываются. Удачи!', true);
 }
 
 function finishTutorialAndStart() {
@@ -469,14 +497,12 @@ function onCorrect(ev, gapIndex) {
   streak++;
   maxStreak = Math.max(maxStreak, streak);
   score += 100 + Math.min(streak * 10, 100);
-
   const gaps = document.querySelectorAll('.gap');
   const targetGap = [...gaps].find(g => parseInt(g.dataset.gapIndex) === gapIndex);
   if (targetGap) {
     targetGap.classList.add('correct-flash');
     setTimeout(() => targetGap.classList.remove('correct-flash'), 400);
   }
-
   currentIndex++;
   updateHUD();
   renderTimeline();
@@ -486,18 +512,13 @@ function onCorrect(ev, gapIndex) {
 function onWrong(ev) {
   wrongCount++;
   streak = 0;
-
   const card = $('#current-event');
   spawnFlames(card);
   card.classList.add('burn');
   card.draggable = false;
   teardownCardDrag(card);
-
-  if (settings.showTips) {
-    setTimeout(() => showTip(ev), 700);
-  }
-
-  const delay = settings.showTips ? 3200 : 1200;
+  if (settings.showTips) setTimeout(() => showTip(ev), 700);
+  const delay = settings.showTips ? 5000 : 1200;
   setTimeout(() => {
     hideTip();
     currentIndex++;
@@ -520,33 +541,27 @@ function endGame() {
   hideTutorial();
   hideTip();
   showScreen('result');
-
   const total = gameEvents.length;
   const accuracy = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-
   let title = 'Игра окончена';
   if (accuracy >= 90) title = 'Легенда истории! 🏆';
   else if (accuracy >= 70) title = 'Отличный результат! 🎉';
   else if (accuracy >= 50) title = 'Неплохо! 👍';
   else if (accuracy >= 30) title = 'Есть куда расти';
   else title = 'Попробуй ещё раз';
-
   $('#result-title').textContent = title;
   $('#final-score').textContent = score;
   $('#accuracy-percent').textContent = `${accuracy}%`;
   $('#stat-correct').textContent = correctCount;
   $('#stat-wrong').textContent = wrongCount;
   $('#stat-streak').textContent = maxStreak;
-
   const ring = $('#accuracy-ring');
   const circumference = 2 * Math.PI * 45;
   const offset = circumference - (accuracy / 100) * circumference;
   setTimeout(() => { ring.style.strokeDashoffset = offset; }, 100);
-
   const banner = $('#victory-banner');
   banner.classList.add('celebrate');
   setTimeout(() => banner.classList.remove('celebrate'), 2000);
-
   renderAnalysis();
   renderResultTimeline();
   restoreResultActions();
@@ -556,7 +571,6 @@ function renderAnalysis() {
   const block = $('#analysis-block');
   const content = $('#analysis-content');
   content.innerHTML = '';
-
   const correctByEra = {}, totalByEra = {}, correctByCat = {}, totalByCat = {};
   gameEvents.forEach(ev => {
     const wasCorrect = placed.some(p => p.id === ev.id);
@@ -569,7 +583,6 @@ function renderAnalysis() {
       correctByCat[cat] = (correctByCat[cat] || 0) + 1;
     }
   });
-
   const strengths = [], weaknesses = [];
   Object.keys(totalByEra).forEach(era => {
     if (totalByEra[era] < 2) return;
@@ -585,11 +598,7 @@ function renderAnalysis() {
     if (rate >= 0.8) strengths.push(`Сильны в теме «${label}»`);
     else if (rate <= 0.3) weaknesses.push(`Трудно с темой «${label}»`);
   });
-
-  if (strengths.length === 0 && weaknesses.length === 0) {
-    block.classList.add('hidden');
-    return;
-  }
+  if (strengths.length === 0 && weaknesses.length === 0) { block.classList.add('hidden'); return; }
   block.classList.remove('hidden');
   strengths.forEach(s => {
     const div = document.createElement('div');
@@ -611,11 +620,7 @@ function renderResultTimeline() {
   [...placed].sort((a, b) => a.year - b.year).forEach(ev => {
     const marker = document.createElement('div');
     marker.className = 'marker' + (ev.isZero ? ' zero' : '');
-    marker.innerHTML = `
-      <div class="marker-dot"></div>
-      <div class="marker-year">${formatYear(ev.year)}</div>
-      <div class="marker-title">${ev.title}</div>
-    `;
+    marker.innerHTML = `<div class="marker-dot"></div><div class="marker-year">${formatYear(ev.year)}</div><div class="marker-title">${ev.title}</div>`;
     tl.appendChild(marker);
   });
 }
@@ -623,13 +628,11 @@ function renderResultTimeline() {
 function showDifficultyPicker() {
   const actions = document.querySelector('.result-actions');
   if (!actions) return;
-  actions.innerHTML = `
-    <p style="width:100%;text-align:center;color:var(--text-muted);margin-bottom:8px;font-size:0.9rem;">Выбери сложность</p>
+  actions.innerHTML = `<p style="width:100%;text-align:center;color:var(--text-muted);margin-bottom:8px;font-size:0.9rem;">Выбери сложность</p>
     <button class="btn-primary diff-rematch" data-count="15">Лёгкий · 15</button>
     <button class="btn-primary diff-rematch" data-count="30">Средний · 30</button>
     <button class="btn-primary diff-rematch" data-count="60">Сложный · 60</button>
-    <button id="btn-picker-back" class="btn-secondary">← Назад</button>
-  `;
+    <button id="btn-picker-back" class="btn-secondary">← Назад</button>`;
   actions.querySelectorAll('.diff-rematch').forEach(btn => {
     btn.addEventListener('click', () => startGame(parseInt(btn.dataset.count)));
   });
@@ -640,11 +643,9 @@ function showDifficultyPicker() {
 function restoreResultActions() {
   const actions = document.querySelector('.result-actions');
   if (!actions) return;
-  actions.innerHTML = `
-    <button id="btn-home" class="btn-secondary">🏠 На главную</button>
+  actions.innerHTML = `<button id="btn-home" class="btn-secondary">🏠 На главную</button>
     <button id="btn-rematch" class="btn-primary">🔄 Реванш</button>
-    <button id="btn-other-diff" class="btn-secondary">📶 Другая сложность</button>
-  `;
+    <button id="btn-other-diff" class="btn-secondary">📶 Другая сложность</button>`;
   $('#btn-home').addEventListener('click', () => { hideTutorial(); showScreen('start'); });
   $('#btn-rematch').addEventListener('click', () => startGame(lastDifficulty));
   $('#btn-other-diff').addEventListener('click', showDifficultyPicker);
@@ -653,11 +654,8 @@ function restoreResultActions() {
 const tutOk = $('#btn-tutorial-ok');
 if (tutOk) {
   tutOk.addEventListener('click', () => {
-    if (tutorialMode && placed.length > 0) {
-      finishTutorialAndStart();
-    } else {
-      hideTutorial();
-    }
+    if (tutorialMode && placed.length > 0) finishTutorialAndStart();
+    else hideTutorial();
   });
 }
 
