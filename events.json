@@ -1,0 +1,2412 @@
+[
+  {
+    "id": "pyramids",
+    "title": "Строительство Великих пирамид Гизы",
+    "year": -2560,
+    "description": "Возведение пирамид Хеопса, Хефрена и Микерина в Древнем Египте",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 2560 до н.э. (Древний мир). Возведение пирамид Хеопса, Хефрена и Микерина в Древнем Египте.",
+    "image": "images/pyramids.jpg"
+  },
+  {
+    "id": "stonehenge",
+    "title": "Строительство Стоунхенджа (основной этап)",
+    "year": -2500,
+    "description": "Мегалитический комплекс на территории современной Англии",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 2500 до н.э. (Древний мир). Мегалитический комплекс на территории современной Англии.",
+    "image": "images/stonehenge.jpg"
+  },
+  {
+    "id": "hammurabi",
+    "title": "Кодекс Хаммурапи",
+    "year": -1754,
+    "description": "Один из древнейших сводов законов Месопотамии",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 1754 до н.э. (Древний мир). Один из древнейших сводов законов Месопотамии.",
+    "image": "images/hammurabi.jpg"
+  },
+  {
+    "id": "tutankhamun",
+    "title": "Правление Тутанхамона",
+    "year": -1332,
+    "description": "Знаменитый фараон XVIII династии Древнего Египта",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 1332 до н.э. (Древний мир). Знаменитый фараон XVIII династии Древнего Египта.",
+    "image": "images/tutankhamun.jpg"
+  },
+  {
+    "id": "trojan-war",
+    "title": "Троянская война (традиционная дата)",
+    "year": -1184,
+    "description": "Легендарный конфликт между греками и Троей",
+    "era": "ancient",
+    "category": "war",
+    "tip": "Событие произошло в 1184 до н.э. (Древний мир). Легендарный конфликт между греками и Троей.",
+    "image": "images/trojan-war.jpg"
+  },
+  {
+    "id": "olympics",
+    "title": "Первые Олимпийские игры",
+    "year": -776,
+    "description": "Начало античных Олимпийских игр в Греции",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 776 до н.э. (Древний мир). Начало античных Олимпийских игр в Греции.",
+    "image": "images/olympics.jpg"
+  },
+  {
+    "id": "rome-founded",
+    "title": "Основание Рима",
+    "year": -753,
+    "description": "Традиционная дата основания Вечного города",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 753 до н.э. (Древний мир). Традиционная дата основания Вечного города.",
+    "image": "images/rome-founded.jpg"
+  },
+  {
+    "id": "homer",
+    "title": "Создание «Илиады» и «Одиссеи» (примерно)",
+    "year": -750,
+    "description": "Гомер записывает великие эпические поэмы",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 750 до н.э. (Древний мир). Гомер записывает великие эпические поэмы.",
+    "image": "images/homer.jpg"
+  },
+  {
+    "id": "solon",
+    "title": "Реформы Солона в Афинах",
+    "year": -594,
+    "description": "Закладываются основы афинской демократии",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 594 до н.э. (Древний мир). Закладываются основы афинской демократии.",
+    "image": "images/solon.jpg"
+  },
+  {
+    "id": "buddha",
+    "title": "Рождение Будды (приблизительно)",
+    "year": -563,
+    "description": "Сидарта Гаутама — основатель буддизма",
+    "era": "ancient",
+    "category": "religion",
+    "tip": "Событие произошло в 563 до н.э. (Древний мир). Сидарта Гаутама — основатель буддизма.",
+    "image": "images/buddha.jpg"
+  },
+  {
+    "id": "confucius",
+    "title": "Рождение Конфуция",
+    "year": -551,
+    "description": "Китайский философ, основатель конфуцианства",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 551 до н.э. (Древний мир). Китайский философ, основатель конфуцианства.",
+    "image": "images/confucius.jpg"
+  },
+  {
+    "id": "marathon",
+    "title": "Битва при Марафоне",
+    "year": -490,
+    "description": "Победа греков над персами",
+    "era": "ancient",
+    "category": "war",
+    "tip": "Событие произошло в 490 до н.э. (Древний мир). Победа греков над персами.",
+    "image": "images/marathon.jpg"
+  },
+  {
+    "id": "thermopylae",
+    "title": "Битва при Фермопилах",
+    "year": -480,
+    "description": "Подвиг трёхсот спартанцев против персов",
+    "era": "ancient",
+    "category": "war",
+    "tip": "Событие произошло в 480 до н.э. (Древний мир). Подвиг трёхсот спартанцев против персов.",
+    "image": "images/thermopylae.jpg"
+  },
+  {
+    "id": "parthenon",
+    "title": "Строительство Парфенона",
+    "year": -447,
+    "description": "Храм Афины на Акрополе в Афинах",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 447 до н.э. (Древний мир). Храм Афины на Акрополе в Афинах.",
+    "image": "images/parthenon.jpg"
+  },
+  {
+    "id": "socrates-death",
+    "title": "Смерть Сократа",
+    "year": -399,
+    "description": "Философ выпивает цикуту по приговору суда",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 399 до н.э. (Древний мир). Философ выпивает цикуту по приговору суда.",
+    "image": "images/socrates-death.jpg"
+  },
+  {
+    "id": "aristotle-tutor",
+    "title": "Аристотель становится учителем Александра",
+    "year": -343,
+    "description": "Великий философ обучает будущего завоевателя",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 343 до н.э. (Древний мир). Великий философ обучает будущего завоевателя.",
+    "image": "images/aristotle-tutor.jpg"
+  },
+  {
+    "id": "alexander",
+    "title": "Начало походов Александра Македонского",
+    "year": -334,
+    "description": "Создание огромной империи от Греции до Индии",
+    "era": "ancient",
+    "category": "war",
+    "tip": "Событие произошло в 334 до н.э. (Древний мир). Создание огромной империи от Греции до Индии.",
+    "image": "images/alexander.jpg"
+  },
+  {
+    "id": "library-alexandria",
+    "title": "Основание Александрийской библиотеки",
+    "year": -283,
+    "description": "Крупнейшее собрание знаний античного мира",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 283 до н.э. (Древний мир). Крупнейшее собрание знаний античного мира.",
+    "image": "images/library-alexandria.jpg"
+  },
+  {
+    "id": "punic-start",
+    "title": "Начало Пунических войн",
+    "year": -264,
+    "description": "Конфликт Рима и Карфагена за Средиземноморье",
+    "era": "ancient",
+    "category": "war",
+    "tip": "Событие произошло в 264 до н.э. (Древний мир). Конфликт Рима и Карфагена за Средиземноморье.",
+    "image": "images/punic-start.gif"
+  },
+  {
+    "id": "hannibal-alps",
+    "title": "Переход Ганнибала через Альпы",
+    "year": -218,
+    "description": "Карфагенский полководец ведёт армию на Рим",
+    "era": "ancient",
+    "category": "war",
+    "tip": "Событие произошло в 218 до н.э. (Древний мир). Карфагенский полководец ведёт армию на Рим.",
+    "image": "images/hannibal-alps.png"
+  },
+  {
+    "id": "caesar-death",
+    "title": "Убийство Юлия Цезаря",
+    "year": -44,
+    "description": "Иды марта — заговор против диктатора Рима",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 44 до н.э. (Древний мир). Иды марта — заговор против диктатора Рима.",
+    "image": "images/caesar-death.jpg"
+  },
+  {
+    "id": "cleopatra-death",
+    "title": "Смерть Клеопатры",
+    "year": -30,
+    "description": "Конец династии Птолемеев в Египте",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 30 до н.э. (Древний мир). Конец династии Птолемеев в Египте.",
+    "image": "images/cleopatra-death.jpg"
+  },
+  {
+    "id": "augustus",
+    "title": "Октавиан становится Августом",
+    "year": -27,
+    "description": "Начало эпохи Римской империи",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 27 до н.э. (Древний мир). Начало эпохи Римской империи.",
+    "image": "images/augustus.jpg"
+  },
+  {
+    "id": "jesus-crucifixion",
+    "title": "Распятие Иисуса Христа (традиционно)",
+    "year": 33,
+    "description": "Ключевое событие христианства",
+    "era": "ancient",
+    "category": "religion",
+    "tip": "Событие произошло в 33 (Древний мир). Ключевое событие христианства.",
+    "image": "images/jesus-crucifixion.jpg"
+  },
+  {
+    "id": "pompeii",
+    "title": "Извержение Везувия, гибель Помпеев",
+    "year": 79,
+    "description": "Город погребён под пеплом",
+    "era": "ancient",
+    "category": "disaster",
+    "tip": "Событие произошло в 79 (Древний мир). Город погребён под пеплом.",
+    "image": "images/pompeii.jpg"
+  },
+  {
+    "id": "colosseum",
+    "title": "Открытие Колизея",
+    "year": 80,
+    "description": "Амфитеатр Флавиев принимает первых зрителей",
+    "era": "ancient",
+    "category": "culture",
+    "tip": "Событие произошло в 80 (Древний мир). Амфитеатр Флавиев принимает первых зрителей.",
+    "image": "images/colosseum.jpg"
+  },
+  {
+    "id": "hadrian-wall",
+    "title": "Строительство вала Адриана",
+    "year": 122,
+    "description": "Северная граница Римской Британии",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 122 (Древний мир). Северная граница Римской Британии.",
+    "image": "images/hadrian-wall.png"
+  },
+  {
+    "id": "marcus-aurelius-death",
+    "title": "Смерть Марка Аврелия",
+    "year": 180,
+    "description": "Конец эпохи «пяти хороших императоров»",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 180 (Древний мир). Конец эпохи «пяти хороших императоров».",
+    "image": "images/marcus-aurelius-death.jpg"
+  },
+  {
+    "id": "constantine-city",
+    "title": "Основание Константинополя",
+    "year": 330,
+    "description": "Новая столица Римской империи на Босфоре",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 330 (Древний мир). Новая столица Римской империи на Босфоре.",
+    "image": "images/constantine-city.png"
+  },
+  {
+    "id": "attila-death",
+    "title": "Смерть Аттилы",
+    "year": 453,
+    "description": "Конец империи гуннов",
+    "era": "ancient",
+    "category": "war",
+    "tip": "Событие произошло в 453 (Древний мир). Конец империи гуннов.",
+    "image": "images/attila-death.jpg"
+  },
+  {
+    "id": "rome-fall",
+    "title": "Падение Западной Римской империи",
+    "year": 476,
+    "description": "Конец античности",
+    "era": "ancient",
+    "category": "politics",
+    "tip": "Событие произошло в 476 (Древний мир). Конец античности.",
+    "image": "images/rome-fall.jpg"
+  },
+  {
+    "id": "justinian-code",
+    "title": "Кодекс Юстиниана",
+    "year": 529,
+    "description": "Систематизация римского права",
+    "era": "medieval",
+    "category": "politics",
+    "tip": "Событие произошло в 529 (Средневековье). Систематизация римского права.",
+    "image": "images/justinian-code.jpg"
+  },
+  {
+    "id": "justinian-plague",
+    "title": "Юстинианова чума",
+    "year": 541,
+    "description": "Первая зафиксированная пандемия чумы в Европе",
+    "era": "medieval",
+    "category": "disaster",
+    "tip": "Событие произошло в 541 (Средневековье). Первая зафиксированная пандемия чумы в Европе.",
+    "image": "images/justinian-plague.jpg"
+  },
+  {
+    "id": "sui-canal",
+    "title": "Строительство Великого канала в Китае",
+    "year": 605,
+    "description": "Связь севера и юга Китая водным путём",
+    "era": "medieval",
+    "category": "technology",
+    "tip": "Событие произошло в 605 (Средневековье). Связь севера и юга Китая водным путём.",
+    "image": "images/sui-canal.jpg"
+  },
+  {
+    "id": "mecca",
+    "title": "Хиджра — начало исламского летоисчисления",
+    "year": 622,
+    "description": "Переселение Мухаммеда из Мекки в Медину",
+    "era": "medieval",
+    "category": "religion",
+    "tip": "Событие произошло в 622 (Средневековье). Переселение Мухаммеда из Мекки в Медину.",
+    "image": "images/mecca.jpg"
+  },
+  {
+    "id": "battle-tours",
+    "title": "Битва при Пуатье",
+    "year": 732,
+    "description": "Карл Мартелл останавливает продвижение арабов",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 732 (Средневековье). Карл Мартелл останавливает продвижение арабов.",
+    "image": "images/battle-tours.png"
+  },
+  {
+    "id": "viking-lindisfarne",
+    "title": "Набег викингов на Линдисфарн",
+    "year": 793,
+    "description": "Начало эпохи викингов в Европе",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 793 (Средневековье). Начало эпохи викингов в Европе.",
+    "image": "images/viking-lindisfarne.jpg"
+  },
+  {
+    "id": "charlemagne",
+    "title": "Коронация Карла Великого",
+    "year": 800,
+    "description": "Император Священной Римской империи",
+    "era": "medieval",
+    "category": "politics",
+    "tip": "Событие произошло в 800 (Средневековье). Император Священной Римской империи.",
+    "image": "images/charlemagne.jpg"
+  },
+  {
+    "id": "kiev-baptism",
+    "title": "Крещение Руси",
+    "year": 988,
+    "description": "Владимир Святославич принимает христианство",
+    "era": "medieval",
+    "category": "religion",
+    "tip": "Событие произошло в 988 (Средневековье). Владимир Святославич принимает христианство.",
+    "image": "images/kiev-baptism.jpg"
+  },
+  {
+    "id": "viking-america",
+    "title": "Викинги достигают Америки",
+    "year": 1000,
+    "description": "Лейф Эрикссон высаживается в Винланде",
+    "era": "medieval",
+    "category": "discovery",
+    "tip": "Событие произошло в 1000 (Средневековье). Лейф Эрикссон высаживается в Винланде.",
+    "image": "images/viking-america.jpg"
+  },
+  {
+    "id": "schism-1054",
+    "title": "Великий церковный раскол",
+    "year": 1054,
+    "description": "Разделение христианства на католицизм и православие",
+    "era": "medieval",
+    "category": "religion",
+    "tip": "Событие произошло в 1054 (Средневековье). Разделение христианства на католицизм и православие.",
+    "image": "images/schism-1054.png"
+  },
+  {
+    "id": "hastings",
+    "title": "Битва при Гастингсе",
+    "year": 1066,
+    "description": "Нормандское завоевание Англии",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 1066 (Средневековье). Нормандское завоевание Англии.",
+    "image": "images/hastings.jpg"
+  },
+  {
+    "id": "crusades",
+    "title": "Начало Первого крестового похода",
+    "year": 1096,
+    "description": "Христианские походы на Восток",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 1096 (Средневековье). Христианские походы на Восток.",
+    "image": "images/crusades.jpg"
+  },
+  {
+    "id": "saladin-jerusalem",
+    "title": "Саладин отвоёвывает Иерусалим",
+    "year": 1187,
+    "description": "Победа мусульман в ходе крестовых походов",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 1187 (Средневековье). Победа мусульман в ходе крестовых походов.",
+    "image": "images/saladin-jerusalem.jpg"
+  },
+  {
+    "id": "genghis-proclaimed",
+    "title": "Провозглашение Чингисхана",
+    "year": 1206,
+    "description": "Объединение монгольских племён",
+    "era": "medieval",
+    "category": "politics",
+    "tip": "Событие произошло в 1206 (Средневековье). Объединение монгольских племён.",
+    "image": "images/genghis-proclaimed.jpg"
+  },
+  {
+    "id": "magna-carta",
+    "title": "Великая хартия вольностей",
+    "year": 1215,
+    "description": "Ограничение власти английского короля",
+    "era": "medieval",
+    "category": "politics",
+    "tip": "Событие произошло в 1215 (Средневековье). Ограничение власти английского короля.",
+    "image": "images/magna-carta.jpg"
+  },
+  {
+    "id": "genghis-death",
+    "title": "Смерть Чингисхана",
+    "year": 1227,
+    "description": "Основатель Монгольской империи уходит из жизни",
+    "era": "medieval",
+    "category": "politics",
+    "tip": "Событие произошло в 1227 (Средневековье). Основатель Монгольской империи уходит из жизни.",
+    "image": "images/genghis-death.jpg"
+  },
+  {
+    "id": "marco-polo",
+    "title": "Путешествие Марко Поло в Китай",
+    "year": 1271,
+    "description": "Венецианский купец достигает двора Хубилая",
+    "era": "medieval",
+    "category": "discovery",
+    "tip": "Событие произошло в 1271 (Средневековье). Венецианский купец достигает двора Хубилая.",
+    "image": "images/marco-polo.png"
+  },
+  {
+    "id": "dante",
+    "title": "Данте начинает «Божественную комедию»",
+    "year": 1308,
+    "description": "Шедевр мировой литературы Средневековья",
+    "era": "medieval",
+    "category": "culture",
+    "tip": "Событие произошло в 1308 (Средневековье). Шедевр мировой литературы Средневековья.",
+    "image": "images/dante.jpg"
+  },
+  {
+    "id": "aztec-tenochtitlan",
+    "title": "Основание Теночтитлана",
+    "year": 1325,
+    "description": "Столица империи ацтеков",
+    "era": "medieval",
+    "category": "politics",
+    "tip": "Событие произошло в 1325 (Средневековье). Столица империи ацтеков.",
+    "image": "images/aztec-tenochtitlan.jpg"
+  },
+  {
+    "id": "hundred-years-start",
+    "title": "Начало Столетней войны",
+    "year": 1337,
+    "description": "Долгий конфликт Англии и Франции",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 1337 (Средневековье). Долгий конфликт Англии и Франции.",
+    "image": "images/hundred-years-start.jpg"
+  },
+  {
+    "id": "black-death",
+    "title": "Чёрная смерть в Европе",
+    "year": 1347,
+    "description": "Пандемия чумы, унёсшая миллионы жизней",
+    "era": "medieval",
+    "category": "disaster",
+    "tip": "Событие произошло в 1347 (Средневековье). Пандемия чумы, унёсшая миллионы жизней.",
+    "image": "images/black-death.png"
+  },
+  {
+    "id": "timur-death",
+    "title": "Смерть Тамерлана",
+    "year": 1405,
+    "description": "Конец империи Тимуридов",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 1405 (Средневековье). Конец империи Тимуридов.",
+    "image": "images/timur-death.jpg"
+  },
+  {
+    "id": "joan-arc",
+    "title": "Сожжение Жанны д’Арк",
+    "year": 1431,
+    "description": "Национальная героиня Франции казнена",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 1431 (Средневековье). Национальная героиня Франции казнена.",
+    "image": "images/joan-arc.jpg"
+  },
+  {
+    "id": "printing",
+    "title": "Изобретение печатного станка Гутенбергом",
+    "year": 1440,
+    "description": "Революция в распространении знаний",
+    "era": "medieval",
+    "category": "technology",
+    "tip": "Событие произошло в 1440 (Средневековье). Революция в распространении знаний.",
+    "image": "images/printing.png"
+  },
+  {
+    "id": "constantinople",
+    "title": "Падение Константинополя",
+    "year": 1453,
+    "description": "Конец Византийской империи",
+    "era": "medieval",
+    "category": "war",
+    "tip": "Событие произошло в 1453 (Средневековье). Конец Византийской империи.",
+    "image": "images/constantinople.jpg"
+  },
+  {
+    "id": "columbus",
+    "title": "Открытие Америки Колумбом",
+    "year": 1492,
+    "description": "Первое путешествие Христофора Колумба",
+    "era": "early_modern",
+    "category": "discovery",
+    "tip": "Событие произошло в 1492 (Новое время). Первое путешествие Христофора Колумба.",
+    "image": "images/columbus.jpg"
+  },
+  {
+    "id": "da-vinci-mona",
+    "title": "Мона Лиза (начало работы)",
+    "year": 1503,
+    "description": "Леонардо да Винчи пишет знаменитый портрет",
+    "era": "early_modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1503 (Новое время). Леонардо да Винчи пишет знаменитый портрет.",
+    "image": "images/da-vinci-mona.jpg"
+  },
+  {
+    "id": "reformation",
+    "title": "95 тезисов Мартина Лютера",
+    "year": 1517,
+    "description": "Начало Реформации",
+    "era": "early_modern",
+    "category": "religion",
+    "tip": "Событие произошло в 1517 (Новое время). Начало Реформации.",
+    "image": "images/reformation.png"
+  },
+  {
+    "id": "magellan",
+    "title": "Первое кругосветное плавание",
+    "year": 1519,
+    "description": "Экспедиция Магеллана доказывает шарообразность Земли",
+    "era": "early_modern",
+    "category": "discovery",
+    "tip": "Событие произошло в 1519 (Новое время). Экспедиция Магеллана доказывает шарообразность Земли.",
+    "image": "images/magellan.jpg"
+  },
+  {
+    "id": "copernicus",
+    "title": "«О вращении небесных сфер» Коперника",
+    "year": 1543,
+    "description": "Гелиоцентрическая система мира",
+    "era": "early_modern",
+    "category": "science",
+    "tip": "Событие произошло в 1543 (Новое время). Гелиоцентрическая система мира.",
+    "image": "images/copernicus.png"
+  },
+  {
+    "id": "ivan-terrible",
+    "title": "Венчание Ивана Грозного на царство",
+    "year": 1547,
+    "description": "Первый русский царь",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1547 (Новое время). Первый русский царь.",
+    "image": "images/ivan-terrible.jpg"
+  },
+  {
+    "id": "elizabeth-i",
+    "title": "Начало правления Елизаветы I",
+    "year": 1558,
+    "description": "Золотой век Англии",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1558 (Новое время). Золотой век Англии.",
+    "image": "images/elizabeth-i.jpg"
+  },
+  {
+    "id": "lepanto",
+    "title": "Битва при Лепанто",
+    "year": 1571,
+    "description": "Победа христианского флота над османами",
+    "era": "early_modern",
+    "category": "war",
+    "tip": "Событие произошло в 1571 (Новое время). Победа христианского флота над османами.",
+    "image": "images/lepanto.jpg"
+  },
+  {
+    "id": "spanish-armada",
+    "title": "Разгром Непобедимой армады",
+    "year": 1588,
+    "description": "Крах испанского вторжения в Англию",
+    "era": "early_modern",
+    "category": "war",
+    "tip": "Событие произошло в 1588 (Новое время). Крах испанского вторжения в Англию.",
+    "image": "images/spanish-armada.jpg"
+  },
+  {
+    "id": "shakespeare-hamlet",
+    "title": "Первая постановка «Гамлета» (примерно)",
+    "year": 1600,
+    "description": "Шекспир создаёт одну из величайших пьес",
+    "era": "early_modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1600 (Новое время). Шекспир создаёт одну из величайших пьес.",
+    "image": "images/shakespeare-hamlet.jpg"
+  },
+  {
+    "id": "galileo",
+    "title": "Галилей направляет телескоп на небо",
+    "year": 1609,
+    "description": "Открытие спутников Юпитера и фаз Венеры",
+    "era": "early_modern",
+    "category": "science",
+    "tip": "Событие произошло в 1609 (Новое время). Открытие спутников Юпитера и фаз Венеры.",
+    "image": "images/galileo.jpg"
+  },
+  {
+    "id": "mayflower",
+    "title": "«Мэйфлауэр» прибывает в Америку",
+    "year": 1620,
+    "description": "Паломники основывают колонию Плимут",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1620 (Новое время). Паломники основывают колонию Плимут.",
+    "image": "images/mayflower.jpg"
+  },
+  {
+    "id": "galileo-trial",
+    "title": "Суд над Галилеем",
+    "year": 1633,
+    "description": "Инквизиция осуждает гелиоцентризм",
+    "era": "early_modern",
+    "category": "science",
+    "tip": "Событие произошло в 1633 (Новое время). Инквизиция осуждает гелиоцентризм.",
+    "image": "images/galileo-trial.png"
+  },
+  {
+    "id": "english-civil",
+    "title": "Начало Английской революции",
+    "year": 1642,
+    "description": "Конфликт короля и парламента",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1642 (Новое время). Конфликт короля и парламента.",
+    "image": "images/english-civil.jpg"
+  },
+  {
+    "id": "louis-xiv",
+    "title": "Начало личного правления Людовика XIV",
+    "year": 1661,
+    "description": "Эпоха «Короля-Солнца»",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1661 (Новое время). Эпоха «Короля-Солнца».",
+    "image": "images/louis-xiv.jpg"
+  },
+  {
+    "id": "plague-london",
+    "title": "Великая чума в Лондоне",
+    "year": 1665,
+    "description": "Последняя крупная вспышка чумы в Англии",
+    "era": "early_modern",
+    "category": "disaster",
+    "tip": "Событие произошло в 1665 (Новое время). Последняя крупная вспышка чумы в Англии.",
+    "image": "images/plague-london.jpg"
+  },
+  {
+    "id": "great-fire-london",
+    "title": "Великий лондонский пожар",
+    "year": 1666,
+    "description": "Город почти полностью сгорает",
+    "era": "early_modern",
+    "category": "disaster",
+    "tip": "Событие произошло в 1666 (Новое время). Город почти полностью сгорает.",
+    "image": "images/great-fire-london.jpg"
+  },
+  {
+    "id": "newton",
+    "title": "«Математические начала» Ньютона",
+    "year": 1687,
+    "description": "Законы движения и всемирного тяготения",
+    "era": "early_modern",
+    "category": "science",
+    "tip": "Событие произошло в 1687 (Новое время). Законы движения и всемирного тяготения.",
+    "image": "images/newton.png"
+  },
+  {
+    "id": "peter-petersburg",
+    "title": "Основание Санкт-Петербурга",
+    "year": 1703,
+    "description": "Пётр I закладывает новую столицу России",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1703 (Новое время). Пётр I закладывает новую столицу России.",
+    "image": "images/peter-petersburg.jpg"
+  },
+  {
+    "id": "bach-leipzig",
+    "title": "Бах становится кантором в Лейпциге",
+    "year": 1723,
+    "description": "Расцвет творчества великого композитора",
+    "era": "early_modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1723 (Новое время). Расцвет творчества великого композитора.",
+    "image": "images/bach-leipzig.jpg"
+  },
+  {
+    "id": "seven-years",
+    "title": "Начало Семилетней войны",
+    "year": 1756,
+    "description": "Первая «мировая» война XVIII века",
+    "era": "early_modern",
+    "category": "war",
+    "tip": "Событие произошло в 1756 (Новое время). Первая «мировая» война XVIII века.",
+    "image": "images/seven-years.jpg"
+  },
+  {
+    "id": "industrial-start",
+    "title": "Начало промышленной революции",
+    "year": 1760,
+    "description": "Переход к машинному производству в Британии",
+    "era": "early_modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1760 (Новое время). Переход к машинному производству в Британии.",
+    "image": "images/industrial-start.jpg"
+  },
+  {
+    "id": "cook-voyage",
+    "title": "Первое кругосветное плавание Кука",
+    "year": 1768,
+    "description": "Исследование Тихого океана",
+    "era": "early_modern",
+    "category": "discovery",
+    "tip": "Событие произошло в 1768 (Новое время). Исследование Тихого океана.",
+    "image": "images/cook-voyage.jpg"
+  },
+  {
+    "id": "watt-engine",
+    "title": "Усовершенствованный паровой двигатель Уатта",
+    "year": 1769,
+    "description": "Ключ к промышленной революции",
+    "era": "early_modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1769 (Новое время). Ключ к промышленной революции.",
+    "image": "images/watt-engine.jpg"
+  },
+  {
+    "id": "american-rev-start",
+    "title": "Начало Войны за независимость США",
+    "year": 1775,
+    "description": "Бой при Лексингтоне и Конкорде",
+    "era": "early_modern",
+    "category": "war",
+    "tip": "Событие произошло в 1775 (Новое время). Бой при Лексингтоне и Конкорде.",
+    "image": "images/american-rev-start.jpg"
+  },
+  {
+    "id": "usa-independence",
+    "title": "Декларация независимости США",
+    "year": 1776,
+    "description": "Рождение Соединённых Штатов Америки",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1776 (Новое время). Рождение Соединённых Штатов Америки.",
+    "image": "images/usa-independence.jpg"
+  },
+  {
+    "id": "french-revolution",
+    "title": "Взятие Бастилии",
+    "year": 1789,
+    "description": "Начало Французской революции",
+    "era": "early_modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1789 (Новое время). Начало Французской революции.",
+    "image": "images/french-revolution.jpg"
+  },
+  {
+    "id": "mozart-death",
+    "title": "Смерть Моцарта",
+    "year": 1791,
+    "description": "Великий композитор умирает в 35 лет",
+    "era": "early_modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1791 (Новое время). Великий композитор умирает в 35 лет.",
+    "image": "images/mozart-death.jpg"
+  },
+  {
+    "id": "napoleon-emperor",
+    "title": "Наполеон коронуется императором",
+    "year": 1804,
+    "description": "Провозглашение Французской империи",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1804 (XIX — первая пол. XX в.). Провозглашение Французской империи.",
+    "image": "images/napoleon-emperor.jpg"
+  },
+  {
+    "id": "abolition-uk",
+    "title": "Отмена работорговли в Британской империи",
+    "year": 1807,
+    "description": "Закон о запрете торговли рабами",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1807 (XIX — первая пол. XX в.). Закон о запрете торговли рабами.",
+    "image": "images/abolition-uk.png"
+  },
+  {
+    "id": "beethoven-5th",
+    "title": "Премьера 5-й симфонии Бетховена",
+    "year": 1808,
+    "description": "Одна из самых известных симфоний в мире",
+    "era": "modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1808 (XIX — первая пол. XX в.). Одна из самых известных симфоний в мире.",
+    "image": "images/beethoven-5th.png"
+  },
+  {
+    "id": "napoleon-moscow",
+    "title": "Наполеон входит в Москву",
+    "year": 1812,
+    "description": "Кульминация Отечественной войны, французы входят в опустевшую Москву",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1812 (XIX — первая пол. XX в.). Кульминация Отечественной войны, французы входят в опустевшую Москву.",
+    "image": "images/napoleon-moscow.jpg"
+  },
+  {
+    "id": "waterloo",
+    "title": "Битва при Ватерлоо",
+    "year": 1815,
+    "description": "Окончательное поражение Наполеона",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1815 (XIX — первая пол. XX в.). Окончательное поражение Наполеона.",
+    "image": "images/waterloo.png"
+  },
+  {
+    "id": "steam-railway",
+    "title": "Первый пассажирский паровоз",
+    "year": 1825,
+    "description": "Железная дорога Стоктон — Дарлингтон",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1825 (XIX — первая пол. XX в.). Железная дорога Стоктон — Дарлингтон.",
+    "image": "images/steam-railway.jpg"
+  },
+  {
+    "id": "faraday",
+    "title": "Открытие электромагнитной индукции",
+    "year": 1831,
+    "description": "Фарадей закладывает основы электротехники",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1831 (XIX — первая пол. XX в.). Фарадей закладывает основы электротехники.",
+    "image": "images/faraday.jpg"
+  },
+  {
+    "id": "opium-war",
+    "title": "Начало Первой опиумной войны",
+    "year": 1839,
+    "description": "Великобритания против Китая",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1839 (XIX — первая пол. XX в.). Великобритания против Китая.",
+    "image": "images/opium-war.jpg"
+  },
+  {
+    "id": "communist-manifesto",
+    "title": "«Манифест Коммунистической партии»",
+    "year": 1848,
+    "description": "Маркс и Энгельс публикуют программный текст",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1848 (XIX — первая пол. XX в.). Маркс и Энгельс публикуют программный текст.",
+    "image": "images/communist-manifesto.png"
+  },
+  {
+    "id": "crimean-war",
+    "title": "Начало Крымской войны",
+    "year": 1853,
+    "description": "Россия против коалиции европейских держав",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1853 (XIX — первая пол. XX в.). Россия против коалиции европейских держав.",
+    "image": "images/crimean-war.jpg"
+  },
+  {
+    "id": "darwin",
+    "title": "«Происхождение видов» Дарвина",
+    "year": 1859,
+    "description": "Теория эволюции путём естественного отбора",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1859 (XIX — первая пол. XX в.). Теория эволюции путём естественного отбора.",
+    "image": "images/darwin.jpg"
+  },
+  {
+    "id": "lincoln-emancipation",
+    "title": "Прокламация об освобождении рабов",
+    "year": 1863,
+    "description": "Отмена рабства в ходе Гражданской войны в США",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1863 (XIX — первая пол. XX в.). Отмена рабства в ходе Гражданской войны в США.",
+    "image": "images/lincoln-emancipation.jpg"
+  },
+  {
+    "id": "pasteur",
+    "title": "Пастер разрабатывает пастеризацию",
+    "year": 1864,
+    "description": "Метод уничтожения микробов нагреванием",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1864 (XIX — первая пол. XX в.). Метод уничтожения микробов нагреванием.",
+    "image": "images/pasteur.jpg"
+  },
+  {
+    "id": "mendeleev",
+    "title": "Периодическая таблица Менделеева",
+    "year": 1869,
+    "description": "Систематизация химических элементов",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1869 (XIX — первая пол. XX в.). Систематизация химических элементов.",
+    "image": "images/mendeleev.png"
+  },
+  {
+    "id": "suez-canal",
+    "title": "Открытие Суэцкого канала",
+    "year": 1869,
+    "description": "Кратчайший путь из Европы в Азию",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1869 (XIX — первая пол. XX в.). Кратчайший путь из Европы в Азию.",
+    "image": "images/suez-canal.jpg"
+  },
+  {
+    "id": "paris-commune",
+    "title": "Парижская коммуна",
+    "year": 1871,
+    "description": "Первая попытка власти рабочих в Европе",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1871 (XIX — первая пол. XX в.). Первая попытка власти рабочих в Европе.",
+    "image": "images/paris-commune.jpg"
+  },
+  {
+    "id": "telephone",
+    "title": "Изобретение телефона Беллом",
+    "year": 1876,
+    "description": "Первый успешный телефонный звонок",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1876 (XIX — первая пол. XX в.). Первый успешный телефонный звонок.",
+    "image": "images/telephone.jpg"
+  },
+  {
+    "id": "lightbulb",
+    "title": "Лампа накаливания Эдисона",
+    "year": 1879,
+    "description": "Практическая электрическая лампа",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1879 (XIX — первая пол. XX в.). Практическая электрическая лампа.",
+    "image": "images/lightbulb.png"
+  },
+  {
+    "id": "tesla-ac",
+    "title": "Тесла демонстрирует переменный ток",
+    "year": 1888,
+    "description": "Победа системы переменного тока",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1888 (XIX — первая пол. XX в.). Победа системы переменного тока.",
+    "image": "images/tesla-ac.jpg"
+  },
+  {
+    "id": "eiffel",
+    "title": "Строительство Эйфелевой башни",
+    "year": 1889,
+    "description": "Символ Парижа к Всемирной выставке",
+    "era": "modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1889 (XIX — первая пол. XX в.). Символ Парижа к Всемирной выставке.",
+    "image": "images/eiffel.png"
+  },
+  {
+    "id": "cinema-lumiere",
+    "title": "Первый публичный киносеанс братьев Люмьер",
+    "year": 1895,
+    "description": "Рождение кинематографа",
+    "era": "modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1895 (XIX — первая пол. XX в.). Рождение кинематографа.",
+    "image": "images/cinema-lumiere.jpg"
+  },
+  {
+    "id": "radio-marconi",
+    "title": "Первая радиопередача Маркони",
+    "year": 1895,
+    "description": "Беспроводная связь на расстояние",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1895 (XIX — первая пол. XX в.). Беспроводная связь на расстояние.",
+    "image": "images/radio-marconi.jpg"
+  },
+  {
+    "id": "roentgen",
+    "title": "Открытие рентгеновских лучей Рентгеном",
+    "year": 1895,
+    "description": "Новый вид излучения меняет медицину",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1895 (XIX — первая пол. XX в.). Новый вид излучения меняет медицину.",
+    "image": "images/roentgen.jpg"
+  },
+  {
+    "id": "xray",
+    "title": "Открытие рентгеновских лучей",
+    "year": 1895,
+    "description": "Вильгельм Рентген открывает X-лучи",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1895 (XIX — первая пол. XX в.). Вильгельм Рентген открывает X-лучи.",
+    "image": "images/xray.jpg"
+  },
+  {
+    "id": "olympic-modern",
+    "title": "Первые современные Олимпийские игры",
+    "year": 1896,
+    "description": "Возрождение Олимпиады в Афинах",
+    "era": "modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1896 (XIX — первая пол. XX в.). Возрождение Олимпиады в Афинах.",
+    "image": "images/olympic-modern.jpg"
+  },
+  {
+    "id": "curie-radium",
+    "title": "Открытие радия четой Кюри",
+    "year": 1898,
+    "description": "Исследования радиоактивности",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1898 (XIX — первая пол. XX в.). Исследования радиоактивности.",
+    "image": "images/curie-radium.jpg"
+  },
+  {
+    "id": "boxer-rebellion",
+    "title": "Ихэтуаньское восстание",
+    "year": 1899,
+    "description": "Антииностранное восстание в Китае",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1899 (XIX — первая пол. XX в.). Антииностранное восстание в Китае.",
+    "image": "images/boxer-rebellion.jpg"
+  },
+  {
+    "id": "wright",
+    "title": "Первый полёт братьев Райт",
+    "year": 1903,
+    "description": "Рождение авиации",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1903 (XIX — первая пол. XX в.). Рождение авиации.",
+    "image": "images/wright.jpg"
+  },
+  {
+    "id": "russo-japanese",
+    "title": "Начало русско-японской войны",
+    "year": 1904,
+    "description": "Первая крупная война XX века",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1904 (XIX — первая пол. XX в.). Первая крупная война XX века.",
+    "image": "images/russo-japanese.jpg"
+  },
+  {
+    "id": "einstein",
+    "title": "Специальная теория относительности",
+    "year": 1905,
+    "description": "Эйнштейн публикует революционную работу",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1905 (XIX — первая пол. XX в.). Эйнштейн публикует революционную работу.",
+    "image": "images/einstein.jpg"
+  },
+  {
+    "id": "einstein-photoelectric",
+    "title": "Объяснение фотоэффекта Эйнштейном",
+    "year": 1905,
+    "description": "Работа, за которую позже дали Нобелевскую премию",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1905 (XIX — первая пол. XX в.). Работа, за которую позже дали Нобелевскую премию.",
+    "image": "images/einstein-photoelectric.png"
+  },
+  {
+    "id": "titanic",
+    "title": "Гибель «Титаника»",
+    "year": 1912,
+    "description": "Крупнейшая морская катастрофа своего времени",
+    "era": "modern",
+    "category": "disaster",
+    "tip": "Событие произошло в 1912 (XIX — первая пол. XX в.). Крупнейшая морская катастрофа своего времени.",
+    "image": "images/titanic.jpg"
+  },
+  {
+    "id": "ford-model-t",
+    "title": "Конвейер Форда и Model T",
+    "year": 1913,
+    "description": "Массовое производство автомобилей",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1913 (XIX — первая пол. XX в.). Массовое производство автомобилей.",
+    "image": "images/ford-model-t.jpg"
+  },
+  {
+    "id": "panama-canal",
+    "title": "Открытие Панамского канала",
+    "year": 1914,
+    "description": "Связь Атлантического и Тихого океанов",
+    "era": "modern",
+    "category": "technology",
+    "tip": "Событие произошло в 1914 (XIX — первая пол. XX в.). Связь Атлантического и Тихого океанов.",
+    "image": "images/panama-canal.png"
+  },
+  {
+    "id": "ww1-start",
+    "title": "Начало Первой мировой войны",
+    "year": 1914,
+    "description": "Убийство в Сараево и начало мировой войны",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1914 (XIX — первая пол. XX в.). Убийство в Сараево и начало мировой войны.",
+    "image": "images/ww1-start.jpg"
+  },
+  {
+    "id": "october",
+    "title": "Октябрьская революция в России",
+    "year": 1917,
+    "description": "Большевики берут власть в Петрограде",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1917 (XIX — первая пол. XX в.). Большевики берут власть в Петрограде.",
+    "image": "images/october.jpg"
+  },
+  {
+    "id": "spanish-flu",
+    "title": "Пандемия «испанки»",
+    "year": 1918,
+    "description": "Одна из самых смертоносных пандемий в истории",
+    "era": "modern",
+    "category": "disaster",
+    "tip": "Событие произошло в 1918 (XIX — первая пол. XX в.). Одна из самых смертоносных пандемий в истории.",
+    "image": "images/spanish-flu.jpg"
+  },
+  {
+    "id": "ww1-end",
+    "title": "Окончание Первой мировой войны",
+    "year": 1918,
+    "description": "Компьенское перемирие",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1918 (XIX — первая пол. XX в.). Компьенское перемирие.",
+    "image": "images/ww1-end.jpg"
+  },
+  {
+    "id": "versailles",
+    "title": "Версальский договор",
+    "year": 1919,
+    "description": "Итоги Первой мировой войны",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1919 (XIX — первая пол. XX в.). Итоги Первой мировой войны.",
+    "image": "images/versailles.jpg"
+  },
+  {
+    "id": "tut-tomb",
+    "title": "Открытие гробницы Тутанхамона",
+    "year": 1922,
+    "description": "Говард Картер находит нетронутую гробницу",
+    "era": "modern",
+    "category": "discovery",
+    "tip": "Событие произошло в 1922 (XIX — первая пол. XX в.). Говард Картер находит нетронутую гробницу.",
+    "image": "images/tut-tomb.jpg"
+  },
+  {
+    "id": "lenin-death",
+    "title": "Смерть Ленина",
+    "year": 1924,
+    "description": "Конец эпохи вождя революции",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1924 (XIX — первая пол. XX в.). Конец эпохи вождя революции.",
+    "image": "images/lenin-death.jpg"
+  },
+  {
+    "id": "talkies",
+    "title": "Первый звуковой фильм",
+    "year": 1927,
+    "description": "«Певец джаза» — конец эпохи немого кино",
+    "era": "modern",
+    "category": "culture",
+    "tip": "Событие произошло в 1927 (XIX — первая пол. XX в.). «Певец джаза» — конец эпохи немого кино.",
+    "image": "images/talkies.jpg"
+  },
+  {
+    "id": "penicillin",
+    "title": "Открытие пенициллина",
+    "year": 1928,
+    "description": "Александр Флеминг открывает антибиотик",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1928 (XIX — первая пол. XX в.). Александр Флеминг открывает антибиотик.",
+    "image": "images/penicillin.png"
+  },
+  {
+    "id": "great-depression",
+    "title": "Чёрный вторник — крах Уолл-стрит",
+    "year": 1929,
+    "description": "Начало Великой депрессии",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1929 (XIX — первая пол. XX в.). Начало Великой депрессии.",
+    "image": "images/great-depression.jpg"
+  },
+  {
+    "id": "hitler-power",
+    "title": "Гитлер становится канцлером",
+    "year": 1933,
+    "description": "Нацисты приходят к власти в Германии",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1933 (XIX — первая пол. XX в.). Нацисты приходят к власти в Германии.",
+    "image": "images/hitler-power.jpg"
+  },
+  {
+    "id": "spanish-civil",
+    "title": "Начало Гражданской войны в Испании",
+    "year": 1936,
+    "description": "Репетиция Второй мировой войны",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1936 (XIX — первая пол. XX в.). Репетиция Второй мировой войны.",
+    "image": "images/spanish-civil.jpg"
+  },
+  {
+    "id": "anschluss",
+    "title": "Аншлюс Австрии",
+    "year": 1938,
+    "description": "Присоединение Австрии к нацистской Германии",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1938 (XIX — первая пол. XX в.). Присоединение Австрии к нацистской Германии.",
+    "image": "images/anschluss.jpg"
+  },
+  {
+    "id": "munich-agreement",
+    "title": "Мюнхенское соглашение",
+    "year": 1938,
+    "description": "Политика умиротворения Гитлера",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1938 (XIX — первая пол. XX в.). Политика умиротворения Гитлера.",
+    "image": "images/munich-agreement.jpg"
+  },
+  {
+    "id": "ww2-start",
+    "title": "Начало Второй мировой войны",
+    "year": 1939,
+    "description": "Вторжение Германии в Польшу",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1939 (XIX — первая пол. XX в.). Вторжение Германии в Польшу.",
+    "image": "images/ww2-start.png"
+  },
+  {
+    "id": "battle-britain",
+    "title": "Битва за Британию",
+    "year": 1940,
+    "description": "Воздушная битва над Англией",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1940 (XIX — первая пол. XX в.). Воздушная битва над Англией.",
+    "image": "images/battle-britain.jpg"
+  },
+  {
+    "id": "barbarossa",
+    "title": "Операция «Барбаросса»",
+    "year": 1941,
+    "description": "Нападение Германии на СССР",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1941 (XIX — первая пол. XX в.). Нападение Германии на СССР.",
+    "image": "images/barbarossa.jpg"
+  },
+  {
+    "id": "pearl-harbor",
+    "title": "Нападение на Перл-Харбор",
+    "year": 1941,
+    "description": "США вступают во Вторую мировую войну",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1941 (XIX — первая пол. XX в.). США вступают во Вторую мировую войну.",
+    "image": "images/pearl-harbor.jpg"
+  },
+  {
+    "id": "midway",
+    "title": "Битва за Мидуэй",
+    "year": 1942,
+    "description": "Коренной перелом на Тихом океане",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1942 (XIX — первая пол. XX в.). Коренной перелом на Тихом океане.",
+    "image": "images/midway.jpg"
+  },
+  {
+    "id": "penicillin-use",
+    "title": "Начало массового применения пенициллина",
+    "year": 1942,
+    "description": "Антибиотик спасает тысячи жизней на войне",
+    "era": "modern",
+    "category": "science",
+    "tip": "Событие произошло в 1942 (XIX — первая пол. XX в.). Антибиотик спасает тысячи жизней на войне.",
+    "image": "images/penicillin-use.jpg"
+  },
+  {
+    "id": "stalingrad-end",
+    "title": "Завершение Сталинградской битвы",
+    "year": 1943,
+    "description": "Коренной перелом во Второй мировой войне",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1943 (XIX — первая пол. XX в.). Коренной перелом во Второй мировой войне.",
+    "image": "images/stalingrad-end.jpg"
+  },
+  {
+    "id": "d-day",
+    "title": "Высадка в Нормандии",
+    "year": 1944,
+    "description": "Открытие второго фронта в Европе",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1944 (XIX — первая пол. XX в.). Открытие второго фронта в Европе.",
+    "image": "images/d-day.jpg"
+  },
+  {
+    "id": "hiroshima",
+    "title": "Атомная бомбардировка Хиросимы",
+    "year": 1945,
+    "description": "Первое боевое применение ядерного оружия",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1945 (XIX — первая пол. XX в.). Первое боевое применение ядерного оружия.",
+    "image": "images/hiroshima.jpg"
+  },
+  {
+    "id": "nuremberg",
+    "title": "Нюрнбергский процесс",
+    "year": 1945,
+    "description": "Суд над главными нацистскими преступниками",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1945 (XIX — первая пол. XX в.). Суд над главными нацистскими преступниками.",
+    "image": "images/nuremberg.jpg"
+  },
+  {
+    "id": "un",
+    "title": "Создание ООН",
+    "year": 1945,
+    "description": "Организация Объединённых Наций",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1945 (Современность). Организация Объединённых Наций.",
+    "image": "images/un.png"
+  },
+  {
+    "id": "ww2-end",
+    "title": "Окончание Второй мировой войны",
+    "year": 1945,
+    "description": "Капитуляция Японии",
+    "era": "modern",
+    "category": "war",
+    "tip": "Событие произошло в 1945 (XIX — первая пол. XX в.). Капитуляция Японии.",
+    "image": "images/ww2-end.jpg"
+  },
+  {
+    "id": "yalta",
+    "title": "Ялтинская конференция",
+    "year": 1945,
+    "description": "Раздел послевоенного мира союзниками",
+    "era": "modern",
+    "category": "politics",
+    "tip": "Событие произошло в 1945 (XIX — первая пол. XX в.). Раздел послевоенного мира союзниками.",
+    "image": "images/yalta.jpg"
+  },
+  {
+    "id": "india-independence",
+    "title": "Независимость Индии",
+    "year": 1947,
+    "description": "Конец британского колониального правления",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1947 (Современность). Конец британского колониального правления.",
+    "image": "images/india-independence.jpg"
+  },
+  {
+    "id": "marshall-plan",
+    "title": "План Маршалла",
+    "year": 1947,
+    "description": "Программа восстановления Европы после войны",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1947 (Современность). Программа восстановления Европы после войны.",
+    "image": "images/marshall-plan.png"
+  },
+  {
+    "id": "transistor",
+    "title": "Изобретение транзистора",
+    "year": 1947,
+    "description": "Основа современной электроники",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1947 (Современность). Основа современной электроники.",
+    "image": "images/transistor.jpg"
+  },
+  {
+    "id": "israel-founded",
+    "title": "Провозглашение государства Израиль",
+    "year": 1948,
+    "description": "Создание современного Израиля",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1948 (Современность). Создание современного Израиля.",
+    "image": "images/israel-founded.jpg"
+  },
+  {
+    "id": "nato",
+    "title": "Создание НАТО",
+    "year": 1949,
+    "description": "Североатлантический альянс",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1949 (Современность). Североатлантический альянс.",
+    "image": "images/nato.png"
+  },
+  {
+    "id": "prc",
+    "title": "Провозглашение КНР",
+    "year": 1949,
+    "description": "Мао Цзэдун объявляет Китайскую Народную Республику",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1949 (Современность). Мао Цзэдун объявляет Китайскую Народную Республику.",
+    "image": "images/prc.jpg"
+  },
+  {
+    "id": "korean-war",
+    "title": "Начало Корейской войны",
+    "year": 1950,
+    "description": "Первый крупный горячий конфликт холодной войны",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1950 (Современность). Первый крупный горячий конфликт холодной войны.",
+    "image": "images/korean-war.jpg"
+  },
+  {
+    "id": "dna-structure",
+    "title": "Открытие структуры ДНК",
+    "year": 1953,
+    "description": "Двойная спираль Уотсона и Крика",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1953 (Современность). Двойная спираль Уотсона и Крика.",
+    "image": "images/dna-structure.png"
+  },
+  {
+    "id": "polio-vaccine",
+    "title": "Вакцина Солка против полиомиелита",
+    "year": 1955,
+    "description": "Массовая вакцинация начинает побеждать болезнь",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1955 (Современность). Массовая вакцинация начинает побеждать болезнь.",
+    "image": "images/polio-vaccine.jpg"
+  },
+  {
+    "id": "suez-crisis",
+    "title": "Суэцкий кризис",
+    "year": 1956,
+    "description": "Конфликт вокруг Суэцкого канала",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1956 (Современность). Конфликт вокруг Суэцкого канала.",
+    "image": "images/suez-crisis.jpg"
+  },
+  {
+    "id": "sputnik",
+    "title": "Запуск первого спутника",
+    "year": 1957,
+    "description": "СССР открывает космическую эру",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1957 (Современность). СССР открывает космическую эру.",
+    "image": "images/sputnik.jpg"
+  },
+  {
+    "id": "castro",
+    "title": "Победа революции на Кубе",
+    "year": 1959,
+    "description": "Фидель Кастро приходит к власти",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1959 (Современность). Фидель Кастро приходит к власти.",
+    "image": "images/castro.jpg"
+  },
+  {
+    "id": "laser",
+    "title": "Создание первого лазера",
+    "year": 1960,
+    "description": "Теодор Мейман демонстрирует лазер",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1960 (Современность). Теодор Мейман демонстрирует лазер.",
+    "image": "images/laser.jpg"
+  },
+  {
+    "id": "berlin-wall",
+    "title": "Возведение Берлинской стены",
+    "year": 1961,
+    "description": "Символ холодной войны",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1961 (Современность). Символ холодной войны.",
+    "image": "images/berlin-wall.jpg"
+  },
+  {
+    "id": "gagarin",
+    "title": "Полёт Юрия Гагарина",
+    "year": 1961,
+    "description": "Первый человек в космосе",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1961 (Современность). Первый человек в космосе.",
+    "image": "images/gagarin.jpg"
+  },
+  {
+    "id": "cuban-missile",
+    "title": "Карибский кризис",
+    "year": 1962,
+    "description": "Мир на грани ядерной войны",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1962 (Современность). Мир на грани ядерной войны.",
+    "image": "images/cuban-missile.jpg"
+  },
+  {
+    "id": "vatican-ii",
+    "title": "Второй Ватиканский собор",
+    "year": 1962,
+    "description": "Реформы католической церкви",
+    "era": "contemporary",
+    "category": "religion",
+    "tip": "Событие произошло в 1962 (Современность). Реформы католической церкви.",
+    "image": "images/vatican-ii.jpg"
+  },
+  {
+    "id": "jfk-assassination",
+    "title": "Убийство Джона Кеннеди",
+    "year": 1963,
+    "description": "Президент США застрелен в Далласе",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1963 (Современность). Президент США застрелен в Далласе.",
+    "image": "images/jfk-assassination.jpg"
+  },
+  {
+    "id": "mlk-speech",
+    "title": "Речь «У меня есть мечта»",
+    "year": 1963,
+    "description": "Мартин Лютер Кинг выступает за гражданские права",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1963 (Современность). Мартин Лютер Кинг выступает за гражданские права.",
+    "image": "images/mlk-speech.jpg"
+  },
+  {
+    "id": "beatles-usa",
+    "title": "«Битлз» в Америке",
+    "year": 1964,
+    "description": "Начало британского вторжения в поп-музыку",
+    "era": "contemporary",
+    "category": "culture",
+    "tip": "Событие произошло в 1964 (Современность). Начало британского вторжения в поп-музыку.",
+    "image": "images/beatles-usa.jpg"
+  },
+  {
+    "id": "vietnam-escalate",
+    "title": "Эскалация войны во Вьетнаме",
+    "year": 1965,
+    "description": "Масштабное военное вмешательство США",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1965 (Современность). Масштабное военное вмешательство США.",
+    "image": "images/vietnam-escalate.jpg"
+  },
+  {
+    "id": "six-day-war",
+    "title": "Шестидневная война",
+    "year": 1967,
+    "description": "Победа Израиля над арабскими странами",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1967 (Современность). Победа Израиля над арабскими странами.",
+    "image": "images/six-day-war.png"
+  },
+  {
+    "id": "prague-spring",
+    "title": "Пражская весна",
+    "year": 1968,
+    "description": "Попытка реформ в Чехословакии",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1968 (Современность). Попытка реформ в Чехословакии.",
+    "image": "images/prague-spring.jpg"
+  },
+  {
+    "id": "internet",
+    "title": "Рождение ARPANET (предшественник Интернета)",
+    "year": 1969,
+    "description": "Первая сеть передачи пакетов",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1969 (Современность). Первая сеть передачи пакетов.",
+    "image": "images/internet.png"
+  },
+  {
+    "id": "moon",
+    "title": "Высадка на Луну",
+    "year": 1969,
+    "description": "Нил Армстронг — первый человек на Луне",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1969 (Современность). Нил Армстронг — первый человек на Луне.",
+    "image": "images/moon.jpg"
+  },
+  {
+    "id": "woodstock",
+    "title": "Фестиваль Вудсток",
+    "year": 1969,
+    "description": "Символ контркультуры 1960-х",
+    "era": "contemporary",
+    "category": "culture",
+    "tip": "Событие произошло в 1969 (Современность). Символ контркультуры 1960-х.",
+    "image": "images/woodstock.jpg"
+  },
+  {
+    "id": "bangladesh",
+    "title": "Война за независимость Бангладеш",
+    "year": 1971,
+    "description": "Создание нового государства в Южной Азии",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1971 (Современность). Создание нового государства в Южной Азии.",
+    "image": "images/bangladesh.jpg"
+  },
+  {
+    "id": "first-email",
+    "title": "Первое электронное письмо",
+    "year": 1971,
+    "description": "Рэй Томлинсон отправляет сообщение по сети",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1971 (Современность). Рэй Томлинсон отправляет сообщение по сети.",
+    "image": "images/first-email.jpg"
+  },
+  {
+    "id": "munich-olympics",
+    "title": "Теракт на Олимпиаде в Мюнхене",
+    "year": 1972,
+    "description": "Захват израильских спортсменов",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1972 (Современность). Захват израильских спортсменов.",
+    "image": "images/munich-olympics.jpg"
+  },
+  {
+    "id": "watergate",
+    "title": "Уотергейтский скандал",
+    "year": 1972,
+    "description": "Отставка президента Никсона",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1972 (Современность). Отставка президента Никсона.",
+    "image": "images/watergate.jpg"
+  },
+  {
+    "id": "yom-kippur",
+    "title": "Война Судного дня",
+    "year": 1973,
+    "description": "Арабо-израильский конфликт",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1973 (Современность). Арабо-израильский конфликт.",
+    "image": "images/yom-kippur.png"
+  },
+  {
+    "id": "saigon-fall",
+    "title": "Падение Сайгона",
+    "year": 1975,
+    "description": "Окончание войны во Вьетнаме",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1975 (Современность). Окончание войны во Вьетнаме.",
+    "image": "images/saigon-fall.webp"
+  },
+  {
+    "id": "apple-founded",
+    "title": "Основание Apple",
+    "year": 1976,
+    "description": "Стив Джобс и Стив Возняк создают компанию",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1976 (Современность). Стив Джобс и Стив Возняк создают компанию.",
+    "image": "images/apple-founded.png"
+  },
+  {
+    "id": "apple-ii",
+    "title": "Выход Apple II",
+    "year": 1977,
+    "description": "Начало эры домашних компьютеров",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1977 (Современность). Начало эры домашних компьютеров.",
+    "image": "images/apple-ii.jpg"
+  },
+  {
+    "id": "voyager",
+    "title": "Запуск «Вояджеров»",
+    "year": 1977,
+    "description": "Межпланетные зонды уходят за пределы Солнечной системы",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1977 (Современность). Межпланетные зонды уходят за пределы Солнечной системы.",
+    "image": "images/voyager.jpg"
+  },
+  {
+    "id": "iran-hostage",
+    "title": "Захват заложников в Тегеране",
+    "year": 1979,
+    "description": "Кризис с американскими дипломатами",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1979 (Современность). Кризис с американскими дипломатами.",
+    "image": "images/iran-hostage.jpg"
+  },
+  {
+    "id": "three-mile",
+    "title": "Авария на АЭС Три-Майл-Айленд",
+    "year": 1979,
+    "description": "Крупнейшая ядерная авария в США",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1979 (Современность). Крупнейшая ядерная авария в США.",
+    "image": "images/three-mile.jpg"
+  },
+  {
+    "id": "iran-iraq-war",
+    "title": "Начало ирано-иракской войны",
+    "year": 1980,
+    "description": "Восьмилетний конфликт на Ближнем Востоке",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1980 (Современность). Восьмилетний конфликт на Ближнем Востоке.",
+    "image": "images/iran-iraq-war.jpg"
+  },
+  {
+    "id": "smallpox-eradicated",
+    "title": "Официальная ликвидация оспы",
+    "year": 1980,
+    "description": "Единственная болезнь человека, полностью искоренённая",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1980 (Современность). Единственная болезнь человека, полностью искоренённая.",
+    "image": "images/smallpox-eradicated.jpg"
+  },
+  {
+    "id": "solidarity",
+    "title": "Создание «Солидарности» в Польше",
+    "year": 1980,
+    "description": "Первый независимый профсоюз в соцлагере",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1980 (Современность). Первый независимый профсоюз в соцлагере.",
+    "image": "images/solidarity.png"
+  },
+  {
+    "id": "aids-first",
+    "title": "Первые сообщения о СПИДе",
+    "year": 1981,
+    "description": "Начало пандемии ВИЧ/СПИД",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1981 (Современность). Начало пандемии ВИЧ/СПИД.",
+    "image": "images/aids-first.png"
+  },
+  {
+    "id": "ibm-pc",
+    "title": "Выход IBM PC",
+    "year": 1981,
+    "description": "Стандарт персональных компьютеров",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1981 (Современность). Стандарт персональных компьютеров.",
+    "image": "images/ibm-pc.png"
+  },
+  {
+    "id": "cd",
+    "title": "Появление компакт-дисков",
+    "year": 1982,
+    "description": "Цифровой звук входит в массовый обиход",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1982 (Современность). Цифровой звук входит в массовый обиход.",
+    "image": "images/cd.png"
+  },
+  {
+    "id": "falklands",
+    "title": "Фолклендская война",
+    "year": 1982,
+    "description": "Великобритания против Аргентины",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1982 (Современность). Великобритания против Аргентины.",
+    "image": "images/falklands.jpg"
+  },
+  {
+    "id": "indira-gandhi",
+    "title": "Убийство Индиры Ганди",
+    "year": 1984,
+    "description": "Премьер-министр Индии убита",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1984 (Современность). Премьер-министр Индии убита.",
+    "image": "images/indira-gandhi.png"
+  },
+  {
+    "id": "live-aid",
+    "title": "Концерт Live Aid",
+    "year": 1985,
+    "description": "Глобальный благотворительный концерт против голода",
+    "era": "contemporary",
+    "category": "culture",
+    "tip": "Событие произошло в 1985 (Современность). Глобальный благотворительный концерт против голода.",
+    "image": "images/live-aid.jpg"
+  },
+  {
+    "id": "perestroika",
+    "title": "Начало перестройки в СССР",
+    "year": 1985,
+    "description": "Реформы Михаила Горбачёва",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1985 (Современность). Реформы Михаила Горбачёва.",
+    "image": "images/perestroika.jpg"
+  },
+  {
+    "id": "challenger",
+    "title": "Катастрофа «Челленджера»",
+    "year": 1986,
+    "description": "Гибель шаттла и всего экипажа",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1986 (Современность). Гибель шаттла и всего экипажа.",
+    "image": "images/challenger.jpg"
+  },
+  {
+    "id": "chernobyl",
+    "title": "Чернобыльская катастрофа",
+    "year": 1986,
+    "description": "Крупнейшая авария на АЭС",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1986 (Современность). Крупнейшая авария на АЭС.",
+    "image": "images/chernobyl.jpg"
+  },
+  {
+    "id": "berlin-wall-fall",
+    "title": "Падение Берлинской стены",
+    "year": 1989,
+    "description": "Символический конец холодной войны",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1989 (Современность). Символический конец холодной войны.",
+    "image": "images/berlin-wall-fall.jpg"
+  },
+  {
+    "id": "tiananmen",
+    "title": "События на площади Тяньаньмэнь",
+    "year": 1989,
+    "description": "Подавление студенческих протестов в Китае",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1989 (Современность). Подавление студенческих протестов в Китае.",
+    "image": "images/tiananmen.jpg"
+  },
+  {
+    "id": "www",
+    "title": "Изобретение Всемирной паутины",
+    "year": 1989,
+    "description": "Тим Бернерс-Ли создаёт WWW",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1989 (Современность). Тим Бернерс-Ли создаёт WWW.",
+    "image": "images/www.png"
+  },
+  {
+    "id": "german-unity",
+    "title": "Объединение Германии",
+    "year": 1990,
+    "description": "Конец разделения страны после холодной войны",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1990 (Современность). Конец разделения страны после холодной войны.",
+    "image": "images/german-unity.jpg"
+  },
+  {
+    "id": "hubble",
+    "title": "Запуск телескопа «Хаббл»",
+    "year": 1990,
+    "description": "Космическая обсерватория меняет астрономию",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1990 (Современность). Космическая обсерватория меняет астрономию.",
+    "image": "images/hubble.jpg"
+  },
+  {
+    "id": "gulf-war",
+    "title": "Война в Персидском заливе",
+    "year": 1991,
+    "description": "Операция «Буря в пустыне»",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1991 (Современность). Операция «Буря в пустыне».",
+    "image": "images/gulf-war.jpg"
+  },
+  {
+    "id": "linux",
+    "title": "Появление ядра Linux",
+    "year": 1991,
+    "description": "Линус Торвальдс публикует свободную ОС",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1991 (Современность). Линус Торвальдс публикует свободную ОС.",
+    "image": "images/linux.png"
+  },
+  {
+    "id": "ussr-collapse",
+    "title": "Распад СССР",
+    "year": 1991,
+    "description": "Конец Советского Союза",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1991 (Современность). Конец Советского Союза.",
+    "image": "images/ussr-collapse.png"
+  },
+  {
+    "id": "yugoslavia-breakup",
+    "title": "Начало распада Югославии",
+    "year": 1991,
+    "description": "Кровавые конфликты на Балканах",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 1991 (Современность). Кровавые конфликты на Балканах.",
+    "image": "images/yugoslavia-breakup.gif"
+  },
+  {
+    "id": "maastricht",
+    "title": "Маастрихтский договор",
+    "year": 1992,
+    "description": "Создание Европейского союза",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1992 (Современность). Создание Европейского союза.",
+    "image": "images/maastricht.jpg"
+  },
+  {
+    "id": "mandela-president",
+    "title": "Нельсон Мандела становится президентом",
+    "year": 1994,
+    "description": "Конец апартеида в ЮАР",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1994 (Современность). Конец апартеида в ЮАР.",
+    "image": "images/mandela-president.jpg"
+  },
+  {
+    "id": "rwanda-genocide",
+    "title": "Геноцид в Руанде",
+    "year": 1994,
+    "description": "Массовые убийства тутси",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1994 (Современность). Массовые убийства тутси.",
+    "image": "images/rwanda-genocide.jpg"
+  },
+  {
+    "id": "okc-bombing",
+    "title": "Взрыв в Оклахома-Сити",
+    "year": 1995,
+    "description": "Крупнейший теракт в США до 11 сентября",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1995 (Современность). Крупнейший теракт в США до 11 сентября.",
+    "image": "images/okc-bombing.jpg"
+  },
+  {
+    "id": "dolly",
+    "title": "Клонирование овцы Долли",
+    "year": 1996,
+    "description": "Первое клонированное млекопитающее",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 1996 (Современность). Первое клонированное млекопитающее.",
+    "image": "images/dolly.jpg"
+  },
+  {
+    "id": "diana-death",
+    "title": "Гибель принцессы Дианы",
+    "year": 1997,
+    "description": "Автокатастрофа в Париже",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 1997 (Современность). Автокатастрофа в Париже.",
+    "image": "images/diana-death.jpg"
+  },
+  {
+    "id": "hong-kong-return",
+    "title": "Возвращение Гонконга Китаю",
+    "year": 1997,
+    "description": "Конец британского правления",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 1997 (Современность). Конец британского правления.",
+    "image": "images/hong-kong-return.jpg"
+  },
+  {
+    "id": "google",
+    "title": "Основание Google",
+    "year": 1998,
+    "description": "Начало эры поисковых систем нового поколения",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 1998 (Современность). Начало эры поисковых систем нового поколения.",
+    "image": "images/google.jpg"
+  },
+  {
+    "id": "911",
+    "title": "Теракты 11 сентября",
+    "year": 2001,
+    "description": "Атаки на Всемирный торговый центр и Пентагон",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 2001 (Современность). Атаки на Всемирный торговый центр и Пентагон.",
+    "image": "images/911.jpg"
+  },
+  {
+    "id": "human-genome",
+    "title": "Черновик генома человека",
+    "year": 2001,
+    "description": "Проект «Геном человека» публикует черновую карту",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 2001 (Современность). Проект «Геном человека» публикует черновую карту.",
+    "image": "images/human-genome.jpg"
+  },
+  {
+    "id": "euro-cash",
+    "title": "Введение наличных евро",
+    "year": 2002,
+    "description": "Единая европейская валюта входит в оборот",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2002 (Современность). Единая европейская валюта входит в оборот.",
+    "image": "images/euro-cash.png"
+  },
+  {
+    "id": "iraq-invasion",
+    "title": "Вторжение в Ирак",
+    "year": 2003,
+    "description": "Свержение режима Саддама Хусейна",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 2003 (Современность). Свержение режима Саддама Хусейна.",
+    "image": "images/iraq-invasion.jpg"
+  },
+  {
+    "id": "facebook",
+    "title": "Запуск Facebook",
+    "year": 2004,
+    "description": "Начало эпохи современных социальных сетей",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 2004 (Современность). Начало эпохи современных социальных сетей.",
+    "image": "images/facebook.png"
+  },
+  {
+    "id": "tsunami-2004",
+    "title": "Цунами в Индийском океане",
+    "year": 2004,
+    "description": "Одна из самых смертоносных природных катастроф",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 2004 (Современность). Одна из самых смертоносных природных катастроф.",
+    "image": "images/tsunami-2004.jpg"
+  },
+  {
+    "id": "youtube",
+    "title": "Запуск YouTube",
+    "year": 2005,
+    "description": "Видеохостинг меняет интернет",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 2005 (Современность). Видеохостинг меняет интернет.",
+    "image": "images/youtube.png"
+  },
+  {
+    "id": "iphone",
+    "title": "Презентация первого iPhone",
+    "year": 2007,
+    "description": "Революция смартфонов",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 2007 (Современность). Революция смартфонов.",
+    "image": "images/iphone.png"
+  },
+  {
+    "id": "financial-crisis",
+    "title": "Мировой финансовый кризис",
+    "year": 2008,
+    "description": "Крах Lehman Brothers и глобальная рецессия",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2008 (Современность). Крах Lehman Brothers и глобальная рецессия.",
+    "image": "images/financial-crisis.jpg"
+  },
+  {
+    "id": "iphone-appstore",
+    "title": "Запуск App Store",
+    "year": 2008,
+    "description": "Экосистема мобильных приложений",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 2008 (Современность). Экосистема мобильных приложений.",
+    "image": "images/iphone-appstore.jpg"
+  },
+  {
+    "id": "arab-spring",
+    "title": "Начало Арабской весны",
+    "year": 2010,
+    "description": "Волна протестов на Ближнем Востоке",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2010 (Современность). Волна протестов на Ближнем Востоке.",
+    "image": "images/arab-spring.jpg"
+  },
+  {
+    "id": "bin-laden",
+    "title": "Убийство Усамы бен Ладена",
+    "year": 2011,
+    "description": "Ликвидация лидера Аль-Каиды",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2011 (Современность). Ликвидация лидера Аль-Каиды.",
+    "image": "images/bin-laden.jpg"
+  },
+  {
+    "id": "fukushima",
+    "title": "Авария на АЭС Фукусима",
+    "year": 2011,
+    "description": "Ядерная катастрофа после цунами в Японии",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 2011 (Современность). Ядерная катастрофа после цунами в Японии.",
+    "image": "images/fukushima.jpg"
+  },
+  {
+    "id": "crispr",
+    "title": "CRISPR как инструмент редактирования генома",
+    "year": 2012,
+    "description": "Революция в генной инженерии",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 2012 (Современность). Революция в генной инженерии.",
+    "image": "images/crispr.png"
+  },
+  {
+    "id": "higgs",
+    "title": "Открытие бозона Хиггса",
+    "year": 2012,
+    "description": "Подтверждение Стандартной модели в ЦЕРНе",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 2012 (Современность). Подтверждение Стандартной модели в ЦЕРНе.",
+    "image": "images/higgs.png"
+  },
+  {
+    "id": "snowden",
+    "title": "Разоблачения Эдварда Сноудена",
+    "year": 2013,
+    "description": "Утечки о глобальной слежке спецслужб",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2013 (Современность). Утечки о глобальной слежке спецслужб.",
+    "image": "images/snowden.jpg"
+  },
+  {
+    "id": "crimea-2014",
+    "title": "Присоединение Крыма к России",
+    "year": 2014,
+    "description": "Изменение границ в Европе",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2014 (Современность). Изменение границ в Европе.",
+    "image": "images/crimea-2014.jpg"
+  },
+  {
+    "id": "paris-attacks",
+    "title": "Теракты в Париже",
+    "year": 2015,
+    "description": "Атаки в «Батаклане» и других местах",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 2015 (Современность). Атаки в «Батаклане» и других местах.",
+    "image": "images/paris-attacks.jpg"
+  },
+  {
+    "id": "alphago",
+    "title": "AlphaGo побеждает чемпиона мира по го",
+    "year": 2016,
+    "description": "ИИ превосходит человека в сложнейшей игре",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 2016 (Современность). ИИ превосходит человека в сложнейшей игре.",
+    "image": "images/alphago.jpg"
+  },
+  {
+    "id": "brexit-vote",
+    "title": "Референдум о Brexit",
+    "year": 2016,
+    "description": "Великобритания голосует за выход из ЕС",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2016 (Современность). Великобритания голосует за выход из ЕС.",
+    "image": "images/brexit-vote.png"
+  },
+  {
+    "id": "trump-elected",
+    "title": "Избрание Дональда Трампа",
+    "year": 2016,
+    "description": "Неожиданная победа на выборах президента США",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2016 (Современность). Неожиданная победа на выборах президента США.",
+    "image": "images/trump-elected.jpg"
+  },
+  {
+    "id": "metoo",
+    "title": "Движение #MeToo",
+    "year": 2017,
+    "description": "Глобальная кампания против сексуальных домогательств",
+    "era": "contemporary",
+    "category": "culture",
+    "tip": "Событие произошло в 2017 (Современность). Глобальная кампания против сексуальных домогательств.",
+    "image": "images/metoo.jpg"
+  },
+  {
+    "id": "covid",
+    "title": "Начало пандемии COVID-19",
+    "year": 2019,
+    "description": "Глобальная пандемия коронавируса",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 2019 (Современность). Глобальная пандемия коронавируса.",
+    "image": "images/covid.jpg"
+  },
+  {
+    "id": "notre-dame-fire",
+    "title": "Пожар в соборе Нотр-Дам",
+    "year": 2019,
+    "description": "Серьёзное повреждение символа Парижа",
+    "era": "contemporary",
+    "category": "disaster",
+    "tip": "Событие произошло в 2019 (Современность). Серьёзное повреждение символа Парижа.",
+    "image": "images/notre-dame-fire.jpg"
+  },
+  {
+    "id": "george-floyd",
+    "title": "Убийство Джорджа Флойда",
+    "year": 2020,
+    "description": "Протесты Black Lives Matter по всему миру",
+    "era": "contemporary",
+    "category": "politics",
+    "tip": "Событие произошло в 2020 (Современность). Протесты Black Lives Matter по всему миру.",
+    "image": "images/george-floyd.jpg"
+  },
+  {
+    "id": "afghanistan-withdrawal",
+    "title": "Вывод войск США из Афганистана",
+    "year": 2021,
+    "description": "Конец двадцатилетней войны",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 2021 (Современность). Конец двадцатилетней войны.",
+    "image": "images/afghanistan-withdrawal.png"
+  },
+  {
+    "id": "james-webb",
+    "title": "Запуск телескопа «Джеймс Уэбб»",
+    "year": 2021,
+    "description": "Новое поколение космических обсерваторий",
+    "era": "contemporary",
+    "category": "science",
+    "tip": "Событие произошло в 2021 (Современность). Новое поколение космических обсерваторий.",
+    "image": "images/james-webb.png"
+  },
+  {
+    "id": "chatgpt",
+    "title": "Публичный запуск ChatGPT",
+    "year": 2022,
+    "description": "Массовый доступ к большим языковым моделям",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 2022 (Современность). Массовый доступ к большим языковым моделям.",
+    "image": "images/chatgpt.png"
+  },
+  {
+    "id": "ukraine-2022",
+    "title": "Полномасштабное вторжение России в Украину",
+    "year": 2022,
+    "description": "Крупнейший конфликт в Европе с 1945 года",
+    "era": "contemporary",
+    "category": "war",
+    "tip": "Событие произошло в 2022 (Современность). Крупнейший конфликт в Европе с 1945 года.",
+    "image": "images/ukraine-2022.png"
+  },
+  {
+    "id": "gpt4",
+    "title": "Выход GPT-4",
+    "year": 2023,
+    "description": "Новый уровень генеративного искусственного интеллекта",
+    "era": "contemporary",
+    "category": "technology",
+    "tip": "Событие произошло в 2023 (Современность). Новый уровень генеративного искусственного интеллекта.",
+    "image": "images/gpt4.png"
+  }
+]

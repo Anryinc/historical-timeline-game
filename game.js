@@ -37,18 +37,22 @@ function showScreen(name) {
 }
 
 function loadEvents() {
-  return Promise.resolve().then(() => {
-    const data = window.EVENTS_DATA;
-    if (!Array.isArray(data) || data.length < 10) {
-      throw new Error('EVENTS_DATA missing or too small: ' + (data && data.length));
-    }
-    const seen = new Set();
-    allEvents = data.filter(e => {
-      if (!e || !e.id || e.id === 'christ' || seen.has(e.id)) return false;
-      seen.add(e.id);
-      return true;
+  return fetch('events.json')
+    .then(r => {
+      if (!r.ok) throw new Error('events.json HTTP ' + r.status);
+      return r.json();
+    })
+    .then(data => {
+      if (!Array.isArray(data) || data.length < 10) {
+        throw new Error('events.json missing or too small: ' + (data && data.length));
+      }
+      const seen = new Set();
+      allEvents = data.filter(e => {
+        if (!e || !e.id || e.id === 'christ' || seen.has(e.id)) return false;
+        seen.add(e.id);
+        return true;
+      });
     });
-  });
 }
 
 function readSettings() {
@@ -74,22 +78,6 @@ function hideTutorial() {
   const modal = $('#tutorial-modal');
   if (modal) modal.classList.add('hidden');
 }
-
-const FALLBACK_IMAGES = {
-  war: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Battle_of_Waterloo_1815.jpg',
-  politics: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/United_Nations_General_Assembly_hall.jpg',
-  science: 'https://upload.wikimedia.org/wikipedia/commons/8/80/NobelPrize.jpg',
-  culture: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg',
-  discovery: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Columbus_Taking_Possession.jpg',
-  technology: 'https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg',
-  disaster: 'https://upload.wikimedia.org/wikipedia/commons/1/1c/Mount_St._Helens_erupting_on_May_18%2C_1980.jpg',
-  religion: 'https://upload.wikimedia.org/wikipedia/commons/8/80/Notre-Dame_de_Paris_2013-07-24.jpg',
-  ancient: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseum_in_Rome%2C_Italy_-_April_2007.jpg',
-  medieval: 'https://upload.wikimedia.org/wikipedia/commons/2/26/Chateau_de_Pierrefonds.jpg',
-  early_modern: 'https://upload.wikimedia.org/wikipedia/commons/1/17/Declaration_of_Independence_%28painting%29.jpg',
-  modern: 'https://upload.wikimedia.org/wikipedia/commons/5/5f/Industrial_Revolution.jpg',
-  contemporary: 'https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg'
-};
 
 function buildLocalTip(ev) {
   if (ev.tip) return ev.tip;
@@ -130,11 +118,7 @@ function showTip(ev) {
     img.onerror = null;
     img.classList.add('hidden');
     img.removeAttribute('src');
-    const src = (ev.image && String(ev.image).trim()) ||
-      FALLBACK_IMAGES[ev.category] ||
-      FALLBACK_IMAGES[ev.era] ||
-      FALLBACK_IMAGES.contemporary ||
-      '';
+    const src = (ev.image && String(ev.image).trim()) || '';
     if (src) {
       img.alt = ev.title || '';
       img.onload = () => { if (img.src) img.classList.remove('hidden'); };

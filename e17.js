@@ -1,1 +1,0 @@
-window.EVENTS_DATA=(window.EVENTS_DATA||[]).concat([{"id":"gpt4","title":"Выход GPT-4","year":2023,"description":"Новый уровень генеративного искусственного интеллекта","era":"contemporary","category":"technology","tip":"Событие произошло в 2023 (Современность). Новый уровень генеративного искусственного интеллекта."}]);

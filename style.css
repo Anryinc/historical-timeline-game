@@ -135,7 +135,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font); backgroun
 }
 .tip-toast.show-out { animation: tipOut 0.35s ease forwards; }
 .tip-toast-inner { display: flex; gap: 0; align-items: stretch; }
-.tip-toast-image { width: 110px; min-width: 110px; object-fit: cover; display: block; background: #1a1a2e; }
+.tip-toast-image { width: 120px; min-width: 120px; height: 120px; object-fit: contain; object-position: center; display: block; background: #f3efe6; box-sizing: border-box; padding: 6px; }
 .tip-toast-image.hidden { display: none; }
 .tip-toast-body { padding: 14px 16px; flex: 1; min-width: 0; }
 .tip-toast-year { font-weight: 800; font-size: 0.9rem; color: var(--warning); margin-bottom: 2px; letter-spacing: 0.02em; }
@@ -146,7 +146,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font); backgroun
 @keyframes tipOut { from { opacity: 1; transform: translateX(-50%) translateY(0); } to { opacity: 0; transform: translateX(-50%) translateY(10px); } }
 @media (max-width: 480px) {
   .tip-toast-inner { flex-direction: column; }
-  .tip-toast-image { width: 100%; min-width: 0; height: 120px; }
+  .tip-toast-image { width: 100%; min-width: 0; height: 160px; }
 }
 .drag-ghost {
   position: fixed; z-index: 100; pointer-events: none; opacity: 0.92;
@@ -161,3 +161,6 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font); backgroun
   .hint { font-size: 0.75rem; text-align: center; padding: 0 8px; }
   .tip-toast { bottom: 32%; }
 }
+
+.gallery-link { display: inline-block; margin-top: 16px; color: var(--text-muted); font-size: 0.88rem; text-decoration: underline; text-underline-offset: 3px; }
+.gallery-link:hover { color: var(--text); }

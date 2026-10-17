@@ -1,0 +1,1930 @@
+[
+  {
+    "id": "pyramids",
+    "title": "Строительство Великих пирамид Гизы",
+    "year": -2560,
+    "file": "images/pyramids.jpg",
+    "subject": "Great Pyramid of Giza",
+    "status": "ok-22426"
+  },
+  {
+    "id": "stonehenge",
+    "title": "Строительство Стоунхенджа (основной этап)",
+    "year": -2500,
+    "file": "images/stonehenge.jpg",
+    "subject": "Stonehenge",
+    "status": "ok-22136"
+  },
+  {
+    "id": "hammurabi",
+    "title": "Кодекс Хаммурапи",
+    "year": -1754,
+    "file": "images/hammurabi.jpg",
+    "subject": "Code of Hammurabi",
+    "status": "ok-43681"
+  },
+  {
+    "id": "tutankhamun",
+    "title": "Правление Тутанхамона",
+    "year": -1332,
+    "file": "images/tutankhamun.jpg",
+    "subject": "Tutankhamun",
+    "status": "ok-48487"
+  },
+  {
+    "id": "trojan-war",
+    "title": "Троянская война (традиционная дата)",
+    "year": -1184,
+    "file": "images/trojan-war.jpg",
+    "subject": "Trojan War",
+    "status": "ok-42696"
+  },
+  {
+    "id": "olympics",
+    "title": "Первые Олимпийские игры",
+    "year": -776,
+    "file": "images/olympics.jpg",
+    "subject": "Ancient Olympic Games",
+    "status": "ok-35148"
+  },
+  {
+    "id": "rome-founded",
+    "title": "Основание Рима",
+    "year": -753,
+    "file": "images/rome-founded.jpg",
+    "subject": "Founding of Rome",
+    "status": "ok-21752"
+  },
+  {
+    "id": "homer",
+    "title": "Создание «Илиады» и «Одиссеи» (примерно)",
+    "year": -750,
+    "file": "images/homer.jpg",
+    "subject": "Homer",
+    "status": "ok-30293"
+  },
+  {
+    "id": "solon",
+    "title": "Реформы Солона в Афинах",
+    "year": -594,
+    "file": "images/solon.jpg",
+    "subject": "Solon",
+    "status": "ok-42128"
+  },
+  {
+    "id": "buddha",
+    "title": "Рождение Будды (приблизительно)",
+    "year": -563,
+    "file": "images/buddha.jpg",
+    "subject": "Gautama Buddha",
+    "status": "ok-41698"
+  },
+  {
+    "id": "confucius",
+    "title": "Рождение Конфуция",
+    "year": -551,
+    "file": "images/confucius.jpg",
+    "subject": "Confucius",
+    "status": "ok-28234"
+  },
+  {
+    "id": "marathon",
+    "title": "Битва при Марафоне",
+    "year": -490,
+    "file": "images/marathon.jpg",
+    "subject": "Battle of Marathon",
+    "status": "ok-33945"
+  },
+  {
+    "id": "thermopylae",
+    "title": "Битва при Фермопилах",
+    "year": -480,
+    "file": "images/thermopylae.jpg",
+    "subject": "Battle of Thermopylae",
+    "status": "ok-34088"
+  },
+  {
+    "id": "parthenon",
+    "title": "Строительство Парфенона",
+    "year": -447,
+    "file": "images/parthenon.jpg",
+    "subject": "Parthenon",
+    "status": "ok-30318"
+  },
+  {
+    "id": "socrates-death",
+    "title": "Смерть Сократа",
+    "year": -399,
+    "file": "images/socrates-death.jpg",
+    "subject": "search:Trial of Socrates",
+    "status": "ok-288791"
+  },
+  {
+    "id": "aristotle-tutor",
+    "title": "Аристотель становится учителем Александра",
+    "year": -343,
+    "file": "images/aristotle-tutor.jpg",
+    "subject": "Aristotle",
+    "status": "ok-41058"
+  },
+  {
+    "id": "alexander",
+    "title": "Начало походов Александра Македонского",
+    "year": -334,
+    "file": "images/alexander.jpg",
+    "subject": "Alexander the Great",
+    "status": "ok-86299"
+  },
+  {
+    "id": "library-alexandria",
+    "title": "Основание Александрийской библиотеки",
+    "year": -283,
+    "file": "images/library-alexandria.jpg",
+    "subject": "Library of Alexandria",
+    "status": "ok-58495"
+  },
+  {
+    "id": "punic-start",
+    "title": "Начало Пунических войн",
+    "year": -264,
+    "file": "images/punic-start.gif",
+    "subject": "Punic Wars",
+    "status": "ok-46507"
+  },
+  {
+    "id": "hannibal-alps",
+    "title": "Переход Ганнибала через Альпы",
+    "year": -218,
+    "file": "images/hannibal-alps.png",
+    "subject": "Hannibal's crossing of the Alps",
+    "status": "ok-55956"
+  },
+  {
+    "id": "caesar-death",
+    "title": "Убийство Юлия Цезаря",
+    "year": -44,
+    "file": "images/caesar-death.jpg",
+    "subject": "Assassination of Julius Caesar",
+    "status": "ok-28728"
+  },
+  {
+    "id": "cleopatra-death",
+    "title": "Смерть Клеопатры",
+    "year": -30,
+    "file": "images/cleopatra-death.jpg",
+    "subject": "Cleopatra",
+    "status": "ok-28758"
+  },
+  {
+    "id": "augustus",
+    "title": "Октавиан становится Августом",
+    "year": -27,
+    "file": "images/augustus.jpg",
+    "subject": "Augustus",
+    "status": "ok-62175"
+  },
+  {
+    "id": "jesus-crucifixion",
+    "title": "Распятие Иисуса Христа (традиционно)",
+    "year": 33,
+    "file": "images/jesus-crucifixion.jpg",
+    "subject": "Crucifixion of Jesus",
+    "status": "ok-27633"
+  },
+  {
+    "id": "pompeii",
+    "title": "Извержение Везувия, гибель Помпеев",
+    "year": 79,
+    "file": "images/pompeii.jpg",
+    "subject": "Eruption of Mount Vesuvius in 79 AD",
+    "status": "ok-22406"
+  },
+  {
+    "id": "colosseum",
+    "title": "Открытие Колизея",
+    "year": 80,
+    "file": "images/colosseum.jpg",
+    "subject": "Colosseum",
+    "status": "ok-27211"
+  },
+  {
+    "id": "hadrian-wall",
+    "title": "Строительство вала Адриана",
+    "year": 122,
+    "file": "images/hadrian-wall.png",
+    "subject": "Hadrian's Wall",
+    "status": "ok-49192"
+  },
+  {
+    "id": "marcus-aurelius-death",
+    "title": "Смерть Марка Аврелия",
+    "year": 180,
+    "file": "images/marcus-aurelius-death.jpg",
+    "subject": "Marcus Aurelius",
+    "status": "ok-27967"
+  },
+  {
+    "id": "constantine-city",
+    "title": "Основание Константинополя",
+    "year": 330,
+    "file": "images/constantine-city.png",
+    "subject": "Constantinople",
+    "status": "ok-136603"
+  },
+  {
+    "id": "attila-death",
+    "title": "Смерть Аттилы",
+    "year": 453,
+    "file": "images/attila-death.jpg",
+    "subject": "Death of Attila engraving",
+    "status": "replaced"
+  },
+  {
+    "id": "rome-fall",
+    "title": "Падение Западной Римской империи",
+    "year": 476,
+    "file": "images/rome-fall.jpg",
+    "subject": "Visigoths sack Rome, Sylvestre",
+    "status": "replaced"
+  },
+  {
+    "id": "justinian-code",
+    "title": "Кодекс Юстиниана",
+    "year": 529,
+    "file": "images/justinian-code.jpg",
+    "subject": "Corpus Juris Civilis",
+    "status": "ok-70871"
+  },
+  {
+    "id": "justinian-plague",
+    "title": "Юстинианова чума",
+    "year": 541,
+    "file": "images/justinian-plague.jpg",
+    "subject": "Plague of Justinian",
+    "status": "ok-65975"
+  },
+  {
+    "id": "sui-canal",
+    "title": "Строительство Великого канала в Китае",
+    "year": 605,
+    "file": "images/sui-canal.jpg",
+    "subject": "Grand Canal (China)",
+    "status": "ok-41578"
+  },
+  {
+    "id": "mecca",
+    "title": "Хиджра — начало исламского летоисчисления",
+    "year": 622,
+    "file": "images/mecca.jpg",
+    "subject": "Hijrah",
+    "status": "ok-63054"
+  },
+  {
+    "id": "battle-tours",
+    "title": "Битва при Пуатье",
+    "year": 732,
+    "file": "images/battle-tours.png",
+    "subject": "Battle of Tours",
+    "status": "ok-167194"
+  },
+  {
+    "id": "viking-lindisfarne",
+    "title": "Набег викингов на Линдисфарн",
+    "year": 793,
+    "file": "images/viking-lindisfarne.jpg",
+    "subject": "Lindisfarne",
+    "status": "ok-30416"
+  },
+  {
+    "id": "charlemagne",
+    "title": "Коронация Карла Великого",
+    "year": 800,
+    "file": "images/charlemagne.jpg",
+    "subject": "Charlemagne",
+    "status": "ok-33492"
+  },
+  {
+    "id": "kiev-baptism",
+    "title": "Крещение Руси",
+    "year": 988,
+    "file": "images/kiev-baptism.jpg",
+    "subject": "Christianization of Kievan Rus'",
+    "status": "ok-42883"
+  },
+  {
+    "id": "viking-america",
+    "title": "Викинги достигают Америки",
+    "year": 1000,
+    "file": "images/viking-america.jpg",
+    "subject": "search:Leif Erikson",
+    "status": "ok-208461"
+  },
+  {
+    "id": "schism-1054",
+    "title": "Великий церковный раскол",
+    "year": 1054,
+    "file": "images/schism-1054.png",
+    "subject": "East–West Schism",
+    "status": "ok-83511"
+  },
+  {
+    "id": "hastings",
+    "title": "Битва при Гастингсе",
+    "year": 1066,
+    "file": "images/hastings.jpg",
+    "subject": "search:Battle of Hastings",
+    "status": "ok-1155697"
+  },
+  {
+    "id": "crusades",
+    "title": "Начало Первого крестового похода",
+    "year": 1096,
+    "file": "images/crusades.jpg",
+    "subject": "search:First Crusade",
+    "status": "ok-153260"
+  },
+  {
+    "id": "saladin-jerusalem",
+    "title": "Саладин отвоёвывает Иерусалим",
+    "year": 1187,
+    "file": "images/saladin-jerusalem.jpg",
+    "subject": "search:Siege of Jerusalem (1187)",
+    "status": "ok-480718"
+  },
+  {
+    "id": "genghis-proclaimed",
+    "title": "Провозглашение Чингисхана",
+    "year": 1206,
+    "file": "images/genghis-proclaimed.jpg",
+    "subject": "Genghis Khan",
+    "status": "ok-30354"
+  },
+  {
+    "id": "magna-carta",
+    "title": "Великая хартия вольностей",
+    "year": 1215,
+    "file": "images/magna-carta.jpg",
+    "subject": "Magna Carta",
+    "status": "ok-34285"
+  },
+  {
+    "id": "genghis-death",
+    "title": "Смерть Чингисхана",
+    "year": 1227,
+    "file": "images/genghis-death.jpg",
+    "subject": "Genghis Khan",
+    "status": "ok-30354"
+  },
+  {
+    "id": "marco-polo",
+    "title": "Путешествие Марко Поло в Китай",
+    "year": 1271,
+    "file": "images/marco-polo.png",
+    "subject": "Marco Polo",
+    "status": "ok-307646"
+  },
+  {
+    "id": "dante",
+    "title": "Данте начинает «Божественную комедию»",
+    "year": 1308,
+    "file": "images/dante.jpg",
+    "subject": "Divine Comedy",
+    "status": "ok-41039"
+  },
+  {
+    "id": "aztec-tenochtitlan",
+    "title": "Основание Теночтитлана",
+    "year": 1325,
+    "file": "images/aztec-tenochtitlan.jpg",
+    "subject": "Tenochtitlan",
+    "status": "ok-13902"
+  },
+  {
+    "id": "hundred-years-start",
+    "title": "Начало Столетней войны",
+    "year": 1337,
+    "file": "images/hundred-years-start.jpg",
+    "subject": "Hundred Years' War",
+    "status": "ok-32314"
+  },
+  {
+    "id": "black-death",
+    "title": "Чёрная смерть в Европе",
+    "year": 1347,
+    "file": "images/black-death.png",
+    "subject": "Black Death",
+    "status": "ok-198899"
+  },
+  {
+    "id": "timur-death",
+    "title": "Смерть Тамерлана",
+    "year": 1405,
+    "file": "images/timur-death.jpg",
+    "subject": "Timur",
+    "status": "ok-39076"
+  },
+  {
+    "id": "joan-arc",
+    "title": "Сожжение Жанны д’Арк",
+    "year": 1431,
+    "file": "images/joan-arc.jpg",
+    "subject": "Joan of Arc",
+    "status": "ok-84252"
+  },
+  {
+    "id": "printing",
+    "title": "Изобретение печатного станка Гутенбергом",
+    "year": 1440,
+    "file": "images/printing.png",
+    "subject": "Printing press",
+    "status": "ok-130438"
+  },
+  {
+    "id": "constantinople",
+    "title": "Падение Константинополя",
+    "year": 1453,
+    "file": "images/constantinople.jpg",
+    "subject": "Fall of Constantinople",
+    "status": "ok-33247"
+  },
+  {
+    "id": "columbus",
+    "title": "Открытие Америки Колумбом",
+    "year": 1492,
+    "file": "images/columbus.jpg",
+    "subject": "Christopher Columbus",
+    "status": "ok-36936"
+  },
+  {
+    "id": "da-vinci-mona",
+    "title": "Мона Лиза (начало работы)",
+    "year": 1503,
+    "file": "images/da-vinci-mona.jpg",
+    "subject": "search-ru:Мона Лиза (начало работы)",
+    "status": "ok-manual"
+  },
+  {
+    "id": "reformation",
+    "title": "95 тезисов Мартина Лютера",
+    "year": 1517,
+    "file": "images/reformation.png",
+    "subject": "Ninety-five Theses",
+    "status": "ok-359062"
+  },
+  {
+    "id": "magellan",
+    "title": "Первое кругосветное плавание",
+    "year": 1519,
+    "file": "images/magellan.jpg",
+    "subject": "Ferdinand Magellan",
+    "status": "ok-29484"
+  },
+  {
+    "id": "copernicus",
+    "title": "«О вращении небесных сфер» Коперника",
+    "year": 1543,
+    "file": "images/copernicus.png",
+    "subject": "De revolutionibus orbium coelestium",
+    "status": "ok-29402"
+  },
+  {
+    "id": "ivan-terrible",
+    "title": "Венчание Ивана Грозного на царство",
+    "year": 1547,
+    "file": "images/ivan-terrible.jpg",
+    "subject": "search:Ivan the Terrible",
+    "status": "ok-262057"
+  },
+  {
+    "id": "elizabeth-i",
+    "title": "Начало правления Елизаветы I",
+    "year": 1558,
+    "file": "images/elizabeth-i.jpg",
+    "subject": "Elizabeth I",
+    "status": "ok-75407"
+  },
+  {
+    "id": "lepanto",
+    "title": "Битва при Лепанто",
+    "year": 1571,
+    "file": "images/lepanto.jpg",
+    "subject": "Battle of Lepanto",
+    "status": "ok-23230"
+  },
+  {
+    "id": "spanish-armada",
+    "title": "Разгром Непобедимой армады",
+    "year": 1588,
+    "file": "images/spanish-armada.jpg",
+    "subject": "Spanish Armada",
+    "status": "ok-33407"
+  },
+  {
+    "id": "shakespeare-hamlet",
+    "title": "Первая постановка «Гамлета» (примерно)",
+    "year": 1600,
+    "file": "images/shakespeare-hamlet.jpg",
+    "subject": "Hamlet",
+    "status": "ok-44623"
+  },
+  {
+    "id": "galileo",
+    "title": "Галилей направляет телескоп на небо",
+    "year": 1609,
+    "file": "images/galileo.jpg",
+    "subject": "Galileo Galilei",
+    "status": "ok-28430"
+  },
+  {
+    "id": "mayflower",
+    "title": "«Мэйфлауэр» прибывает в Америку",
+    "year": 1620,
+    "file": "images/mayflower.jpg",
+    "subject": "Mayflower",
+    "status": "ok-23730"
+  },
+  {
+    "id": "galileo-trial",
+    "title": "Суд над Галилеем",
+    "year": 1633,
+    "file": "images/galileo-trial.png",
+    "subject": "Galileo affair",
+    "status": "ok-116349"
+  },
+  {
+    "id": "english-civil",
+    "title": "Начало Английской революции",
+    "year": 1642,
+    "file": "images/english-civil.jpg",
+    "subject": "English Civil War",
+    "status": "ok-32043"
+  },
+  {
+    "id": "louis-xiv",
+    "title": "Начало личного правления Людовика XIV",
+    "year": 1661,
+    "file": "images/louis-xiv.jpg",
+    "subject": "Louis XIV",
+    "status": "ok-65978"
+  },
+  {
+    "id": "plague-london",
+    "title": "Великая чума в Лондоне",
+    "year": 1665,
+    "file": "images/plague-london.jpg",
+    "subject": "Great Plague of London",
+    "status": "ok-60213"
+  },
+  {
+    "id": "great-fire-london",
+    "title": "Великий лондонский пожар",
+    "year": 1666,
+    "file": "images/great-fire-london.jpg",
+    "subject": "Great Fire of London",
+    "status": "ok-18311"
+  },
+  {
+    "id": "newton",
+    "title": "«Математические начала» Ньютона",
+    "year": 1687,
+    "file": "images/newton.png",
+    "subject": "Philosophiæ Naturalis Principia Mathematica",
+    "status": "ok-250421"
+  },
+  {
+    "id": "peter-petersburg",
+    "title": "Основание Санкт-Петербурга",
+    "year": 1703,
+    "file": "images/peter-petersburg.jpg",
+    "subject": "Peter and Paul Fortress",
+    "status": "ok-27445"
+  },
+  {
+    "id": "bach-leipzig",
+    "title": "Бах становится кантором в Лейпциге",
+    "year": 1723,
+    "file": "images/bach-leipzig.jpg",
+    "subject": "Johann Sebastian Bach",
+    "status": "ok-34275"
+  },
+  {
+    "id": "seven-years",
+    "title": "Начало Семилетней войны",
+    "year": 1756,
+    "file": "images/seven-years.jpg",
+    "subject": "Seven Years' War",
+    "status": "ok-51360"
+  },
+  {
+    "id": "industrial-start",
+    "title": "Начало промышленной революции",
+    "year": 1760,
+    "file": "images/industrial-start.jpg",
+    "subject": "Spinning jenny",
+    "status": "ok-34383"
+  },
+  {
+    "id": "cook-voyage",
+    "title": "Первое кругосветное плавание Кука",
+    "year": 1768,
+    "file": "images/cook-voyage.jpg",
+    "subject": "James Cook",
+    "status": "ok-30320"
+  },
+  {
+    "id": "watt-engine",
+    "title": "Усовершенствованный паровой двигатель Уатта",
+    "year": 1769,
+    "file": "images/watt-engine.jpg",
+    "subject": "Watt steam engine",
+    "status": "ok-27398"
+  },
+  {
+    "id": "american-rev-start",
+    "title": "Начало Войны за независимость США",
+    "year": 1775,
+    "file": "images/american-rev-start.jpg",
+    "subject": "American Revolutionary War",
+    "status": "ok-27175"
+  },
+  {
+    "id": "usa-independence",
+    "title": "Декларация независимости США",
+    "year": 1776,
+    "file": "images/usa-independence.jpg",
+    "subject": "United States Declaration of Independence",
+    "status": "ok-53937"
+  },
+  {
+    "id": "french-revolution",
+    "title": "Взятие Бастилии",
+    "year": 1789,
+    "file": "images/french-revolution.jpg",
+    "subject": "Storming of the Bastille",
+    "status": "ok-35588"
+  },
+  {
+    "id": "mozart-death",
+    "title": "Смерть Моцарта",
+    "year": 1791,
+    "file": "images/mozart-death.jpg",
+    "subject": "Wolfgang Amadeus Mozart",
+    "status": "ok-44683"
+  },
+  {
+    "id": "napoleon-emperor",
+    "title": "Наполеон коронуется императором",
+    "year": 1804,
+    "file": "images/napoleon-emperor.jpg",
+    "subject": "Coronation of Napoleon",
+    "status": "ok-31841"
+  },
+  {
+    "id": "abolition-uk",
+    "title": "Отмена работорговли в Британской империи",
+    "year": 1807,
+    "file": "images/abolition-uk.png",
+    "subject": "Slave Trade Act 1807",
+    "status": "ok-158557"
+  },
+  {
+    "id": "beethoven-5th",
+    "title": "Премьера 5-й симфонии Бетховена",
+    "year": 1808,
+    "file": "images/beethoven-5th.png",
+    "subject": "Symphony No. 5 (Beethoven)",
+    "status": "ok-123028"
+  },
+  {
+    "id": "napoleon-moscow",
+    "title": "Наполеон входит в Москву",
+    "year": 1812,
+    "file": "images/napoleon-moscow.jpg",
+    "subject": "Fire of Moscow (1812)",
+    "status": "ok-20401"
+  },
+  {
+    "id": "waterloo",
+    "title": "Битва при Ватерлоо",
+    "year": 1815,
+    "file": "images/waterloo.png",
+    "subject": "Battle of Waterloo",
+    "status": "ok-103999"
+  },
+  {
+    "id": "steam-railway",
+    "title": "Первый пассажирский паровоз",
+    "year": 1825,
+    "file": "images/steam-railway.jpg",
+    "subject": "Stockton and Darlington Railway",
+    "status": "ok-37534"
+  },
+  {
+    "id": "faraday",
+    "title": "Открытие электромагнитной индукции",
+    "year": 1831,
+    "file": "images/faraday.jpg",
+    "subject": "search-ru:Открытие электромагнитной индукции",
+    "status": "ok-manual"
+  },
+  {
+    "id": "opium-war",
+    "title": "Начало Первой опиумной войны",
+    "year": 1839,
+    "file": "images/opium-war.jpg",
+    "subject": "First Opium War",
+    "status": "ok-22964"
+  },
+  {
+    "id": "communist-manifesto",
+    "title": "«Манифест Коммунистической партии»",
+    "year": 1848,
+    "file": "images/communist-manifesto.png",
+    "subject": "The Communist Manifesto",
+    "status": "ok-285632"
+  },
+  {
+    "id": "crimean-war",
+    "title": "Начало Крымской войны",
+    "year": 1853,
+    "file": "images/crimean-war.jpg",
+    "subject": "Crimean War",
+    "status": "ok-32277"
+  },
+  {
+    "id": "darwin",
+    "title": "«Происхождение видов» Дарвина",
+    "year": 1859,
+    "file": "images/darwin.jpg",
+    "subject": "On the Origin of Species",
+    "status": "ok-32233"
+  },
+  {
+    "id": "lincoln-emancipation",
+    "title": "Прокламация об освобождении рабов",
+    "year": 1863,
+    "file": "images/lincoln-emancipation.jpg",
+    "subject": "Emancipation Proclamation",
+    "status": "ok-36169"
+  },
+  {
+    "id": "pasteur",
+    "title": "Пастер разрабатывает пастеризацию",
+    "year": 1864,
+    "file": "images/pasteur.jpg",
+    "subject": "Louis Pasteur",
+    "status": "ok-34598"
+  },
+  {
+    "id": "mendeleev",
+    "title": "Периодическая таблица Менделеева",
+    "year": 1869,
+    "file": "images/mendeleev.png",
+    "subject": "Periodic table",
+    "status": "ok-34397"
+  },
+  {
+    "id": "suez-canal",
+    "title": "Открытие Суэцкого канала",
+    "year": 1869,
+    "file": "images/suez-canal.jpg",
+    "subject": "Suez Canal",
+    "status": "ok-48056"
+  },
+  {
+    "id": "paris-commune",
+    "title": "Парижская коммуна",
+    "year": 1871,
+    "file": "images/paris-commune.jpg",
+    "subject": "Paris Commune",
+    "status": "ok-26795"
+  },
+  {
+    "id": "telephone",
+    "title": "Изобретение телефона Беллом",
+    "year": 1876,
+    "file": "images/telephone.jpg",
+    "subject": "Alexander Graham Bell",
+    "status": "ok-36372"
+  },
+  {
+    "id": "lightbulb",
+    "title": "Лампа накаливания Эдисона",
+    "year": 1879,
+    "file": "images/lightbulb.png",
+    "subject": "Incandescent light bulb",
+    "status": "ok-162595"
+  },
+  {
+    "id": "tesla-ac",
+    "title": "Тесла демонстрирует переменный ток",
+    "year": 1888,
+    "file": "images/tesla-ac.jpg",
+    "subject": "Nikola Tesla",
+    "status": "ok-37012"
+  },
+  {
+    "id": "eiffel",
+    "title": "Строительство Эйфелевой башни",
+    "year": 1889,
+    "file": "images/eiffel.png",
+    "subject": "Eiffel Tower",
+    "status": "ok-7008"
+  },
+  {
+    "id": "cinema-lumiere",
+    "title": "Первый публичный киносеанс братьев Люмьер",
+    "year": 1895,
+    "file": "images/cinema-lumiere.jpg",
+    "subject": "Auguste and Louis Lumière",
+    "status": "ok-33147"
+  },
+  {
+    "id": "radio-marconi",
+    "title": "Первая радиопередача Маркони",
+    "year": 1895,
+    "file": "images/radio-marconi.jpg",
+    "subject": "Guglielmo Marconi",
+    "status": "ok-29347"
+  },
+  {
+    "id": "roentgen",
+    "title": "Открытие рентгеновских лучей Рентгеном",
+    "year": 1895,
+    "file": "images/roentgen.jpg",
+    "subject": "Wilhelm Röntgen",
+    "status": "ok-26590"
+  },
+  {
+    "id": "xray",
+    "title": "Открытие рентгеновских лучей",
+    "year": 1895,
+    "file": "images/xray.jpg",
+    "subject": "X-ray",
+    "status": "ok-12530"
+  },
+  {
+    "id": "olympic-modern",
+    "title": "Первые современные Олимпийские игры",
+    "year": 1896,
+    "file": "images/olympic-modern.jpg",
+    "subject": "1896 Summer Olympics",
+    "status": "ok-55353"
+  },
+  {
+    "id": "curie-radium",
+    "title": "Открытие радия четой Кюри",
+    "year": 1898,
+    "file": "images/curie-radium.jpg",
+    "subject": "Marie Curie",
+    "status": "ok-24832"
+  },
+  {
+    "id": "boxer-rebellion",
+    "title": "Ихэтуаньское восстание",
+    "year": 1899,
+    "file": "images/boxer-rebellion.jpg",
+    "subject": "Boxer Rebellion",
+    "status": "ok-27387"
+  },
+  {
+    "id": "wright",
+    "title": "Первый полёт братьев Райт",
+    "year": 1903,
+    "file": "images/wright.jpg",
+    "subject": "Wright Flyer",
+    "status": "ok-13801"
+  },
+  {
+    "id": "russo-japanese",
+    "title": "Начало русско-японской войны",
+    "year": 1904,
+    "file": "images/russo-japanese.jpg",
+    "subject": "Russo-Japanese War",
+    "status": "ok-57351"
+  },
+  {
+    "id": "einstein",
+    "title": "Специальная теория относительности",
+    "year": 1905,
+    "file": "images/einstein.jpg",
+    "subject": "Annus mirabilis papers",
+    "status": "ok-43023"
+  },
+  {
+    "id": "einstein-photoelectric",
+    "title": "Объяснение фотоэффекта Эйнштейном",
+    "year": 1905,
+    "file": "images/einstein-photoelectric.png",
+    "subject": "Photoelectric effect",
+    "status": "ok-36038"
+  },
+  {
+    "id": "titanic",
+    "title": "Гибель «Титаника»",
+    "year": 1912,
+    "file": "images/titanic.jpg",
+    "subject": "Sinking of the Titanic",
+    "status": "ok-29754"
+  },
+  {
+    "id": "ford-model-t",
+    "title": "Конвейер Форда и Model T",
+    "year": 1913,
+    "file": "images/ford-model-t.jpg",
+    "subject": "Ford Model T",
+    "status": "ok-43523"
+  },
+  {
+    "id": "panama-canal",
+    "title": "Открытие Панамского канала",
+    "year": 1914,
+    "file": "images/panama-canal.png",
+    "subject": "Panama Canal",
+    "status": "ok-186603"
+  },
+  {
+    "id": "ww1-start",
+    "title": "Начало Первой мировой войны",
+    "year": 1914,
+    "file": "images/ww1-start.jpg",
+    "subject": "World War I",
+    "status": "ok-37155"
+  },
+  {
+    "id": "october",
+    "title": "Октябрьская революция в России",
+    "year": 1917,
+    "file": "images/october.jpg",
+    "subject": "October Revolution",
+    "status": "ok-30777"
+  },
+  {
+    "id": "spanish-flu",
+    "title": "Пандемия «испанки»",
+    "year": 1918,
+    "file": "images/spanish-flu.jpg",
+    "subject": "Spanish flu",
+    "status": "ok-37052"
+  },
+  {
+    "id": "ww1-end",
+    "title": "Окончание Первой мировой войны",
+    "year": 1918,
+    "file": "images/ww1-end.jpg",
+    "subject": "Armistice of 11 November 1918",
+    "status": "ok-56683"
+  },
+  {
+    "id": "versailles",
+    "title": "Версальский договор",
+    "year": 1919,
+    "file": "images/versailles.jpg",
+    "subject": "Treaty of Versailles",
+    "status": "ok-41604"
+  },
+  {
+    "id": "tut-tomb",
+    "title": "Открытие гробницы Тутанхамона",
+    "year": 1922,
+    "file": "images/tut-tomb.jpg",
+    "subject": "Tomb of Tutankhamun",
+    "status": "ok-32768"
+  },
+  {
+    "id": "lenin-death",
+    "title": "Смерть Ленина",
+    "year": 1924,
+    "file": "images/lenin-death.jpg",
+    "subject": "Vladimir Lenin",
+    "status": "ok-39878"
+  },
+  {
+    "id": "talkies",
+    "title": "Первый звуковой фильм",
+    "year": 1927,
+    "file": "images/talkies.jpg",
+    "subject": "The Jazz Singer",
+    "status": "ok-76874"
+  },
+  {
+    "id": "penicillin",
+    "title": "Открытие пенициллина",
+    "year": 1928,
+    "file": "images/penicillin.png",
+    "subject": "Penicillin",
+    "status": "ok-6855"
+  },
+  {
+    "id": "great-depression",
+    "title": "Чёрный вторник — крах Уолл-стрит",
+    "year": 1929,
+    "file": "images/great-depression.jpg",
+    "subject": "Wall Street Crash of 1929",
+    "status": "ok-71621"
+  },
+  {
+    "id": "hitler-power",
+    "title": "Гитлер становится канцлером",
+    "year": 1933,
+    "file": "images/hitler-power.jpg",
+    "subject": "Adolf Hitler's rise to power",
+    "status": "ok-36012"
+  },
+  {
+    "id": "spanish-civil",
+    "title": "Начало Гражданской войны в Испании",
+    "year": 1936,
+    "file": "images/spanish-civil.jpg",
+    "subject": "Spanish Civil War",
+    "status": "ok-19819"
+  },
+  {
+    "id": "anschluss",
+    "title": "Аншлюс Австрии",
+    "year": 1938,
+    "file": "images/anschluss.jpg",
+    "subject": "Anschluss",
+    "status": "ok-67393"
+  },
+  {
+    "id": "munich-agreement",
+    "title": "Мюнхенское соглашение",
+    "year": 1938,
+    "file": "images/munich-agreement.jpg",
+    "subject": "Munich Agreement",
+    "status": "ok-28933"
+  },
+  {
+    "id": "ww2-start",
+    "title": "Начало Второй мировой войны",
+    "year": 1939,
+    "file": "images/ww2-start.png",
+    "subject": "Invasion of Poland",
+    "status": "ok-86953"
+  },
+  {
+    "id": "battle-britain",
+    "title": "Битва за Британию",
+    "year": 1940,
+    "file": "images/battle-britain.jpg",
+    "subject": "Battle of Britain",
+    "status": "ok-12326"
+  },
+  {
+    "id": "barbarossa",
+    "title": "Операция «Барбаросса»",
+    "year": 1941,
+    "file": "images/barbarossa.jpg",
+    "subject": "Operation Barbarossa",
+    "status": "ok-50132"
+  },
+  {
+    "id": "pearl-harbor",
+    "title": "Нападение на Перл-Харбор",
+    "year": 1941,
+    "file": "images/pearl-harbor.jpg",
+    "subject": "Attack on Pearl Harbor",
+    "status": "ok-30005"
+  },
+  {
+    "id": "midway",
+    "title": "Битва за Мидуэй",
+    "year": 1942,
+    "file": "images/midway.jpg",
+    "subject": "Battle of Midway",
+    "status": "ok-19323"
+  },
+  {
+    "id": "penicillin-use",
+    "title": "Начало массового применения пенициллина",
+    "year": 1942,
+    "file": "images/penicillin-use.jpg",
+    "subject": "British Standard penicillin phial",
+    "status": "replaced"
+  },
+  {
+    "id": "stalingrad-end",
+    "title": "Завершение Сталинградской битвы",
+    "year": 1943,
+    "file": "images/stalingrad-end.jpg",
+    "subject": "Battle of Stalingrad",
+    "status": "ok-30827"
+  },
+  {
+    "id": "d-day",
+    "title": "Высадка в Нормандии",
+    "year": 1944,
+    "file": "images/d-day.jpg",
+    "subject": "Normandy landings",
+    "status": "ok-19192"
+  },
+  {
+    "id": "hiroshima",
+    "title": "Атомная бомбардировка Хиросимы",
+    "year": 1945,
+    "file": "images/hiroshima.jpg",
+    "subject": "Atomic bombings of Hiroshima and Nagasaki",
+    "status": "ok-19990"
+  },
+  {
+    "id": "nuremberg",
+    "title": "Нюрнбергский процесс",
+    "year": 1945,
+    "file": "images/nuremberg.jpg",
+    "subject": "search:Nuremberg trials",
+    "status": "ok-42541"
+  },
+  {
+    "id": "un",
+    "title": "Создание ООН",
+    "year": 1945,
+    "file": "images/un.png",
+    "subject": "United Nations",
+    "status": "ok-18421"
+  },
+  {
+    "id": "ww2-end",
+    "title": "Окончание Второй мировой войны",
+    "year": 1945,
+    "file": "images/ww2-end.jpg",
+    "subject": "Victory in Europe Day",
+    "status": "ok-36456"
+  },
+  {
+    "id": "yalta",
+    "title": "Ялтинская конференция",
+    "year": 1945,
+    "file": "images/yalta.jpg",
+    "subject": "Yalta Conference",
+    "status": "ok-30053"
+  },
+  {
+    "id": "india-independence",
+    "title": "Независимость Индии",
+    "year": 1947,
+    "file": "images/india-independence.jpg",
+    "subject": "Indian independence movement",
+    "status": "ok-79390"
+  },
+  {
+    "id": "marshall-plan",
+    "title": "План Маршалла",
+    "year": 1947,
+    "file": "images/marshall-plan.png",
+    "subject": "Marshall Plan",
+    "status": "ok-114872"
+  },
+  {
+    "id": "transistor",
+    "title": "Изобретение транзистора",
+    "year": 1947,
+    "file": "images/transistor.jpg",
+    "subject": "Transistor",
+    "status": "ok-17488"
+  },
+  {
+    "id": "israel-founded",
+    "title": "Провозглашение государства Израиль",
+    "year": 1948,
+    "file": "images/israel-founded.jpg",
+    "subject": "Israeli Declaration of Independence",
+    "status": "ok-25456"
+  },
+  {
+    "id": "nato",
+    "title": "Создание НАТО",
+    "year": 1949,
+    "file": "images/nato.png",
+    "subject": "NATO",
+    "status": "ok-15774"
+  },
+  {
+    "id": "prc",
+    "title": "Провозглашение КНР",
+    "year": 1949,
+    "file": "images/prc.jpg",
+    "subject": "Proclamation of the People's Republic of China",
+    "status": "ok-27500"
+  },
+  {
+    "id": "korean-war",
+    "title": "Начало Корейской войны",
+    "year": 1950,
+    "file": "images/korean-war.jpg",
+    "subject": "Korean War",
+    "status": "ok-26619"
+  },
+  {
+    "id": "dna-structure",
+    "title": "Открытие структуры ДНК",
+    "year": 1953,
+    "file": "images/dna-structure.png",
+    "subject": "DNA",
+    "status": "ok-119942"
+  },
+  {
+    "id": "polio-vaccine",
+    "title": "Вакцина Солка против полиомиелита",
+    "year": 1955,
+    "file": "images/polio-vaccine.jpg",
+    "subject": "Polio vaccine",
+    "status": "ok-9057"
+  },
+  {
+    "id": "suez-crisis",
+    "title": "Суэцкий кризис",
+    "year": 1956,
+    "file": "images/suez-crisis.jpg",
+    "subject": "Suez Crisis",
+    "status": "ok-27872"
+  },
+  {
+    "id": "sputnik",
+    "title": "Запуск первого спутника",
+    "year": 1957,
+    "file": "images/sputnik.jpg",
+    "subject": "Sputnik 1",
+    "status": "ok-16113"
+  },
+  {
+    "id": "castro",
+    "title": "Победа революции на Кубе",
+    "year": 1959,
+    "file": "images/castro.jpg",
+    "subject": "Cuban Revolution",
+    "status": "ok-42581"
+  },
+  {
+    "id": "laser",
+    "title": "Создание первого лазера",
+    "year": 1960,
+    "file": "images/laser.jpg",
+    "subject": "Laser",
+    "status": "ok-26027"
+  },
+  {
+    "id": "berlin-wall",
+    "title": "Возведение Берлинской стены",
+    "year": 1961,
+    "file": "images/berlin-wall.jpg",
+    "subject": "Berlin Wall",
+    "status": "ok-33903"
+  },
+  {
+    "id": "gagarin",
+    "title": "Полёт Юрия Гагарина",
+    "year": 1961,
+    "file": "images/gagarin.jpg",
+    "subject": "Yuri Gagarin",
+    "status": "ok-48981"
+  },
+  {
+    "id": "cuban-missile",
+    "title": "Карибский кризис",
+    "year": 1962,
+    "file": "images/cuban-missile.jpg",
+    "subject": "Cuban Missile Crisis",
+    "status": "ok-25858"
+  },
+  {
+    "id": "vatican-ii",
+    "title": "Второй Ватиканский собор",
+    "year": 1962,
+    "file": "images/vatican-ii.jpg",
+    "subject": "Second Vatican Council",
+    "status": "ok-37840"
+  },
+  {
+    "id": "jfk-assassination",
+    "title": "Убийство Джона Кеннеди",
+    "year": 1963,
+    "file": "images/jfk-assassination.jpg",
+    "subject": "Assassination of John F. Kennedy",
+    "status": "ok-43149"
+  },
+  {
+    "id": "mlk-speech",
+    "title": "Речь «У меня есть мечта»",
+    "year": 1963,
+    "file": "images/mlk-speech.jpg",
+    "subject": "I Have a Dream",
+    "status": "ok-33297"
+  },
+  {
+    "id": "beatles-usa",
+    "title": "«Битлз» в Америке",
+    "year": 1964,
+    "file": "images/beatles-usa.jpg",
+    "subject": "The Beatles",
+    "status": "ok-24293"
+  },
+  {
+    "id": "vietnam-escalate",
+    "title": "Эскалация войны во Вьетнаме",
+    "year": 1965,
+    "file": "images/vietnam-escalate.jpg",
+    "subject": "Vietnam War",
+    "status": "ok-23348"
+  },
+  {
+    "id": "six-day-war",
+    "title": "Шестидневная война",
+    "year": 1967,
+    "file": "images/six-day-war.png",
+    "subject": "Six-Day War",
+    "status": "ok-86537"
+  },
+  {
+    "id": "prague-spring",
+    "title": "Пражская весна",
+    "year": 1968,
+    "file": "images/prague-spring.jpg",
+    "subject": "Prague Spring",
+    "status": "ok-23409"
+  },
+  {
+    "id": "internet",
+    "title": "Рождение ARPANET (предшественник Интернета)",
+    "year": 1969,
+    "file": "images/internet.png",
+    "subject": "ARPANET",
+    "status": "ok-34300"
+  },
+  {
+    "id": "moon",
+    "title": "Высадка на Луну",
+    "year": 1969,
+    "file": "images/moon.jpg",
+    "subject": "Apollo 11",
+    "status": "ok-51411"
+  },
+  {
+    "id": "woodstock",
+    "title": "Фестиваль Вудсток",
+    "year": 1969,
+    "file": "images/woodstock.jpg",
+    "subject": "Woodstock",
+    "status": "ok-43088"
+  },
+  {
+    "id": "bangladesh",
+    "title": "Война за независимость Бангладеш",
+    "year": 1971,
+    "file": "images/bangladesh.jpg",
+    "subject": "Bangladesh Liberation War",
+    "status": "ok-29685"
+  },
+  {
+    "id": "first-email",
+    "title": "Первое электронное письмо",
+    "year": 1971,
+    "file": "images/first-email.jpg",
+    "subject": "Ray Tomlinson",
+    "status": "ok-38091"
+  },
+  {
+    "id": "munich-olympics",
+    "title": "Теракт на Олимпиаде в Мюнхене",
+    "year": 1972,
+    "file": "images/munich-olympics.jpg",
+    "subject": "Munich massacre",
+    "status": "ok-21361"
+  },
+  {
+    "id": "watergate",
+    "title": "Уотергейтский скандал",
+    "year": 1972,
+    "file": "images/watergate.jpg",
+    "subject": "Watergate scandal",
+    "status": "ok-33956"
+  },
+  {
+    "id": "yom-kippur",
+    "title": "Война Судного дня",
+    "year": 1973,
+    "file": "images/yom-kippur.png",
+    "subject": "Yom Kippur War",
+    "status": "ok-53981"
+  },
+  {
+    "id": "saigon-fall",
+    "title": "Падение Сайгона",
+    "year": 1975,
+    "file": "images/saigon-fall.webp",
+    "subject": "Fall of Saigon",
+    "status": "ok-16244"
+  },
+  {
+    "id": "apple-founded",
+    "title": "Основание Apple",
+    "year": 1976,
+    "file": "images/apple-founded.png",
+    "subject": "Apple Inc.",
+    "status": "ok-6223"
+  },
+  {
+    "id": "apple-ii",
+    "title": "Выход Apple II",
+    "year": 1977,
+    "file": "images/apple-ii.jpg",
+    "subject": "Apple II",
+    "status": "ok-9816"
+  },
+  {
+    "id": "voyager",
+    "title": "Запуск «Вояджеров»",
+    "year": 1977,
+    "file": "images/voyager.jpg",
+    "subject": "Voyager program",
+    "status": "ok-23617"
+  },
+  {
+    "id": "iran-hostage",
+    "title": "Захват заложников в Тегеране",
+    "year": 1979,
+    "file": "images/iran-hostage.jpg",
+    "subject": "Iran hostage crisis",
+    "status": "ok-37123"
+  },
+  {
+    "id": "three-mile",
+    "title": "Авария на АЭС Три-Майл-Айленд",
+    "year": 1979,
+    "file": "images/three-mile.jpg",
+    "subject": "Three Mile Island accident",
+    "status": "ok-42528"
+  },
+  {
+    "id": "iran-iraq-war",
+    "title": "Начало ирано-иракской войны",
+    "year": 1980,
+    "file": "images/iran-iraq-war.jpg",
+    "subject": "Iran–Iraq War",
+    "status": "ok-30335"
+  },
+  {
+    "id": "smallpox-eradicated",
+    "title": "Официальная ликвидация оспы",
+    "year": 1980,
+    "file": "images/smallpox-eradicated.jpg",
+    "subject": "Smallpox",
+    "status": "ok-58349"
+  },
+  {
+    "id": "solidarity",
+    "title": "Создание «Солидарности» в Польше",
+    "year": 1980,
+    "file": "images/solidarity.png",
+    "subject": "Solidarity (Polish trade union)",
+    "status": "ok-14328"
+  },
+  {
+    "id": "aids-first",
+    "title": "Первые сообщения о СПИДе",
+    "year": 1981,
+    "file": "images/aids-first.png",
+    "subject": "HIV/AIDS",
+    "status": "ok-29870"
+  },
+  {
+    "id": "ibm-pc",
+    "title": "Выход IBM PC",
+    "year": 1981,
+    "file": "images/ibm-pc.png",
+    "subject": "IBM Personal Computer",
+    "status": "ok-22588"
+  },
+  {
+    "id": "cd",
+    "title": "Появление компакт-дисков",
+    "year": 1982,
+    "file": "images/cd.png",
+    "subject": "Compact disc",
+    "status": "ok-7460"
+  },
+  {
+    "id": "falklands",
+    "title": "Фолклендская война",
+    "year": 1982,
+    "file": "images/falklands.jpg",
+    "subject": "Falklands War",
+    "status": "ok-31279"
+  },
+  {
+    "id": "indira-gandhi",
+    "title": "Убийство Индиры Ганди",
+    "year": 1984,
+    "file": "images/indira-gandhi.png",
+    "subject": "Indira Gandhi",
+    "status": "ok-86618"
+  },
+  {
+    "id": "live-aid",
+    "title": "Концерт Live Aid",
+    "year": 1985,
+    "file": "images/live-aid.jpg",
+    "subject": "Live Aid",
+    "status": "ok-32101"
+  },
+  {
+    "id": "perestroika",
+    "title": "Начало перестройки в СССР",
+    "year": 1985,
+    "file": "images/perestroika.jpg",
+    "subject": "Perestroika",
+    "status": "ok-29015"
+  },
+  {
+    "id": "challenger",
+    "title": "Катастрофа «Челленджера»",
+    "year": 1986,
+    "file": "images/challenger.jpg",
+    "subject": "Space Shuttle Challenger disaster",
+    "status": "ok-21400"
+  },
+  {
+    "id": "chernobyl",
+    "title": "Чернобыльская катастрофа",
+    "year": 1986,
+    "file": "images/chernobyl.jpg",
+    "subject": "Chernobyl disaster",
+    "status": "ok-77075"
+  },
+  {
+    "id": "berlin-wall-fall",
+    "title": "Падение Берлинской стены",
+    "year": 1989,
+    "file": "images/berlin-wall-fall.jpg",
+    "subject": "Fall of the Berlin Wall",
+    "status": "ok-41379"
+  },
+  {
+    "id": "tiananmen",
+    "title": "События на площади Тяньаньмэнь",
+    "year": 1989,
+    "file": "images/tiananmen.jpg",
+    "subject": "1989 Tiananmen Square protests and massacre",
+    "status": "ok-55444"
+  },
+  {
+    "id": "www",
+    "title": "Изобретение Всемирной паутины",
+    "year": 1989,
+    "file": "images/www.png",
+    "subject": "World Wide Web",
+    "status": "ok-15194"
+  },
+  {
+    "id": "german-unity",
+    "title": "Объединение Германии",
+    "year": 1990,
+    "file": "images/german-unity.jpg",
+    "subject": "German reunification",
+    "status": "ok-41379"
+  },
+  {
+    "id": "hubble",
+    "title": "Запуск телескопа «Хаббл»",
+    "year": 1990,
+    "file": "images/hubble.jpg",
+    "subject": "Hubble Space Telescope",
+    "status": "ok-14957"
+  },
+  {
+    "id": "gulf-war",
+    "title": "Война в Персидском заливе",
+    "year": 1991,
+    "file": "images/gulf-war.jpg",
+    "subject": "Gulf War",
+    "status": "ok-16225"
+  },
+  {
+    "id": "linux",
+    "title": "Появление ядра Linux",
+    "year": 1991,
+    "file": "images/linux.png",
+    "subject": "Linux",
+    "status": "ok-49760"
+  },
+  {
+    "id": "ussr-collapse",
+    "title": "Распад СССР",
+    "year": 1991,
+    "file": "images/ussr-collapse.png",
+    "subject": "search:Dissolution of the Soviet Union",
+    "status": "ok-54956"
+  },
+  {
+    "id": "yugoslavia-breakup",
+    "title": "Начало распада Югославии",
+    "year": 1991,
+    "file": "images/yugoslavia-breakup.gif",
+    "subject": "Breakup of Yugoslavia",
+    "status": "ok-43825"
+  },
+  {
+    "id": "maastricht",
+    "title": "Маастрихтский договор",
+    "year": 1992,
+    "file": "images/maastricht.jpg",
+    "subject": "Maastricht Treaty",
+    "status": "ok-15910"
+  },
+  {
+    "id": "mandela-president",
+    "title": "Нельсон Мандела становится президентом",
+    "year": 1994,
+    "file": "images/mandela-president.jpg",
+    "subject": "Nelson Mandela",
+    "status": "ok-36133"
+  },
+  {
+    "id": "rwanda-genocide",
+    "title": "Геноцид в Руанде",
+    "year": 1994,
+    "file": "images/rwanda-genocide.jpg",
+    "subject": "Rwandan genocide",
+    "status": "ok-17186"
+  },
+  {
+    "id": "okc-bombing",
+    "title": "Взрыв в Оклахома-Сити",
+    "year": 1995,
+    "file": "images/okc-bombing.jpg",
+    "subject": "Oklahoma City bombing",
+    "status": "ok-71167"
+  },
+  {
+    "id": "dolly",
+    "title": "Клонирование овцы Долли",
+    "year": 1996,
+    "file": "images/dolly.jpg",
+    "subject": "Dolly (sheep)",
+    "status": "ok-32574"
+  },
+  {
+    "id": "diana-death",
+    "title": "Гибель принцессы Дианы",
+    "year": 1997,
+    "file": "images/diana-death.jpg",
+    "subject": "Death of Diana, Princess of Wales",
+    "status": "ok-31801"
+  },
+  {
+    "id": "hong-kong-return",
+    "title": "Возвращение Гонконга Китаю",
+    "year": 1997,
+    "file": "images/hong-kong-return.jpg",
+    "subject": "Handover of Hong Kong",
+    "status": "ok-18761"
+  },
+  {
+    "id": "google",
+    "title": "Основание Google",
+    "year": 1998,
+    "file": "images/google.jpg",
+    "subject": "Google",
+    "status": "ok-31567"
+  },
+  {
+    "id": "911",
+    "title": "Теракты 11 сентября",
+    "year": 2001,
+    "file": "images/911.jpg",
+    "subject": "September 11 attacks",
+    "status": "ok-22623"
+  },
+  {
+    "id": "human-genome",
+    "title": "Черновик генома человека",
+    "year": 2001,
+    "file": "images/human-genome.jpg",
+    "subject": "Human Genome Project",
+    "status": "ok-39191"
+  },
+  {
+    "id": "euro-cash",
+    "title": "Введение наличных евро",
+    "year": 2002,
+    "file": "images/euro-cash.png",
+    "subject": "Euro",
+    "status": "ok-159748"
+  },
+  {
+    "id": "iraq-invasion",
+    "title": "Вторжение в Ирак",
+    "year": 2003,
+    "file": "images/iraq-invasion.jpg",
+    "subject": "2003 invasion of Iraq",
+    "status": "ok-23968"
+  },
+  {
+    "id": "facebook",
+    "title": "Запуск Facebook",
+    "year": 2004,
+    "file": "images/facebook.png",
+    "subject": "Facebook",
+    "status": "ok-83056"
+  },
+  {
+    "id": "tsunami-2004",
+    "title": "Цунами в Индийском океане",
+    "year": 2004,
+    "file": "images/tsunami-2004.jpg",
+    "subject": "2004 Indian Ocean earthquake and tsunami",
+    "status": "ok-36691"
+  },
+  {
+    "id": "youtube",
+    "title": "Запуск YouTube",
+    "year": 2005,
+    "file": "images/youtube.png",
+    "subject": "YouTube",
+    "status": "ok-58595"
+  },
+  {
+    "id": "iphone",
+    "title": "Презентация первого iPhone",
+    "year": 2007,
+    "file": "images/iphone.png",
+    "subject": "IPhone (1st generation)",
+    "status": "ok-31620"
+  },
+  {
+    "id": "financial-crisis",
+    "title": "Мировой финансовый кризис",
+    "year": 2008,
+    "file": "images/financial-crisis.jpg",
+    "subject": "2008 financial crisis",
+    "status": "ok-64502"
+  },
+  {
+    "id": "iphone-appstore",
+    "title": "Запуск App Store",
+    "year": 2008,
+    "file": "images/iphone-appstore.jpg",
+    "subject": "Apple App Store icon",
+    "status": "replaced"
+  },
+  {
+    "id": "arab-spring",
+    "title": "Начало Арабской весны",
+    "year": 2010,
+    "file": "images/arab-spring.jpg",
+    "subject": "Arab Spring",
+    "status": "ok-40086"
+  },
+  {
+    "id": "bin-laden",
+    "title": "Убийство Усамы бен Ладена",
+    "year": 2011,
+    "file": "images/bin-laden.jpg",
+    "subject": "Death of Osama bin Laden",
+    "status": "ok-22642"
+  },
+  {
+    "id": "fukushima",
+    "title": "Авария на АЭС Фукусима",
+    "year": 2011,
+    "file": "images/fukushima.jpg",
+    "subject": "Fukushima nuclear accident",
+    "status": "ok-27206"
+  },
+  {
+    "id": "crispr",
+    "title": "CRISPR как инструмент редактирования генома",
+    "year": 2012,
+    "file": "images/crispr.png",
+    "subject": "CRISPR",
+    "status": "ok-96661"
+  },
+  {
+    "id": "higgs",
+    "title": "Открытие бозона Хиггса",
+    "year": 2012,
+    "file": "images/higgs.png",
+    "subject": "Higgs boson",
+    "status": "ok-174928"
+  },
+  {
+    "id": "snowden",
+    "title": "Разоблачения Эдварда Сноудена",
+    "year": 2013,
+    "file": "images/snowden.jpg",
+    "subject": "Edward Snowden",
+    "status": "ok-33117"
+  },
+  {
+    "id": "crimea-2014",
+    "title": "Присоединение Крыма к России",
+    "year": 2014,
+    "file": "images/crimea-2014.jpg",
+    "subject": "Annexation of Crimea by the Russian Federation",
+    "status": "ok-30486"
+  },
+  {
+    "id": "paris-attacks",
+    "title": "Теракты в Париже",
+    "year": 2015,
+    "file": "images/paris-attacks.jpg",
+    "subject": "November 2015 Paris attacks",
+    "status": "ok-70556"
+  },
+  {
+    "id": "alphago",
+    "title": "AlphaGo побеждает чемпиона мира по го",
+    "year": 2016,
+    "file": "images/alphago.jpg",
+    "subject": "search-ru:AlphaGo побеждает чемпиона мира по го",
+    "status": "ok-manual"
+  },
+  {
+    "id": "brexit-vote",
+    "title": "Референдум о Brexit",
+    "year": 2016,
+    "file": "images/brexit-vote.png",
+    "subject": "2016 United Kingdom European Union membership referendum",
+    "status": "ok-134126"
+  },
+  {
+    "id": "trump-elected",
+    "title": "Избрание Дональда Трампа",
+    "year": 2016,
+    "file": "images/trump-elected.jpg",
+    "subject": "Donald Trump",
+    "status": "ok-23749"
+  },
+  {
+    "id": "metoo",
+    "title": "Движение #MeToo",
+    "year": 2017,
+    "file": "images/metoo.jpg",
+    "subject": "MeToo movement",
+    "status": "ok-86618"
+  },
+  {
+    "id": "covid",
+    "title": "Начало пандемии COVID-19",
+    "year": 2019,
+    "file": "images/covid.jpg",
+    "subject": "COVID-19 pandemic",
+    "status": "ok-30629"
+  },
+  {
+    "id": "notre-dame-fire",
+    "title": "Пожар в соборе Нотр-Дам",
+    "year": 2019,
+    "file": "images/notre-dame-fire.jpg",
+    "subject": "Notre-Dame fire",
+    "status": "ok-50504"
+  },
+  {
+    "id": "george-floyd",
+    "title": "Убийство Джорджа Флойда",
+    "year": 2020,
+    "file": "images/george-floyd.jpg",
+    "subject": "George Floyd protests",
+    "status": "ok-41827"
+  },
+  {
+    "id": "afghanistan-withdrawal",
+    "title": "Вывод войск США из Афганистана",
+    "year": 2021,
+    "file": "images/afghanistan-withdrawal.png",
+    "subject": "2021 Taliban offensive",
+    "status": "ok-164245"
+  },
+  {
+    "id": "james-webb",
+    "title": "Запуск телескопа «Джеймс Уэбб»",
+    "year": 2021,
+    "file": "images/james-webb.png",
+    "subject": "James Webb Space Telescope",
+    "status": "ok-83908"
+  },
+  {
+    "id": "chatgpt",
+    "title": "Публичный запуск ChatGPT",
+    "year": 2022,
+    "file": "images/chatgpt.png",
+    "subject": "ChatGPT",
+    "status": "ok-10618"
+  },
+  {
+    "id": "ukraine-2022",
+    "title": "Полномасштабное вторжение России в Украину",
+    "year": 2022,
+    "file": "images/ukraine-2022.png",
+    "subject": "Russian invasion of Ukraine",
+    "status": "ok-101193"
+  },
+  {
+    "id": "gpt4",
+    "title": "Выход GPT-4",
+    "year": 2023,
+    "file": "images/gpt4.png",
+    "subject": "ChatGPT",
+    "status": "ok-10618"
+  }
+]
