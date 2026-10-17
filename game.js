@@ -62,7 +62,18 @@ function readSettings() {
   settings.showTips = tipsEl ? tipsEl.checked : true;
 }
 
+function releaseTextSelection() {
+  try {
+    const sel = window.getSelection();
+    if (sel) {
+      sel.removeAllRanges();
+      if (typeof sel.empty === 'function') sel.empty();
+    }
+  } catch (_) {}
+}
+
 function showTutorial(text, hint, isSuccess) {
+  releaseTextSelection();
   const modal = $('#tutorial-modal');
   $('#tutorial-text').textContent = text;
   $('#tutorial-hint').textContent = hint || '';
@@ -72,6 +83,11 @@ function showTutorial(text, hint, isSuccess) {
   const btn = $('#btn-tutorial-ok');
   if (btn) btn.textContent = isSuccess ? 'Начать игру' : 'Понятно';
   modal.classList.remove('hidden');
+  // iOS commits a selection after the finger lifts; clear it again so the button receives the next tap
+  clearTimeout(showTutorial._selT);
+  showTutorial._selT = setTimeout(releaseTextSelection, 40);
+  setTimeout(releaseTextSelection, 180);
+  setTimeout(releaseTextSelection, 420);
 }
 
 function hideTutorial() {
@@ -199,17 +215,27 @@ function findGapAtPoint(x, y) {
 
 function bindCardDrag(card) {
   teardownCardDrag(card);
-  card.draggable = true;
+  const finePointer = window.matchMedia('(pointer: fine)').matches;
+  card.draggable = finePointer;
   card.ondragstart = (e) => {
-    if (dragState.active) { e.preventDefault(); return; }
+    if (!finePointer || dragState.active) { e.preventDefault(); return; }
     card.classList.add('dragging');
     e.dataTransfer.setData('text/plain', 'event');
     e.dataTransfer.effectAllowed = 'move';
   };
   card.ondragend = () => card.classList.remove('dragging');
+  if (!card.dataset.touchGuard) {
+    card.dataset.touchGuard = '1';
+    card.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1 && e.cancelable) e.preventDefault();
+    }, { passive: false });
+    card.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
   const onPointerDown = (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     if (e.pointerType === 'mouse') return;
+    card.draggable = false;
+    if (e.cancelable) e.preventDefault();
     dragState.card = card;
     dragState.startX = e.clientX;
     dragState.startY = e.clientY;
@@ -218,6 +244,7 @@ function bindCardDrag(card) {
     clearTimeout(dragState.longPressTimer);
     dragState.longPressTimer = setTimeout(() => {
       dragState.active = true;
+      releaseTextSelection();
       card.classList.add('ready-to-drag', 'long-press-active');
       if (navigator.vibrate) try { navigator.vibrate(25); } catch (_) {}
       const ghost = document.createElement('div');
@@ -260,6 +287,8 @@ function bindCardDrag(card) {
     }
     teardownCardDrag(card);
     dragState.card = null;
+    releaseTextSelection();
+    setTimeout(releaseTextSelection, 60);
   };
   const onPointerCancel = () => {
     clearTimeout(dragState.longPressTimer);
@@ -614,11 +643,30 @@ if (quitBtn) quitBtn.addEventListener('click', quitToHome);
 
 const tutOk = $('#btn-tutorial-ok');
 if (tutOk) {
-  tutOk.addEventListener('click', () => {
+  let tutBusy = false;
+  const onTutorialConfirm = (e) => {
+    if (e) { e.preventDefault(); e.stopPropagation(); }
+    releaseTextSelection();
+    if (tutBusy) return;
+    tutBusy = true;
+    setTimeout(() => { tutBusy = false; }, 500);
     if (tutorialMode && placed.length > 0) finishTutorialAndStart();
     else hideTutorial();
-  });
+  };
+  tutOk.addEventListener('click', onTutorialConfirm);
+  tutOk.addEventListener('pointerup', onTutorialConfirm);
 }
+
+document.addEventListener('selectstart', (e) => {
+  const tag = e.target && e.target.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+  e.preventDefault();
+});
+document.addEventListener('contextmenu', (e) => {
+  const tag = e.target && e.target.tagName;
+  if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+  e.preventDefault();
+});
 
 document.querySelectorAll('.diff-btn').forEach(btn => {
   btn.addEventListener('click', () => startGame(parseInt(btn.dataset.count)));
